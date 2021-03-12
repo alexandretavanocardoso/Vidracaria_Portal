@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+    <link rel="icon" href="~/img/Logo/logo.png" />
+
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Font Awesome  -->
+    <link href="~/css/all.css" rel="stylesheet" />
+    <!-- Bibliotecas -->
+    <link href="~/lib/aos/aos.css" rel="stylesheet" />
+    <link href="~/lib/glightbox/css/glightbox.css" rel="stylesheet" />
+    <link href="~/lib/instagram/instagram.css" rel="stylesheet" />
+    <link href="~/lib/flickty/flickity.css" rel="stylesheet" />
+    <link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="~/lib/lightgallery/lightbox.min.css" rel="stylesheet" />
+    <!-- Estilos -->
+    <link href="~/css/styles.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/scss/style.scss" rel="stylesheet" asp-append-version="true" />
+
+    <style>
+        .activeFooter {
+            color: #cc1616;
+        }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <!-- ======= Top Bar ======= -->
+    <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i style="margin-right: 5px; color: #cc1616;" class="fas fa-mail-bulk phone-icon"></i>vidracariaportalbb@hotmail.com
+                <i style="margin-right: 5px; color: #cc1616;" class="fas fa-phone-square-alt phone-icon"></i> +55 (14) 3641-1797
+                <i style="margin-right: 5px; color: #cc1616;" class="fas fa-mail-bulk phone-icon"></i> +55 (14) 99773-1577
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Cabeçalho ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a asp-controller="Home" asp-action="Home" class="logo"><img clas="img" src="~/img/Logo/logo.png" alt="" class="img-fluid"></a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li class="@(ViewData["title"].ToString() == "Index" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Home">Página Inical</a></li>
+                    <li class="@(ViewData["title"].ToString() == "Sobre" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Sobre">Sobre</a></li>
+                    <li class="@(ViewData["title"].ToString() == "Serviços" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Servicos">Serviços</a></li>
+                    <li class="@(ViewData["title"].ToString() == "Galeria" ? "active" : "")"><a class="nav-link " asp-controller="Home" asp-action="Galeria">Galeria</a></li>
+                    <li class="@(ViewData["title"].ToString() == "Contato" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Contato">Contato</a></li>
+                    <li class="@(ViewData["title"].ToString() == "Duvidas" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Duvidas">Duvidas</a></li>
+                </ul>
+                <i class="fas fa-bars mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+    <!-- ======= Final Cabeçalho ======= -->
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- ======= Rodape ======= -->
+    <footer id="footer">
+        <div class="footer-top" style="margin: 0 auto;">
+            <div class="container">
+                <div class="row" style="justify-content: center;">
+                    <div class="col-lg-2 col-md-4 footer-links" style="margin-right:50px;">
+                        <h4>Páginas do Site</h4>
+                        <ul>
+                            <li class="@(ViewData["title"].ToString() == "Index" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Home">Página Inicial</a></li>
+                            <li class="@(ViewData["title"].ToString() == "Sobre" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Sobre">Sobre</a></li>
+                            <li class="@(ViewData["title"].ToString() == "Serviços" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Servicos">Serviços</a></li>
+                            <li class="@(ViewData["title"].ToString() == "Galeria" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Galeria">Galeria</a></li>
+                            <li class="@(ViewData["title"].ToString() == "Contato" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Contato">Contato</a></li>
+                            <li class="@(ViewData["title"].ToString() == "Duvidas" ? "activeFooter" : "")"><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a asp-controller="Home" asp-action="Duvidas">Duvidas</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="footer-info">
+                            <a asp-controller="Home" asp-action="Home"><img src="~/img/Logo/logo.png" class="img-fluid img-footer" /></a>
+                            <p>
+                                Avenda Pedro Ometto <br>
+                                Barra Bonita, SP<br><br>
+                                <strong>Celular: </strong> +55 (14) 99907-4567<br>
+                                <strong>Telefone: </strong> +55 (14) 3641-1797<br>
+                                <strong>E-mail: </strong> vidracariaportalbb@hotmail.com<br>
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 footer-links" style="margin-left:50px;">
+                        <h4>Nossos Serviços</h4>
+                        <ul>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Box Banheiro</a></li>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Espelhos</a></li>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Vidros temperados</a></li>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Vidros Lâminados</a></li>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Portas</a></li>
+                            <li><i style="margin-right: 10px;" class="fas fa-chevron-right"></i> <a href="#">Outras Variedades</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ======= Final Rodape ======= -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    <div id="preloader"></div>
+
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- Jquery -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!-- Font Awesome  -->
+    <script src="~/js/all.js"></script>
+    <!-- Bibliotecas -->
+    <script src="~/lib/tata/tata.js"></script>
+    <script src="~/lib/swiper/swiper-bundle.min.js"></script>
+    <script src="~/lib/scrolline/Scrolline.js"></script>
+    <script src="~/lib/isotope-layout/isotope.pkgd.js"></script>
+    <script src="~/lib/glightbox/js/glightbox.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/aos/aos.js"></script>
+    <script src="~/lib/flickty/flickity.pkgd.min.js"></script>
+    <script src="~/lib/lightgallery/lightbox.js"></script>
+    <!-- Estilos -->
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

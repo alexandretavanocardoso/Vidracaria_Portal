@@ -20,8 +20,8 @@
     <link href="~/lib/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="~/lib/lightgallery/lightbox.min.css" rel="stylesheet" />
     <!-- Estilos -->
-    <link href="~/css/styles.css" rel="stylesheet"/>
-    <link href="~/scss/style.scss" rel="stylesheet"/>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/scss/style.scss" rel="stylesheet" />
 
     <style>
         .activeFooter {
@@ -47,7 +47,7 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <a asp-controller="Home" asp-action="Home" class="logo"><img clas="img" src="~/img/Logo/logo.png" alt="" class="img-fluid"></a>
-            <nav id="navbar" class="navbar">
+            <nav class="navbar">
                 <ul>
                     <li class="@(ViewData["title"].ToString() == "Index" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Home">Página Inical</a></li>
                     <li class="@(ViewData["title"].ToString() == "Sobre" ? "active" : "")"><a class="nav-link" asp-controller="Home" asp-action="Sobre">Sobre</a></li>
@@ -60,6 +60,16 @@
             </nav>
         </div>
     </header>
+    <div id="mobileNavigation" style="display: none;">
+        <ul style="list-style: none;">
+            <li class="@(ViewData["title"].ToString() == "Index" ? "active" : "")"><a  class="nav-link" asp-controller="Home" asp-action="Home">Página Inical</a></li>
+            <li class="@(ViewData["title"].ToString() == "Sobre" ? "active" : "")"><a  class="nav-link" asp-controller="Home" asp-action="Sobre">Sobre</a></li>
+            <li class="@(ViewData["title"].ToString() == "Serviços" ? "active" : "")"><a  class="nav-link" asp-controller="Home" asp-action="Servicos">Serviços</a></li>
+            <li class="@(ViewData["title"].ToString() == "Galeria" ? "active" : "")"><a  class="nav-link " asp-controller="Home" asp-action="Galeria">Galeria</a></li>
+            <li class="@(ViewData["title"].ToString() == "Contato" ? "active" : "")"><a  class="nav-link" asp-controller="Home" asp-action="Contato">Contato</a></li>
+            <li class="@(ViewData["title"].ToString() == "Duvidas" ? "active" : "")"><a  class="nav-link" asp-controller="Home" asp-action="Duvidas">Duvidas</a></li>
+        </ul>
+    </div>
     <!-- ======= Final Cabeçalho ======= -->
 
     <div>
@@ -134,7 +144,6 @@
     <script src="~/lib/scrolline/Scrolline.js"></script>
     <script src="~/lib/isotope-layout/isotope.pkgd.js"></script>
     <script src="~/lib/glightbox/js/glightbox.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/aos/aos.js"></script>
     <script src="~/lib/flickty/flickity.pkgd.min.js"></script>
     <script src="~/lib/lightgallery/lightbox.js"></script>

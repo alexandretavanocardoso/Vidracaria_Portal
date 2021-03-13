@@ -16,14 +16,8 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         [StringLength(70, ErrorMessage = "O Nome deve possuir no máximo 70 caracteres")]
         public string Nome { get; set; }
 
-        [Display(Name = "E-mail", Prompt = "E-mail")]
-        [Required(ErrorMessage = "Por favor, Informe o E-mail")]
-        [EmailAddress(ErrorMessage = "Por favor, Informe um E-mail Válido!!")]
-        public string Email { get; set; }
-
         [Display(Name = "Data do Cadastro")]
         public DateTime DataCadastro { get; set; }
-
 
         [Display(Name = "Cidade: ", Prompt = "Cidade")]
         [Required(ErrorMessage = "Por favor, informe a Cidade")]
@@ -40,7 +34,6 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         public int NumeroCasa { get; set; }
 
         [Display(Name = "Estado: ", Prompt = "Estado")]
-        [Required(ErrorMessage = "Por favor, informe o Estado")]
         [StringLength(80, ErrorMessage = "O Estado deve possuir no máximo 80 caracteres")]
         public string Estado { get; set; }
 
@@ -48,10 +41,6 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         [Required(ErrorMessage = "Por favor, informe o Celular")]
         [StringLength(20, ErrorMessage = "O Celular deve possuir no máximo 20 caracteres")]
         public string Celular { get; set; }
-        [Display(Name = "Documento: ", Prompt = "Documento")]
-        [Required(ErrorMessage = "Por favor, informe o Documento")]
-        [StringLength(20, ErrorMessage = "O Documento deve possuir no máximo 20 caracteres")]
-        public string Documento { get; set; }
 
         [Display(Name = "Estoque Máximo: ", Prompt = "Máximo")]
         [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]

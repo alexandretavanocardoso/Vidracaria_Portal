@@ -7,7 +7,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class AluminiosModel
     {
         [Key]
-        public int CodigoAluminio { get; set; }
+        public decimal CodigoAluminio { get; set; }
 
         [Display(Name = "Alumínio: ", Prompt = "Alumínio")]
         [Required(ErrorMessage = "Por favor, informe o Nome do Alumínio")]
@@ -39,5 +39,10 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [Display(Name = "Valor da Fábrica: ", Prompt = "Fabrica")]
         [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
         public decimal PrecoFabrica { get; set; }
+
+        [Display(Name = "Estoque Máximo: ", Prompt = "Máximo")]
+        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
+        [StringLength(300, ErrorMessage = "Imagem com erro")]
+        public string Imagem { get; set; }
     }
 }

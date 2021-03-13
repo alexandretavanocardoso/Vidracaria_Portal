@@ -2,12 +2,100 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewData["title"]</title>
+    <link rel="icon" href="~/img/Logo/logo.png" />
+
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Font Awesome  -->
+    <link href="~/css/all.css" rel="stylesheet" />
+    <!-- Estilos -->
+    <link href="~/Administrador/style.css" rel="stylesheet" />
+    @await RenderSectionAsync("Styles", required: false);
 </head>
 <body>
+    <!--header area start-->
+    <header>
+        <label for="check">
+            <i class="fas fa-bars" id="sidebar_btn"></i>
+        </label>
+        <div class="left_area">
+            <h3>Vidraçaria<span>Portal</span></h3>
+        </div>
+        <div class="right_area">
+            <a href="#" class="logout_btn"><i class="fas fa-sign-out-alt" style="margin-right: 3px;"></i>Sair</a>
+        </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+        <div class="nav_bar">
+            <img src="~/img/Logo/logo.png" style="object-fit: cover;" class="mobile_profile_image" alt="">
+            <i class="fa fa-bars nav_btn"></i>
+        </div>
+        <div class="mobile_nav_items">
+            <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
+            <a href="javascript:{}" id="cadastrosMobile"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
+            <div id="divCadastrosMobile" style="display: none; background-color: #cc1616;">
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
+            </div>
+            <a href="javascript:{}" id="servicosMobile"><i style="margin-right: 8px;" class="fas fa-concierge-bell"></i><span class="titles-sidebar">Serviços</span></a>
+            <div id="divServicosMobile" style="display: none; background-color: #cc1616;">
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
+                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
+            </div>
+            <a href="#"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
+        </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+        <div class="profile_info">
+            <img src="~/img/Logo/logo.png" style="object-fit: cover;" class="profile_image" alt="">
+            <h4>Vidraçaria Portal</h4>
+        </div>
+        <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
+        <a href="javascript:{}" id="cadastros"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
+        <div id="divCadastros" style="display: none; background-color: #cc1616;">
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
+        </div>
+        <a href="javascript:{}" id="servicos"><i style="margin-right: 8px;" class="fas fa-concierge-bell"></i><span class="titles-sidebar">Serviços</span></a>
+        <div id="divServicos" style="display: none; background-color: #cc1616;">
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
+            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
+        </div>
+        <a href="#"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
+    </div>
+    <!--sidebar end-->
     <div>
         @RenderBody()
     </div>
+
+
+
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- Jquery -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <!-- Font Awesome  -->
+    <script src="~/js/all.js"></script>
+    <!-- Scripts -->
+    <script src="~/Administrador/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false);
 </body>
 </html>

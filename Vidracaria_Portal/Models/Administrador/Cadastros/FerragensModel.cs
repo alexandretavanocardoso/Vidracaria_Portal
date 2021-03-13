@@ -7,7 +7,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class FerragensModel
     {
         [Key]
-        public int CodigoFerragem { get; set; }
+        public decimal CodigoFerragem { get; set; }
 
         [Display(Name = "Ferragem: ", Prompt = "Ferragem")]
         [Required(ErrorMessage = "Por favor, informe o Nome da Ferragem")]
@@ -39,5 +39,10 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [Display(Name = "Valor da Fábrica: ", Prompt = "Fabrica")]
         [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
         public decimal PrecoFabrica { get; set; }
+
+        [Display(Name = "Estoque Máximo: ", Prompt = "Máximo")]
+        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
+        [StringLength(300, ErrorMessage = "Imagem com erro")]
+        public string Imagem { get; set; }
     }
 }

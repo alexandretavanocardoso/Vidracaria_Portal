@@ -11,7 +11,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class LoginModel
     {
         [Key]
-        public int CodigoUsuario { get; set; }
+        public decimal CodigoUsuario { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
     }

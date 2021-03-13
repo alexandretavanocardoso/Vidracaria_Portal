@@ -11,7 +11,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class VidrosTemperadosModel
     {
         [Key]
-        public int CodigoVidro { get; set; }
+        public decimal CodigoVidro { get; set; }
 
         [Display(Name = "Vidro: ", Prompt = "Vidro")]
         [Required(ErrorMessage = "Por favor, informe o Nome do Vidro")]
@@ -47,5 +47,10 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [Display(Name = "Valor da Fábrica: ", Prompt = "Fabrica")]
         [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
         public decimal PrecoFabrica { get; set; }
+
+        [Display(Name = "Estoque Máximo: ", Prompt = "Máximo")]
+        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
+        [StringLength(300, ErrorMessage = "Imagem com erro")]
+        public string Imagem { get; set; }
     }
 }

@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
+
+
+@section Styles{
+    <style>
+        .boxSejabemVindo {
+            box-shadow: -12px 9px 5px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: -12px 9px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: -12px 9px 5px 0px rgba(0,0,0,0.75);
+            height: 150px;
+            width: 100%;
+            background: #a20b0b;
+        }
+
+            .boxSejabemVindo h3 {
+                color: white;
+                margin-top: 30px;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+
+            .boxSejabemVindo h4 {
+                color: white;
+                font-size: 18px;
+                margin-top: 20px;
+            }
+
+        .minBoxes {
+            box-shadow: 2px 16px 5px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 2px 16px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 2px 16px 5px 0px rgba(0,0,0,0.75);
+            height: 150px;
+            background: #a20b0b;
+        }
+    </style>
+}
+
+
+<div class="content" style="padding-left: 60px;">
+    <div class="row">
+        <div class="col-md-12 boxSejabemVindo">
+            <h3>Seja Bem Vindo !</h3>
+            <h4>Seja bem vindo ao sistema da Vidraçaria Portal !!!</h4>
+        </div>
+    </div> 
+</div>
+
+<script src="C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\Views\Administrador\Home.js"></script>
+
+@section Scripts{ }

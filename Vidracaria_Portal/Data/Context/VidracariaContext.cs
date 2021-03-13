@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using Vidracaria_Portal.Models;
 using Vidracaria_Portal.Models.Administrador.Cadastros;
+using Vidracaria_Portal.Models.Administrador.Servicos;
 using Vidracaria_Portal.Models.Cliente;
 
 namespace Vidracaria_Portal.Data.Context
@@ -20,6 +21,10 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<FerragensModel> Ferragens { get; set; }
         public DbSet<VidrosComunsModel> VidrosComuns { get; set; }
         public DbSet<VidrosTemperadosModel> VidrosTemperados { get; set; }
+        public DbSet<AprovadosModel> Aprovados { get; set; }
+        public DbSet<OrcamentosModel> Orcamentos { get; set; }
+        public DbSet<PendentesModel> Pendentes { get; set; }
+        public DbSet<ConcluidosModel> Concluidos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

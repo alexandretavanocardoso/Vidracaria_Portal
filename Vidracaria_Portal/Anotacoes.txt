@@ -1,5 +1,7 @@
 ﻿asp-controller="Home" asp-action="Index"
-add-migration criandotabelas
+
+entityframeworkcore\add-migration NovasTabelas
+update-database
 
 #343a40 - Secundaria
 #cc1616 - Principal

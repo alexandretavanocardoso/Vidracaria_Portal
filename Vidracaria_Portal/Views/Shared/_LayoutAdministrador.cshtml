@@ -40,20 +40,21 @@
             <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
             <a href="javascript:{}" id="cadastrosMobile"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
             <div id="divCadastrosMobile" style="display: none; background-color: #cc1616;">
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
+                <a asp-controller="Clientes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
+                <a asp-controller="Produtos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
+                <a asp-controller="Aluminios" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Alumínios</span></a>
+                <a asp-controller="Ferragens" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
+                <a asp-controller="VidrosTemperados" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
+                <a asp-controller="VidrosComuns" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
             </div>
             <a href="javascript:{}" id="servicosMobile"><i style="margin-right: 8px;" class="fas fa-concierge-bell"></i><span class="titles-sidebar">Serviços</span></a>
             <div id="divServicosMobile" style="display: none; background-color: #cc1616;">
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
-                <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
+                <a asp-controller="Orcamentos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
+                <a asp-controller="Pendentes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
+                <a asp-controller="Aprovados" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
+                <a asp-controller="Concluidos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
             </div>
-            <a href="#"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
+            <a asp-controller="Contatos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
         </div>
     </div>
     <!--mobile navigation bar end-->
@@ -66,20 +67,21 @@
         <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
         <a href="javascript:{}" id="cadastros"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
         <div id="divCadastros" style="display: none; background-color: #cc1616;">
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
+            <a asp-controller="Clientes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
+            <a asp-controller="Produtos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Produtos</span></a>
+            <a asp-controller="Aluminios" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-box"></i><span class="titles-sidebar">Alumínios</span></a>
+            <a asp-controller="Ferragens" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-hammer"></i><span class="titles-sidebar">Ferragens</span></a>
+            <a asp-controller="VidrosTemperados" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Temperados</span></a>
+            <a asp-controller="VidrosComuns" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-square-full"></i><span class="titles-sidebar">Vidros Comuns</span></a>
         </div>
         <a href="javascript:{}" id="servicos"><i style="margin-right: 8px;" class="fas fa-concierge-bell"></i><span class="titles-sidebar">Serviços</span></a>
         <div id="divServicos" style="display: none; background-color: #cc1616;">
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
-            <a href="#"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
+            <a asp-controller="Orcamentos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-plus"></i><span class="titles-sidebar">Orçamentos</span></a>
+            <a asp-controller="Pendentes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-tag"></i><span class="titles-sidebar">Pendentes</span></a>
+            <a asp-controller="Aprovados" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-user-check"></i><span class="titles-sidebar">Aprovados</span></a>
+            <a asp-controller="Concluidos" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-check-square"></i><span class="titles-sidebar">Concluidos</span></a>
         </div>
-        <a href="#"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
+        <a asp-controller="Contatos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
     </div>
     <!--sidebar end-->
     <div>

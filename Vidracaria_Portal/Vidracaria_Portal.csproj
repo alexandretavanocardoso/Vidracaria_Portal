@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Enumerators\**" />
+    <Compile Remove="Moldes\**" />
+    <Content Remove="Enumerators\**" />
+    <Content Remove="Moldes\**" />
+    <EmbeddedResource Remove="Enumerators\**" />
+    <EmbeddedResource Remove="Moldes\**" />
+    <None Remove="Enumerators\**" />
+    <None Remove="Moldes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
@@ -17,14 +28,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="MySql.Data" Version="8.0.23" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Interfaces\Repository\" />
-    <Folder Include="Moldes\Command\" />
-    <Folder Include="Moldes\Query\" />
-    <Folder Include="Enumerators\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,3 +5,5 @@ update-database
 
 #343a40 - Secundaria
 #cc1616 - Principal
+
+asp-action="Create"

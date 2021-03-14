@@ -25,6 +25,7 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<OrcamentosModel> Orcamentos { get; set; }
         public DbSet<PendentesModel> Pendentes { get; set; }
         public DbSet<ConcluidosModel> Concluidos { get; set; }
+        public DbSet<ProdutosModel> Produtos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

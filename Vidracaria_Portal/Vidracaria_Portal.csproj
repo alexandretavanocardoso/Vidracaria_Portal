@@ -8,12 +8,16 @@
   <ItemGroup>
     <Compile Remove="Enumerators\**" />
     <Compile Remove="Moldes\**" />
+    <Compile Remove="wwwroot\cssCruds\aluminios\**" />
     <Content Remove="Enumerators\**" />
     <Content Remove="Moldes\**" />
+    <Content Remove="wwwroot\cssCruds\aluminios\**" />
     <EmbeddedResource Remove="Enumerators\**" />
     <EmbeddedResource Remove="Moldes\**" />
+    <EmbeddedResource Remove="wwwroot\cssCruds\aluminios\**" />
     <None Remove="Enumerators\**" />
     <None Remove="Moldes\**" />
+    <None Remove="wwwroot\cssCruds\aluminios\**" />
   </ItemGroup>
 
   <ItemGroup>

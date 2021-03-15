@@ -7,3 +7,11 @@ update-database
 #cc1616 - Principal
 
 asp-action="Create"
+
+[Display(Name = "Categoria da imagem", Prompt = "Categoria")]
+[Required(ErrorMessage = "Por favor, informe a Categoria")]
+public int CategoriaId { get; set; }
+public Categoria Categoria { get; set; } // Foreign Key
+
+<label asp-for="CorId" class="control-label"></label>
+<select asp-for="CorId" class="form-control" asp-items="ViewBag.CorId"></select>

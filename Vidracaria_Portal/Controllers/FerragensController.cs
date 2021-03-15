@@ -54,7 +54,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoFerragem,NomeFerragem,CorFerragem,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Create([Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorFerragem,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
         {
             if (id != ferragensModel.CodigoFerragem)
             {

@@ -6,6 +6,7 @@ using Vidracaria_Portal.Models;
 using Vidracaria_Portal.Models.Administrador.Cadastros;
 using Vidracaria_Portal.Models.Administrador.Servicos;
 using Vidracaria_Portal.Models.Cliente;
+using Vidracaria_Portal.Models.Selects;
 
 namespace Vidracaria_Portal.Data.Context
 {
@@ -15,6 +16,7 @@ namespace Vidracaria_Portal.Data.Context
         {
         }
 
+        #region [DbSet<>]
         public DbSet<ContatoModel> Contatos { get; set; }
         public DbSet<AluminiosModel> Aluminios { get; set; }
         public DbSet<ClientesModel> Clientes { get; set; }
@@ -26,6 +28,13 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<PendentesModel> Pendentes { get; set; }
         public DbSet<ConcluidosModel> Concluidos { get; set; }
         public DbSet<ProdutosModel> Produtos { get; set; }
+        public DbSet<CoresModel> Cores { get; set; }
+        public DbSet<CoresVidroComunsModel> CoresVidroComuns { get; set; }
+        public DbSet<CoresVidrosTemperadosModel> CoresVidroTemperados { get; set; }
+        public DbSet<ExpessurasModel> Expessura { get; set; }
+        public DbSet<PeliculasModel> Peliculas { get; set; }
+        public DbSet<AdesivoModel> Adesivos { get; set; }
+        #endregion [DbSet<>]
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

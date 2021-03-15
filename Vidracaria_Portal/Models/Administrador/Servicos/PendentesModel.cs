@@ -46,7 +46,6 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         public string Celular { get; set; }
 
         [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
     }

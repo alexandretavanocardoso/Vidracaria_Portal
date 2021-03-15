@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Vidracaria_Portal.Models.Selects;
 
 namespace Vidracaria_Portal.Models.Administrador.Cadastros
 {
@@ -14,13 +16,16 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [StringLength(100, ErrorMessage = "O Nome deve possuir no máximo 70 caracteres")]
         public string NomeAluminio { get; set; }
 
-        [Display(Name = "Cor do Alumínio ", Prompt = "Cor do Alumínio")]
-        [Required(ErrorMessage = "Por favor, informe a Cor do Alumínio")]
-        [StringLength(100, ErrorMessage = "O Nome deve possuir no máximo 50 caracteres")]
-        public string CorAluminio { get; set; }
+        [Display(Name = "Cor", Prompt = "Cor")]
+        [Required(ErrorMessage = "Por favor, informe a Cor")]
+        public int CorId { get; set; }
+        public CoresModel Cor { get; set; }
+
+        [Display(Name = "Expessura", Prompt = "Expessura")]
+        public int ExpessuraId { get; set; }
+        public ExpessurasModel Expessura { get; set; }
 
         [Display(Name = "Marca do Alumínio ", Prompt = "Marca do Alumínio")]
-        [Required(ErrorMessage = "Por favor, informe a Marca do Alumínio")]
         [StringLength(100, ErrorMessage = "O Nome deve possuir no máximo 50 caracteres")]
         public string Marca { get; set; }
 
@@ -41,8 +46,10 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public decimal PrecoFabrica { get; set; }
 
         [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
+
+        [Display(Name = "Data do Cadastro")]
+        public DateTime DataCadastro { get; set; }
     }
 }

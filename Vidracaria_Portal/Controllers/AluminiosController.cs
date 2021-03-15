@@ -54,7 +54,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorAluminio,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorAluminio,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
         {
             if (id != aluminiosModel.CodigoAluminio)
             {

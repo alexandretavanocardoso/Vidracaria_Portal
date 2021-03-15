@@ -54,7 +54,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,CorVidro,Marca,EstoqueMaximo,EstoqueMinimo,Expessura,PrecoVenda,PrecoFabrica,Imagem")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,CorVidro,Marca,EstoqueMaximo,EstoqueMinimo,Expessura,PrecoVenda,PrecoFabrica,Imagem")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
         {
             if (id != vidrosTemperadosModel.CodigoVidro)
             {

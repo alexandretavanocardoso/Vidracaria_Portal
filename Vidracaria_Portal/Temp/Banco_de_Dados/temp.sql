@@ -35,3 +35,31 @@ INSERT INTO expessura VALUES(17, 17);
 INSERT INTO expessura VALUES(18, 18);
 INSERT INTO expessura VALUES(19, 19);
 INSERT INTO expessura VALUES(20, 20);
+
+-------------------------------
+-- Insert em Adesivos de vidro
+--------------------------------
+INSERT INTO adesivos VALUES(1, 'Vermelho');
+INSERT INTO adesivos VALUES(2, 'Preto');
+INSERT INTO adesivos VALUES(3, 'Branco');
+INSERT INTO adesivos VALUES(4, 'Dourado');
+INSERT INTO adesivos VALUES(5, 'Amarelo');
+INSERT INTO adesivos VALUES(6, 'Prata');
+INSERT INTO adesivos VALUES(7, 'Cinza');
+INSERT INTO adesivos VALUES(8, 'Verde');
+INSERT INTO adesivos VALUES(9, 'Alumínio');
+INSERT INTO adesivos VALUES(10, 'Azul');
+
+-------------------------------
+-- Insert em Peliculas de vidro
+--------------------------------
+INSERT INTO peliculas VALUES(1, 'insufilme Jateada');
+INSERT INTO peliculas VALUES(2, 'insufilme preto');
+INSERT INTO peliculas VALUES(3, 'insufilme Incolor');
+INSERT INTO peliculas VALUES(4, 'insufilme Dourado');
+INSERT INTO peliculas VALUES(5, 'insufilme Amarelo');
+INSERT INTO peliculas VALUES(6, 'insufilme Prata');
+INSERT INTO peliculas VALUES(7, 'insufilme Cinza');
+INSERT INTO peliculas VALUES(8, 'insufilme Verde');
+INSERT INTO peliculas VALUES(9, 'insufilme Alumínio');
+INSERT INTO peliculas VALUES(10,'insufilme Azul');

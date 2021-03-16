@@ -42,6 +42,13 @@
     <None Include="wwwroot\javaScriptPages\Sobre.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\imagensSaves\Ferragens\" />
+    <Folder Include="wwwroot\imagensSaves\Aluminios\" />
+    <Folder Include="wwwroot\imagensSaves\VidrosComuns\" />
+    <Folder Include="wwwroot\imagensSaves\VidrosTemperados\" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

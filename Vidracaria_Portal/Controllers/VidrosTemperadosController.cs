@@ -46,6 +46,9 @@ namespace Vidracaria_Portal.Controllers
         // GET: VidrosTemperados/Create
         public IActionResult Create()
         {
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome");
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
         {
             if (ModelState.IsValid)
             {
@@ -62,10 +65,9 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AdesivoId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.AdesivoId);
-            ViewData["PeliculaId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.PeliculaId);
-            ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.CorId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "Id", "Nome", vidrosTemperadosModel.ExpessuraId);
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome", vidrosTemperadosModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome", vidrosTemperadosModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", vidrosTemperadosModel.ExpessuraId);
             return View(vidrosTemperadosModel);
         }
 
@@ -82,6 +84,9 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome");
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View(vidrosTemperadosModel);
         }
 
@@ -90,7 +95,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
         {
             if (id != vidrosTemperadosModel.CodigoVidro)
             {
@@ -117,10 +122,9 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AdesivoId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.AdesivoId);
-            ViewData["PeliculaId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.PeliculaId);
-            ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.CorId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "Id", "Nome", vidrosTemperadosModel.ExpessuraId);
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome", vidrosTemperadosModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome", vidrosTemperadosModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", vidrosTemperadosModel.ExpessuraId);
             return View(vidrosTemperadosModel);
         }
 

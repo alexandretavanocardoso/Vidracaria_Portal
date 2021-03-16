@@ -14,51 +14,45 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [Key]
         public decimal CodigoVidro { get; set; }
 
-        [Display(Name = "Vidro ", Prompt = "Vidro")]
+        [Display(Name = "Vidro ", Prompt = "Nome do Vidro")]
         [Required(ErrorMessage = "Por favor, informe o Nome do Vidro")]
         [StringLength(70, ErrorMessage = "O Nome deve possuir no máximo 70 caracteres")]
         public string NomeVidro { get; set; }
 
-        [Display(Name = "Cor", Prompt = "Cor")]
-        [Required(ErrorMessage = "Por favor, informe a Cor")]
+        [Display(Name = "Adesivo (opcional)", Prompt = "Informe o Adesivo")]
         public int AdesivoId { get; set; }
         public AdesivoModel Adesivo { get; set; }
 
-        [Display(Name = "Cor", Prompt = "Cor")]
-        [Required(ErrorMessage = "Por favor, informe a Cor")]
+        [Display(Name = "Pelicula (opcional)", Prompt = "Informe a Pelicula")]
         public int PeliculaId { get; set; }
         public PeliculasModel Pelicula { get; set; }
 
-        [Display(Name = "Cor", Prompt = "Cor")]
-        [Required(ErrorMessage = "Por favor, informe a Cor")]
-        public int CorId { get; set; }
-        public CoresVidroComunsModel Cor { get; set; }
-
-        [Display(Name = "Expessura", Prompt = "Expessura")]
+        [Display(Name = "Expessura (opcional)", Prompt = "Informe a Expessura")]
+        [Required(ErrorMessage = "Por favor, informe a expessura")]
         public int ExpessuraId { get; set; }
         public ExpessurasModel Expessura { get; set; }
 
-        [Display(Name = "Marca da Vidro ", Prompt = "Marca do Vidro")]
+        [Display(Name = "Marca da Vidro (opcional)", Prompt = "Marca do Vidro")]
         [StringLength(70, ErrorMessage = "O Nome deve possuir no máximo 50 caracteres")]
         public string Marca { get; set; }
 
-        [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
+        [Display(Name = "Estoque Máximo ", Prompt = "Estoque Máximo")]
         [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
         public decimal EstoqueMaximo { get; set; }
 
-        [Display(Name = "Estoque Mínimo ", Prompt = "Mínimo")]
+        [Display(Name = "Estoque Mínimo ", Prompt = "Estoque Mínimo")]
         [Required(ErrorMessage = "Por favor, informe o Estoque Mínimo!")]
         public decimal EstoqueMinimo { get; set; }
 
-        [Display(Name = "Valor da Venda ", Prompt = "Venda")]
-        [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
+        [Display(Name = "Valor da Venda ", Prompt = "Valor de Venda")]
+        [Required(ErrorMessage = "Por favor, informe o preço de venda")]
         public string PrecoVenda { get; set; }
 
-        [Display(Name = "Valor da Fábrica ", Prompt = "Fabrica")]
-        [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
+        [Display(Name = "Valor da Fábrica ", Prompt = "Valor de Fábrica")]
+        [Required(ErrorMessage = "Por favor, informe o preço de fábrica!")]
         public string PrecoFabrica { get; set; }
 
-        [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
+        [Display(Name = "Imagem (opcional)", Prompt = "Imagem")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
 

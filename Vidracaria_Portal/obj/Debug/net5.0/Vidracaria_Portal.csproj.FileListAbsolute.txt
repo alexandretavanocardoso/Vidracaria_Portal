@@ -2807,6 +2807,11 @@ C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Ra
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Aluminios\Details.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Aluminios\Edit.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Aluminios\Index.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Clientes\Create.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Clientes\Delete.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Clientes\Details.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Clientes\Edit.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Clientes\Index.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Contatos\Delete.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Contatos\Details.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Contatos\Edit.cshtml.g.cs

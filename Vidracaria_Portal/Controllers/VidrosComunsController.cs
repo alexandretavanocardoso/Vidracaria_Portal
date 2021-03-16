@@ -46,9 +46,9 @@ namespace Vidracaria_Portal.Controllers
         // GET: VidrosComuns/Create
         public IActionResult Create()
         {
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome");
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome");
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome");
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel)
+        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel)
         {
             if (ModelState.IsValid)
             {
@@ -65,9 +65,9 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", vidrosComunsModel.CorId);
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", vidrosComunsModel.ExpessuraId);
             return View(vidrosComunsModel);
         }
 
@@ -84,9 +84,9 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome");
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome");
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome");
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View(vidrosComunsModel);
         }
 
@@ -95,7 +95,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel)
         {
             if (id != vidrosComunsModel.CodigoVidro)
             {
@@ -122,9 +122,9 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", vidrosComunsModel.CorId);
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
+            ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", vidrosComunsModel.ExpessuraId);
             return View(vidrosComunsModel);
         }
 

@@ -47,7 +47,6 @@ namespace Vidracaria_Portal.Controllers
         public IActionResult Create()
         {
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View();
         }
 
@@ -56,7 +55,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,6 @@ namespace Vidracaria_Portal.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", aluminiosModel.CorId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", aluminiosModel.ExpessuraId);
             return View(aluminiosModel);
         }
 
@@ -83,7 +81,6 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View(aluminiosModel);
         }
 
@@ -92,7 +89,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
         {
             if (id != aluminiosModel.CodigoAluminio)
             {
@@ -120,7 +117,6 @@ namespace Vidracaria_Portal.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", aluminiosModel.CorId);
-            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", aluminiosModel.ExpessuraId);
             return View(aluminiosModel);
         }
 

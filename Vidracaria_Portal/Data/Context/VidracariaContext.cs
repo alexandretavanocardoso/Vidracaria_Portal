@@ -29,8 +29,6 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<ConcluidosModel> Concluidos { get; set; }
         public DbSet<ProdutosModel> Produtos { get; set; }
         public DbSet<CoresModel> Cores { get; set; }
-        public DbSet<CoresVidroComunsModel> CoresVidroComuns { get; set; }
-        public DbSet<CoresVidrosTemperadosModel> CoresVidroTemperados { get; set; }
         public DbSet<ExpessurasModel> Expessura { get; set; }
         public DbSet<PeliculasModel> Peliculas { get; set; }
         public DbSet<AdesivoModel> Adesivos { get; set; }

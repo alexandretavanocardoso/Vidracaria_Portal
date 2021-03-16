@@ -44,7 +44,6 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [StringLength(20, ErrorMessage = "O Celular deve possuir no máximo 20 caracteres")]
         public string Celular { get; set; }
         [Display(Name = "Documento ", Prompt = "Documento")]
-        [Required(ErrorMessage = "Por favor, informe o Documento")]
         [StringLength(20, ErrorMessage = "O Documento deve possuir no máximo 20 caracteres")]
         public string Documento { get; set; }
 

@@ -46,6 +46,8 @@ namespace Vidracaria_Portal.Controllers
         // GET: Aluminios/Create
         public IActionResult Create()
         {
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View();
         }
 
@@ -62,6 +64,8 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", aluminiosModel.CorId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", aluminiosModel.ExpessuraId);
             return View(aluminiosModel);
         }
 
@@ -78,6 +82,8 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
             return View(aluminiosModel);
         }
 
@@ -113,6 +119,8 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", aluminiosModel.CorId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", aluminiosModel.ExpessuraId);
             return View(aluminiosModel);
         }
 

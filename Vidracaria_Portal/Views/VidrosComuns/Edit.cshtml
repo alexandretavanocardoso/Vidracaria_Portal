@@ -5,84 +5,86 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>VidrosComunsModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="CodigoVidro" />
-            <div class="form-group">
-                <label asp-for="NomeVidro" class="control-label"></label>
-                <input asp-for="NomeVidro" class="form-control" />
-                <span asp-validation-for="NomeVidro" class="text-danger"></span>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CodigoVidro" />
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="NomeVidro" class="control-label"></label>
+                            <input asp-for="NomeVidro" class="form-control" />
+                            <span asp-validation-for="NomeVidro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Marca" class="control-label"></label>
+                            <input asp-for="Marca" class="form-control" />
+                            <span asp-validation-for="Marca" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="AdesivoId" class="control-label"></label>
+                            <input asp-for="AdesivoId" class="form-control" />
+                            <span asp-validation-for="AdesivoId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="PeliculaId" class="control-label"></label>
+                            <input asp-for="PeliculaId" class="form-control" />
+                            <span asp-validation-for="PeliculaId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="CorId" class="control-label"></label>
+                            <input asp-for="CorId" class="form-control" />
+                            <span asp-validation-for="CorId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="ExpessuraId" class="control-label"></label>
+                            <input asp-for="ExpessuraId" class="form-control" />
+                            <span asp-validation-for="ExpessuraId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="EstoqueMaximo" class="control-label"></label>
+                            <input asp-for="EstoqueMaximo" class="form-control" />
+                            <span asp-validation-for="EstoqueMaximo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="EstoqueMinimo" class="control-label"></label>
+                            <input asp-for="EstoqueMinimo" class="form-control" />
+                            <span asp-validation-for="EstoqueMinimo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="PrecoVenda" class="control-label"></label>
+                            <input asp-for="PrecoVenda" class="form-control" />
+                            <span asp-validation-for="PrecoVenda" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="PrecoFabrica" class="control-label"></label>
+                            <input asp-for="PrecoFabrica" class="form-control" />
+                            <span asp-validation-for="PrecoFabrica" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Imagem" class="control-label"></label>
+                        <input asp-for="Imagem" class="form-control" />
+                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Save" class="btn btn-dark">Salvar</button>
+                        <a asp-action="Index" class="btn btn-danger">Voltar</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="AdesivoId" class="control-label"></label>
-                <input asp-for="AdesivoId" class="form-control" />
-                <span asp-validation-for="AdesivoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PeliculaId" class="control-label"></label>
-                <input asp-for="PeliculaId" class="form-control" />
-                <span asp-validation-for="PeliculaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CorId" class="control-label"></label>
-                <input asp-for="CorId" class="form-control" />
-                <span asp-validation-for="CorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpessuraId" class="control-label"></label>
-                <input asp-for="ExpessuraId" class="form-control" />
-                <span asp-validation-for="ExpessuraId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Marca" class="control-label"></label>
-                <input asp-for="Marca" class="form-control" />
-                <span asp-validation-for="Marca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EstoqueMaximo" class="control-label"></label>
-                <input asp-for="EstoqueMaximo" class="form-control" />
-                <span asp-validation-for="EstoqueMaximo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EstoqueMinimo" class="control-label"></label>
-                <input asp-for="EstoqueMinimo" class="form-control" />
-                <span asp-validation-for="EstoqueMinimo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrecoVenda" class="control-label"></label>
-                <input asp-for="PrecoVenda" class="form-control" />
-                <span asp-validation-for="PrecoVenda" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrecoFabrica" class="control-label"></label>
-                <input asp-for="PrecoFabrica" class="form-control" />
-                <span asp-validation-for="PrecoFabrica" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" />
-                <span asp-validation-for="DataCadastro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

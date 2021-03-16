@@ -10,22 +10,22 @@ using Vidracaria_Portal.Models.Administrador.Cadastros;
 
 namespace Vidracaria_Portal.Controllers
 {
-    public class FerragensController : Controller
+    public class ClientesController : Controller
     {
         private readonly VidracariaContext _context;
 
-        public FerragensController(VidracariaContext context)
+        public ClientesController(VidracariaContext context)
         {
             _context = context;
         }
 
-        // GET: Ferragens
+        // GET: Clientes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Ferragens.ToListAsync());
+            return View(await _context.Clientes.ToListAsync());
         }
 
-        // GET: Ferragens/Details/5
+        // GET: Clientes/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
@@ -33,41 +33,39 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
 
-            var ferragensModel = await _context.Ferragens
-                .FirstOrDefaultAsync(m => m.CodigoFerragem == id);
-            if (ferragensModel == null)
+            var clientesModel = await _context.Clientes
+                .FirstOrDefaultAsync(m => m.CodigoCliente == id);
+            if (clientesModel == null)
             {
                 return NotFound();
             }
 
-            return View(ferragensModel);
+            return View(clientesModel);
         }
 
-        // GET: Ferragens/Create
+        // GET: Clientes/Create
         public IActionResult Create()
         {
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
             return View();
         }
 
-        // POST: Ferragens/Create
+        // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Create([Bind("CodigoCliente,NomeCliente,Email,CidadeCliente,Bairro,NumeroCasa,EstadoCliente,Celular,Documento,DataCadastro,Imagem")] ClientesModel clientesModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ferragensModel);
+                _context.Add(clientesModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", ferragensModel.CorId);
-            return View(ferragensModel);
+            return View(clientesModel);
         }
 
-        // GET: Ferragens/Edit/5
+        // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -75,23 +73,22 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
 
-            var ferragensModel = await _context.Ferragens.FindAsync(id);
-            if (ferragensModel == null)
+            var clientesModel = await _context.Clientes.FindAsync(id);
+            if (clientesModel == null)
             {
                 return NotFound();
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
-            return View(ferragensModel);
+            return View(clientesModel);
         }
 
-        // POST: Ferragens/Edit/5
+        // POST: Clientes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoCliente,NomeCliente,Email,CidadeCliente,Bairro,NumeroCasa,EstadoCliente,Celular,Documento,DataCadastro,Imagem")] ClientesModel clientesModel)
         {
-            if (id != ferragensModel.CodigoFerragem)
+            if (id != clientesModel.CodigoCliente)
             {
                 return NotFound();
             }
@@ -100,12 +97,12 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
-                    _context.Update(ferragensModel);
+                    _context.Update(clientesModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FerragensModelExists(ferragensModel.CodigoFerragem))
+                    if (!ClientesModelExists(clientesModel.CodigoCliente))
                     {
                         return NotFound();
                     }
@@ -114,14 +111,12 @@ namespace Vidracaria_Portal.Controllers
                         throw;
                     }
                 }
-                ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", ferragensModel.CorId);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", ferragensModel.CorId);
-            return View(ferragensModel);
+            return View(clientesModel);
         }
 
-        // GET: Ferragens/Delete/5
+        // GET: Clientes/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
@@ -129,30 +124,30 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
 
-            var ferragensModel = await _context.Ferragens
-                .FirstOrDefaultAsync(m => m.CodigoFerragem == id);
-            if (ferragensModel == null)
+            var clientesModel = await _context.Clientes
+                .FirstOrDefaultAsync(m => m.CodigoCliente == id);
+            if (clientesModel == null)
             {
                 return NotFound();
             }
 
-            return View(ferragensModel);
+            return View(clientesModel);
         }
 
-        // POST: Ferragens/Delete/5
+        // POST: Clientes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
         {
-            var ferragensModel = await _context.Ferragens.FindAsync(id);
-            _context.Ferragens.Remove(ferragensModel);
+            var clientesModel = await _context.Clientes.FindAsync(id);
+            _context.Clientes.Remove(clientesModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FerragensModelExists(decimal id)
+        private bool ClientesModelExists(decimal id)
         {
-            return _context.Ferragens.Any(e => e.CodigoFerragem == id);
+            return _context.Clientes.Any(e => e.CodigoCliente == id);
         }
     }
 }

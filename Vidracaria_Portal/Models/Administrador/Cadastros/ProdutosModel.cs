@@ -38,11 +38,11 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
 
         [Display(Name = "Valor da Venda ", Prompt = "Venda")]
         [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
-        public decimal PrecoVenda { get; set; }
+        public string PrecoVenda { get; set; }
 
         [Display(Name = "Valor da Fábrica ", Prompt = "Fabrica")]
         [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
-        public decimal PrecoFabrica { get; set; }
+        public string PrecoFabrica { get; set; }
 
         [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]

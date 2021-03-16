@@ -62,6 +62,10 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AdesivoId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.PeliculaId);
+            ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.CorId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "Id", "Nome", vidrosTemperadosModel.ExpessuraId);
             return View(vidrosTemperadosModel);
         }
 
@@ -113,6 +117,10 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AdesivoId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.AdesivoId);
+            ViewData["PeliculaId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.PeliculaId);
+            ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", vidrosTemperadosModel.CorId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "Id", "Nome", vidrosTemperadosModel.ExpessuraId);
             return View(vidrosTemperadosModel);
         }
 

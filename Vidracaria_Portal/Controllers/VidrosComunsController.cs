@@ -46,6 +46,9 @@ namespace Vidracaria_Portal.Controllers
         // GET: VidrosComuns/Create
         public IActionResult Create()
         {
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome");
             return View();
         }
 
@@ -62,6 +65,9 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", vidrosComunsModel.CorId);
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
             return View(vidrosComunsModel);
         }
 
@@ -78,6 +84,9 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome");
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome");
             return View(vidrosComunsModel);
         }
 
@@ -113,6 +122,9 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", vidrosComunsModel.CorId);
+            ViewData["CorId"] = new SelectList(_context.Cores, "CodigoPelicula", "Nome", vidrosComunsModel.PeliculaId);
+            ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoAdesivo", "Nome", vidrosComunsModel.AdesivoId);
             return View(vidrosComunsModel);
         }
 

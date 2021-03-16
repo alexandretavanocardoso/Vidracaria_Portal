@@ -1,4 +1,7 @@
-﻿asp-controller="Home" asp-action="Index"
+﻿https://www.cssscript.com/stylish-custom-scrollbar-pure-javascript-minibar/
+https://github.com/alexandretavanocardoso/ETEC_Projeto_Atelie_Moonchild/blob/cbdb07c58541f53ef80035630c5ac6cee63d16ce/Projeto-Atelie/AtelieMoonchild/Models/Produto.cs#L11
+
+asp-controller="Home" asp-action="Index"
 
 entityframeworkcore\add-migration NovasTabelas
 update-database

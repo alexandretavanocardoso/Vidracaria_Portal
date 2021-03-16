@@ -267,3 +267,12 @@ label #sidebar_btn {
     font-size: 16px;
     letter-spacing: 0.5px;
 }
+
+.fa-edit {
+    color: #717106;
+    font-size: 18px;
+}
+.fa-trash-alt {
+    color: #610a0a;
+    font-size: 18px;
+}

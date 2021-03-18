@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Vidracaria_Portal.Models.Administrador.Servicos.OrcamentosModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="content">
+    <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <a asp-action="Create" class="btn btn-outline-danger">Criar Novo</a>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive" style="margin-left: 20px;">
+        <table class="table" style="width: 1500px;">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rua)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumeroCasa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bairro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataCadastro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Imagem)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rua)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroCasa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bairro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCadastro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Imagem)
+                        </td>
+                        <td>
+                            <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

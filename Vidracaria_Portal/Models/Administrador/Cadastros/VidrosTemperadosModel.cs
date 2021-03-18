@@ -28,7 +28,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public PeliculasModel Pelicula { get; set; }
 
         [Display(Name = "Expessura", Prompt = "Expessura do Vidro")]
-        [Required(ErrorMessage = "Por favor, informe a expessura")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int ExpessuraId { get; set; }
         public ExpessurasModel Expessura { get; set; }
 
@@ -37,19 +37,19 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public string Marca { get; set; }
 
         [Display(Name = "Estoque Máximo ", Prompt = "Estoque Máximo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int EstoqueMaximo { get; set; }
 
         [Display(Name = "Estoque Mínimo ", Prompt = "Estoque Mínimo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Mínimo!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int EstoqueMinimo { get; set; }
 
         [Display(Name = "Valor da Venda ", Prompt = "Valo de Venda")]
-        [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public string PrecoVenda { get; set; }
 
         [Display(Name = "Valor da Fábrica ", Prompt = "Valor de Fábrica")]
-        [Required(ErrorMessage = "Por favor, informe a Expessura do Vidro!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public string PrecoFabrica { get; set; }
 
         [Display(Name = "Imagem (opcional)", Prompt = "Imagem")]

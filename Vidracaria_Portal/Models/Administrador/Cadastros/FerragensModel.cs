@@ -13,12 +13,12 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public decimal CodigoFerragem { get; set; }
 
         [Display(Name = "Ferragem ", Prompt = "Nome da Ferragem")]
-        [Required(ErrorMessage = "Por favor, informe o Nome da Ferragem")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         [StringLength(70, ErrorMessage = "O Nome deve possuir no máximo 70 caracteres")]
         public string NomeFerragem { get; set; }
 
         [Display(Name = "Cor", Prompt = "Cor da Ferragem")]
-        [Required(ErrorMessage = "Por favor, informe a Cor")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int CorId { get; set; }
         public CoresModel Cor { get; set; }
 
@@ -27,19 +27,19 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public string Marca { get; set; }
 
         [Display(Name = "Estoque Máximo ", Prompt = "Estoque Máximo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Máximo!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int EstoqueMaximo { get; set; }
 
         [Display(Name = "Estoque Mínimo ", Prompt = "Estoque Mínimo")]
-        [Required(ErrorMessage = "Por favor, informe o Estoque Mínimo!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public int EstoqueMinimo { get; set; }
 
         [Display(Name = "Valor da Venda ", Prompt = "Valor de Venda")]
-        [Required(ErrorMessage = "Por favor, informe o preço de venda!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public string PrecoVenda { get; set; }
 
         [Display(Name = "Valor da Fábrica ", Prompt = "Valor de Fábrica")]
-        [Required(ErrorMessage = "Por favor, informe o preço de fábrica!")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public string PrecoFabrica { get; set; }
 
         [Display(Name = "Imagem (opcional)", Prompt = "Imagem")]

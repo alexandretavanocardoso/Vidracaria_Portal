@@ -14,7 +14,7 @@ namespace Vidracaria_Portal.Models.Cliente
         public int CodigoContato { get; set; }
 
         [Display(Prompt = "Informe seu nome")]
-        [Required(ErrorMessage = "Campo Obrigatório")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         [StringLength(50, ErrorMessage = "O nome deve ter apenas 50 caracteres")]
         public string Nome { get; set; }
 

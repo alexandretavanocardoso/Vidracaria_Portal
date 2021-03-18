@@ -12,6 +12,8 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     {
         [Key]
         public int CodigoAgenda { get; set; }
+        
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public string Texto { get; set; }
         public string Assunto { get; set; }
         public DateTime? DataCadastro { get; set; }

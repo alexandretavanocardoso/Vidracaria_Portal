@@ -12,17 +12,17 @@
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div style="display: flex;">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" style="margin-left: -16px;">
                             <label asp-for="Assunto" class="control-label"></label>
                             <input asp-for="Assunto" class="form-control" />
                             <span asp-validation-for="Assunto" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" style="margin-left: 20px;">
                             <label asp-for="DataCadastro" class="control-label"></label>
                             <input asp-for="DataCadastro" class="form-control" />
                             <span asp-validation-for="DataCadastro" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-4" style="margin-left: 12px;">
                             <label asp-for="DataLimite" class="control-label"></label>
                             <input asp-for="DataLimite" class="form-control" />
                             <span asp-validation-for="DataLimite" class="text-danger"></span>

@@ -25,6 +25,7 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<VidrosTemperadosModel> VidrosTemperados { get; set; }
         public DbSet<AprovadosModel> Aprovados { get; set; }
         public DbSet<OrcamentosModel> Orcamentos { get; set; }
+        public DbSet<TipoDeServicosModel> TipoDeServicos { get; set; }
         public DbSet<PendentesModel> Pendentes { get; set; }
         public DbSet<ConcluidosModel> Concluidos { get; set; }
         public DbSet<ProdutosModel> Produtos { get; set; }

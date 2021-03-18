@@ -2852,3 +2852,7 @@ C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Ra
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Agenda\Delete.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Agenda\Edit.cshtml.g.cs
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Agenda\Index.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Orcamentos\Create.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Orcamentos\Delete.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Orcamentos\Edit.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Orcamentos\Index.cshtml.g.cs

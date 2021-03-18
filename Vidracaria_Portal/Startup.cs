@@ -67,6 +67,8 @@ namespace Vidracaria_Portal
 
             app.UseRouting();
 
+            app.UseAuthentication(); // Necessario para saber quem esta logando
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

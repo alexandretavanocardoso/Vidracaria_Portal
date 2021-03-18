@@ -95,7 +95,6 @@ namespace Vidracaria_Portal.Data.Context
                 {
                     Id = ADMIN_ID,
                     Nome = "Admin",
-                    DataNascimento = DateTime.Now, // Retorna data e hora na hora criada
                     UserName = "admin@vidracariaportal.com.br",
                     NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                     Email = "admin@vidracariaportal.com.br",
@@ -107,8 +106,7 @@ namespace Vidracaria_Portal.Data.Context
                  new UsuarioModel
                  {
                      Id = CLIENTE_ID,
-                     Nome = "Alexandre Tavano Cardoso",
-                     DataNascimento = Convert.ToDateTime("05/08/2002"),
+                     Nome = "Alexandre",
                      UserName = "tavanoalexandre@outlook.com",
                      NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
                      Email = "tavanoalexandre@outlook.com",
@@ -134,7 +132,6 @@ namespace Vidracaria_Portal.Data.Context
                     UserId = CLIENTE_ID
                 }
                 );
-
         }
     }
 }

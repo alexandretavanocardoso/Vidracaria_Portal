@@ -9,8 +9,8 @@ using Vidracaria_Portal.Data.Context;
 namespace Vidracaria_Portal.Migrations
 {
     [DbContext(typeof(VidracariaContext))]
-    [Migration("20210316000509_Ajustes")]
-    partial class Ajustes
+    [Migration("20210317231808_CriacaoDoBancoDeDados")]
+    partial class CriacaoDoBancoDeDados
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,15 +48,15 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cd4a8f6f-ec82-4a73-9c79-45b659907960",
-                            ConcurrencyStamp = "7e2af3a6-71f6-4046-a3cd-6539a33733e4",
+                            Id = "52bcfa46-1fd7-4509-8919-8e0d651afb79",
+                            ConcurrencyStamp = "f334e7d9-e4bf-4e20-822c-7a4ad750896e",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "f6854664-b5bf-4c32-b27e-98bf78bc481a",
-                            ConcurrencyStamp = "9c188eb0-b295-4f6a-8520-bfbf2c961e89",
+                            Id = "36144dcd-6bc5-4980-9c7a-64a7f0d69f1c",
+                            ConcurrencyStamp = "3c2d51c6-c4fb-4ef9-afa2-7cf6ee2b2fb3",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         });
@@ -156,13 +156,13 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "3d19c697-d663-4bd1-b0c0-c9e69a4510f2",
-                            RoleId = "cd4a8f6f-ec82-4a73-9c79-45b659907960"
+                            UserId = "ea5bbba4-1e98-4c61-ac16-5008d4a90c4e",
+                            RoleId = "52bcfa46-1fd7-4509-8919-8e0d651afb79"
                         },
                         new
                         {
-                            UserId = "d6503d99-f20b-453c-87d8-4407554805ec",
-                            RoleId = "f6854664-b5bf-4c32-b27e-98bf78bc481a"
+                            UserId = "080905d3-a941-4100-b35a-cbdc8eda222b",
+                            RoleId = "36144dcd-6bc5-4980-9c7a-64a7f0d69f1c"
                         });
                 });
 
@@ -205,9 +205,6 @@ namespace Vidracaria_Portal.Migrations
                     b.Property<int>("EstoqueMinimo")
                         .HasColumnType("int");
 
-                    b.Property<int>("ExpessuraId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Imagem")
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
@@ -232,8 +229,6 @@ namespace Vidracaria_Portal.Migrations
                     b.HasKey("CodigoAluminio");
 
                     b.HasIndex("CorId");
-
-                    b.HasIndex("ExpessuraId");
 
                     b.ToTable("ALUMINIOS");
                 });
@@ -262,23 +257,16 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("Documento")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("EstadoCliente")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
-
-                    b.Property<string>("Imagem")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("NomeCliente")
                         .IsRequired()
@@ -391,9 +379,6 @@ namespace Vidracaria_Portal.Migrations
                     b.Property<int>("AdesivoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CorId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime");
 
@@ -434,8 +419,6 @@ namespace Vidracaria_Portal.Migrations
 
                     b.HasIndex("AdesivoId");
 
-                    b.HasIndex("CorId");
-
                     b.HasIndex("ExpessuraId");
 
                     b.HasIndex("PeliculaId");
@@ -449,9 +432,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("AdesivoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataCadastro")
@@ -493,8 +473,6 @@ namespace Vidracaria_Portal.Migrations
                     b.HasKey("CodigoVidro");
 
                     b.HasIndex("AdesivoId");
-
-                    b.HasIndex("CorId");
 
                     b.HasIndex("ExpessuraId");
 
@@ -748,34 +726,6 @@ namespace Vidracaria_Portal.Migrations
                     b.ToTable("CORES");
                 });
 
-            modelBuilder.Entity("Vidracaria_Portal.Models.Selects.CoresVidroComunsModel", b =>
-                {
-                    b.Property<int>("CodigoCor")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomeCor")
-                        .HasColumnType("text");
-
-                    b.HasKey("CodigoCor");
-
-                    b.ToTable("CORES_VIDROS_COMUNS");
-                });
-
-            modelBuilder.Entity("Vidracaria_Portal.Models.Selects.CoresVidrosTemperadosModel", b =>
-                {
-                    b.Property<int>("CodigoCor")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomeCor")
-                        .HasColumnType("text");
-
-                    b.HasKey("CodigoCor");
-
-                    b.ToTable("CORES_VIDROS_TEMPERADOS");
-                });
-
             modelBuilder.Entity("Vidracaria_Portal.Models.Selects.ExpessurasModel", b =>
                 {
                     b.Property<int>("CodigoExpessura")
@@ -816,9 +766,6 @@ namespace Vidracaria_Portal.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -879,37 +826,35 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3d19c697-d663-4bd1-b0c0-c9e69a4510f2",
+                            Id = "ea5bbba4-1e98-4c61-ac16-5008d4a90c4e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "90fc63ab-ccc3-4e3c-8975-8beaf005f274",
-                            DataNascimento = new DateTime(2021, 3, 15, 21, 5, 8, 630, DateTimeKind.Local).AddTicks(8168),
+                            ConcurrencyStamp = "5b2da004-4e90-4b59-b809-cc6395093146",
                             Email = "admin@vidracariaportal.com.br",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Admin",
                             NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                             NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE5VXXK5kp+3MtZNN4UKB3NN0ohJn8f4pGrWRqxM+j+bw4Vry4aNk5ZLqj3I1s21/Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJCAph0J+YlQhZDs6gJ2GGBcbcCBIvwYU+kxN4jErCsIYy+cm6ItamNUX4P7lem22A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "63261412",
+                            SecurityStamp = "64665535",
                             TwoFactorEnabled = false,
                             UserName = "admin@vidracariaportal.com.br"
                         },
                         new
                         {
-                            Id = "d6503d99-f20b-453c-87d8-4407554805ec",
+                            Id = "080905d3-a941-4100-b35a-cbdc8eda222b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "713f21de-a3f6-4ff2-bbae-8b7fe76ca9d3",
-                            DataNascimento = new DateTime(2002, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "535201ff-0d54-4409-89b7-eb1df4b3902a",
                             Email = "tavanoalexandre@outlook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            Nome = "Alexandre Tavano Cardoso",
+                            Nome = "Alexandre",
                             NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                             NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG1wx0MVdyouMvtDJrzIToBk0Tg+PwJZtzYdVINvQ5GUMGkiyziFU0JJkwQ+eKkMpA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAAtl2NAYcqfYGzI1JaURqfyDW/XcCx5Zg/6S/32OH+2nI95aCoRAjHDHFEDt4McSA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "32481801",
+                            SecurityStamp = "45118907",
                             TwoFactorEnabled = false,
                             UserName = "tavanoalexandre@outlook.com"
                         });
@@ -974,15 +919,7 @@ namespace Vidracaria_Portal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Vidracaria_Portal.Models.Selects.ExpessurasModel", "Expessura")
-                        .WithMany()
-                        .HasForeignKey("ExpessuraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Cor");
-
-                    b.Navigation("Expessura");
                 });
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.FerragensModel", b =>
@@ -1015,12 +952,6 @@ namespace Vidracaria_Portal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Vidracaria_Portal.Models.Selects.CoresVidroComunsModel", "Cor")
-                        .WithMany()
-                        .HasForeignKey("CorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Vidracaria_Portal.Models.Selects.ExpessurasModel", "Expessura")
                         .WithMany()
                         .HasForeignKey("ExpessuraId")
@@ -1034,8 +965,6 @@ namespace Vidracaria_Portal.Migrations
                         .IsRequired();
 
                     b.Navigation("Adesivo");
-
-                    b.Navigation("Cor");
 
                     b.Navigation("Expessura");
 
@@ -1050,12 +979,6 @@ namespace Vidracaria_Portal.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Vidracaria_Portal.Models.Selects.CoresVidrosTemperadosModel", "Cor")
-                        .WithMany()
-                        .HasForeignKey("CorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Vidracaria_Portal.Models.Selects.ExpessurasModel", "Expessura")
                         .WithMany()
                         .HasForeignKey("ExpessuraId")
@@ -1069,8 +992,6 @@ namespace Vidracaria_Portal.Migrations
                         .IsRequired();
 
                     b.Navigation("Adesivo");
-
-                    b.Navigation("Cor");
 
                     b.Navigation("Expessura");
 

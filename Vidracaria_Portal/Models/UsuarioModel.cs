@@ -15,10 +15,6 @@ namespace Vidracaria_Portal.Models
         [StringLength(50, ErrorMessage = "Maximo 50 caracteres")]
         public string Nome { get; set; }
 
-        [Display(Name = "Data Nascimento")]
-        [DataType(DataType.Date)] // Campo de data
-        public DateTime DataNascimento { get; set; }
-
         [NotMapped] // Essa propriedade nao vai existir no banco
         public string Roles { get; set; } // pode ou nao acessar determinada pagina
     }

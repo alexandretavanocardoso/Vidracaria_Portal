@@ -276,3 +276,16 @@ label #sidebar_btn {
     color: #610a0a;
     font-size: 18px;
 }
+
+#sidebar::-webkit-scrollbar-track {
+    background-color: black;
+}
+
+#sidebar::-webkit-scrollbar {
+    width: 15px;
+    background: black;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: #c70000;
+}

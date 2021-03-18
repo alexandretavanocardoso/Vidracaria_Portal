@@ -53,13 +53,13 @@ INSERT INTO adesivos VALUES(10, 'Azul');
 -------------------------------
 -- Insert em Peliculas de vidro
 --------------------------------
-INSERT INTO peliculas VALUES(1, 'insufilme Jateada');
-INSERT INTO peliculas VALUES(2, 'insufilme preto');
-INSERT INTO peliculas VALUES(3, 'insufilme Incolor');
-INSERT INTO peliculas VALUES(4, 'insufilme Dourado');
-INSERT INTO peliculas VALUES(5, 'insufilme Amarelo');
-INSERT INTO peliculas VALUES(6, 'insufilme Prata');
-INSERT INTO peliculas VALUES(7, 'insufilme Cinza');
-INSERT INTO peliculas VALUES(8, 'insufilme Verde');
-INSERT INTO peliculas VALUES(9, 'insufilme Alumínio');
-INSERT INTO peliculas VALUES(10,'insufilme Azul');
+INSERT INTO peliculas VALUES(1, 'Jateada');
+INSERT INTO peliculas VALUES(2, 'preto');
+INSERT INTO peliculas VALUES(3, 'Incolor');
+INSERT INTO peliculas VALUES(4, 'Dourado');
+INSERT INTO peliculas VALUES(5, 'Amarelo');
+INSERT INTO peliculas VALUES(6, 'Prata');
+INSERT INTO peliculas VALUES(7, 'Cinza');
+INSERT INTO peliculas VALUES(8, 'Verde');
+INSERT INTO peliculas VALUES(9, 'Alumínio');
+INSERT INTO peliculas VALUES(10,'Azul');

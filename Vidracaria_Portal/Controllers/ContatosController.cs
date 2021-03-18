@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Vidracaria_Portal.Models.Cliente;
 
 namespace Vidracaria_Portal.Controllers
 {
+    [Authorize(Roles = "Administrador")] // Obrigatorio para nao entrar no admin pela URL
     public class ContatosController : Controller
     {
         private readonly VidracariaContext _context;

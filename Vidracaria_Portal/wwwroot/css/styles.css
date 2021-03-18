@@ -165,7 +165,6 @@ h1, h2, h3, h4, h5, h6 {
         #topbar .social-links a:hover {
             color: #fff;
         }
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -331,6 +330,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .navbar ul {
+        display: none;
+    }
+
+    #topbar {
         display: none;
     }
 }
@@ -1458,7 +1461,7 @@ section {
     }
 
         #mobileNavigation ul li a {
-            color:white;
+            color: white;
             font-size: 18px;
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Vidracaria_Portal.Models.Cliente.ContatoModel>
+﻿@model IEnumerable<Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -21,25 +21,16 @@
             <thead class="table-dark">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Nome)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
+                        @Html.DisplayNameFor(model => model.Texto)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Assunto)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Mensagem)
+                        @Html.DisplayNameFor(model => model.DataCadastro)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Retorno)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataContato)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DataRetorno)
+                        @Html.DisplayNameFor(model => model.DataLimite)
                     </th>
                     <th></th>
                 </tr>
@@ -49,29 +40,20 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
+                            @Html.DisplayFor(modelItem => item.Texto)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Assunto)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Mensagem)
+                            @Html.DisplayFor(modelItem => item.DataCadastro)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Retorno)
+                            @Html.DisplayFor(modelItem => item.DataLimite)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DataContato)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataRetorno)
-                        </td>
-                        <td>
-                            <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoContato"><i class="fas fa-edit"></i></a>
-                            <a asp-action="Delete" asp-route-id="@item.CodigoContato"><i class="fas fa-trash-alt"></i></a>
+                            <a asp-action="Edit" asp-route-id="@item.CodigoAgenda"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoAgenda"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 }

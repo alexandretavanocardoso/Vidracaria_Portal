@@ -1,0 +1,48 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Assunto" class="control-label"></label>
+                            <input asp-for="Assunto" class="form-control" />
+                            <span asp-validation-for="Assunto" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="DataCadastro" class="control-label"></label>
+                            <input asp-for="DataCadastro" class="form-control" />
+                            <span asp-validation-for="DataCadastro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="DataLimite" class="control-label"></label>
+                            <input asp-for="DataLimite" class="form-control" />
+                            <span asp-validation-for="DataLimite" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Texto" class="control-label"></label>
+                        <textarea asp-for="Texto" class="form-control"></textarea>
+                        <span asp-validation-for="Texto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Create" class="btn btn-dark">Salvar</button>
+                        <a asp-action="Index" class="btn btn-danger">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

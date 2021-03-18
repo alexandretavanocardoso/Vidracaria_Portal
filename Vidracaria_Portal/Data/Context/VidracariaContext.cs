@@ -32,6 +32,7 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<ExpessurasModel> Expessura { get; set; }
         public DbSet<PeliculasModel> Peliculas { get; set; }
         public DbSet<AdesivoModel> Adesivos { get; set; }
+        public DbSet<AgendaModel> AgendaModels { get; set; }
         #endregion [DbSet<>]
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -133,5 +134,6 @@ namespace Vidracaria_Portal.Data.Context
                 }
                 );
         }
+        public DbSet<Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel> AgendaModel { get; set; }
     }
 }

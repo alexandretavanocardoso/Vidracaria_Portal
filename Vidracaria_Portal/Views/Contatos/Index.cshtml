@@ -80,7 +80,8 @@
             </tbody>
         </table>
     </div>
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
+    <div style="margin-top: 20px;">
+        @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
                new X.PagedList.Web.Common.PagedListRenderOptionsBase
                {
                    DisplayLinkToFirstPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
@@ -92,4 +93,5 @@
                    LiElementClasses = new string[] { "page-item" },
                    PageClasses = new string[] { "page-link" }
                })
+    </div>
 </div>

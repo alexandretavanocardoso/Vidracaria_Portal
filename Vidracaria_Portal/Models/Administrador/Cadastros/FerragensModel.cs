@@ -22,7 +22,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public int CorId { get; set; }
         public CoresModel Cor { get; set; }
 
-        [Display(Name = "Marca do Vidro (opcional)", Prompt = "Marca do Vidro")]
+        [Display(Name = "Marca (opcional)", Prompt = "Marca")]
         [StringLength(70, ErrorMessage = "O Nome deve possuir no máximo 50 caracteres")]
         public string Marca { get; set; }
 

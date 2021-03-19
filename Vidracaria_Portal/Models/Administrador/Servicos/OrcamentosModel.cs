@@ -58,7 +58,7 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         [Display(Name = "Data do Cadastro")]
         public DateTime DataCadastro { get; set; }
 
-        [Display(Name = "Estoque Máximo ", Prompt = "Máximo")]
+        [Display(Name = "Imagem", Prompt = "Imagem")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
     }

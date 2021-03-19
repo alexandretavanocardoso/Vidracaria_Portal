@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vidracaria_Portal.Data.Context;
 using Vidracaria_Portal.Models.Cliente;
+using X.PagedList;
 
 namespace Vidracaria_Portal.Controllers
 {
@@ -22,9 +23,25 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Contatos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filtro, string pesquisa, int? pagina)
         {
-            return View(await _context.Contatos.ToListAsync());
+            if (pesquisa != null)
+            {
+                pagina = 1;
+            }
+            else
+            {
+                pesquisa = filtro;
+            }
+            ViewData["Filtro"] = pesquisa;
+
+            var Contatos = from p in _context.Contatos select p;
+            if (!String.IsNullOrEmpty(pesquisa))
+            {
+                Contatos = Contatos.Where(p => p.Nome.Contains(pesquisa)).AsNoTracking();
+            }
+            int itensPorPagina = 15;
+            return View(await Contatos.ToPagedListAsync(pagina, itensPorPagina));
         }
 
         // GET: Contatos/Details/5

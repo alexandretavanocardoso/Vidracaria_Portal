@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel>
+﻿@model X.PagedList.IPagedList<Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel>
+@using X.PagedList.Mvc.Core;
 
 @{
     ViewData["Title"] = "Index";
@@ -12,7 +13,13 @@
                 <a asp-action="Create" class="btn btn-outline-danger">Criar Novo</a>
             </div>
             <div class="col-md-6">
-
+                <form asp-controller="Agenda" asp-action="Index" method="get" style="margin-top: 12px;">
+                    <input style=" border: 1px solid #00008B;" type="text" class="form-control" value="@ViewData["Filtro"]"
+                           placeholder="Pesquisar" name="pesquisa" aria-label="" aria-describedby="basic-addon1" />
+                    <div class="input-group-append" style="margin-top: 12px;">
+                        <button class="btn btn-outline-dark" type="submit">Pesquisar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -21,16 +28,16 @@
             <thead class="table-dark">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Texto)
+                        Texto
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Assunto)
+                       Assunto
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataCadastro)
+                        Data Cadastro
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DataLimite)
+                       Data Limite
                     </th>
                     <th></th>
                 </tr>
@@ -60,4 +67,17 @@
             </tbody>
         </table>
     </div>
+
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
+                new X.PagedList.Web.Common.PagedListRenderOptionsBase
+                {
+                    DisplayLinkToFirstPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                    DisplayLinkToLastPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                    DisplayLinkToPreviousPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                    ContainerDivClasses = new[] { "pagination-container" },
+                    UlElementClasses = new string[] { "pagination justify-content-center" },
+                    LiElementClasses = new string[] { "page-item" },
+                    PageClasses = new string[] { "page-link" }
+                })
 </div>

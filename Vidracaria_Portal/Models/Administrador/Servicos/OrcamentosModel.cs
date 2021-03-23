@@ -56,6 +56,7 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         public TipoDeServicosModel TipoServico { get; set; }
 
         [Display(Name = "Data do Cadastro")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public DateTime DataCadastro { get; set; }
 
         [Display(Name = "Imagem", Prompt = "Imagem")]

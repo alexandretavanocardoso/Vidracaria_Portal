@@ -9,7 +9,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Edit">
+                <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="CodigoOrcamento" />
                     <div style="display: flex;">
@@ -20,12 +20,12 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label asp-for="Telefone" class="control-label"></label>
-                            <input asp-for="Telefone" class="form-control" />
+                            <input asp-for="Telefone" class="form-control phone_with_ddd" />
                             <span asp-validation-for="Telefone" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label asp-for="Celular" class="control-label"></label>
-                            <input asp-for="Celular" class="form-control" />
+                            <input asp-for="Celular" class="form-control phone_with_ddd" />
                             <span asp-validation-for="Celular" class="text-danger"></span>
                         </div>
                     </div>
@@ -59,21 +59,19 @@
                         </div>
                     </div>
                     <div style="display: flex;">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label asp-for="TipoId" class="control-label"></label>
                             <input asp-for="TipoId" class="form-control" />
                             <span asp-validation-for="TipoId" class="text-danger"></span>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label asp-for="DataCadastro" class="control-label"></label>
-                            <input asp-for="DataCadastro" class="form-control" />
-                            <span asp-validation-for="DataCadastro" class="text-danger"></span>
-                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-6">
                         <label asp-for="Imagem" class="control-label"></label>
-                        <input asp-for="Imagem" class="form-control" />
+                        <input type="hidden" asp-for="Imagem" /> <!-- Esconder -->
+                        <input type="file" id="NovaImagem" name="NovaImagem" class="form-control-file" accept=".jpg,.jpeg,.png" />
                         <span asp-validation-for="Imagem" class="text-danger"></span>
+                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + Model.Imagem) ?
+                    Url.Content(Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" />
                     </div>
                     <div class="form-group">
                         <button type="submit" value="Save" class="btn btn-dark">Salvar</button>
@@ -87,4 +85,20 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.phone_with_ddd').mask('(00) 00000-0000');
+        });
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            document.querySelector('input[type="file"]').addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById("PreviewImagem");
+                    img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                }
+            });
+        });
+    </script>
 }

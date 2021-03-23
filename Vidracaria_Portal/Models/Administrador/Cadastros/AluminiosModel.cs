@@ -35,17 +35,18 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
 
         [Display(Name = "Valor da Venda ", Prompt = "Valor de Venda")]
         [Required(ErrorMessage = "Campo Obrigatório!")]
-        public string PrecoVenda { get; set; }
+        public decimal PrecoVenda { get; set; }
 
         [Display(Name = "Valor da Fábrica ", Prompt = "Valor de Fabrica")]
         [Required(ErrorMessage = "Campo Obrigatório!")]
-        public string PrecoFabrica { get; set; }
+        public decimal PrecoFabrica { get; set; }
 
         [Display(Name = "Imagem (opcional)", Prompt = "Imagem")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
 
         [Display(Name = "Data do Cadastro")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public DateTime DataCadastro { get; set; }
     }
 }

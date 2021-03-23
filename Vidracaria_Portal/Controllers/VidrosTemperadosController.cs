@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +19,12 @@ namespace Vidracaria_Portal.Controllers
     public class VidrosTemperadosController : Controller
     {
         private readonly VidracariaContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public VidrosTemperadosController(VidracariaContext context)
+        public VidrosTemperadosController(VidracariaContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: VidrosTemperados
@@ -76,10 +81,41 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Create([Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel, IFormFile Imagem)
         {
             if (ModelState.IsValid)
             {
+                if (vidrosTemperadosModel.EstoqueMinimo > vidrosTemperadosModel.EstoqueMaximo)
+                {
+                    return NotFound();
+                }
+
+                if (vidrosTemperadosModel.PrecoFabrica > vidrosTemperadosModel.PrecoVenda)
+                {
+                    return NotFound();
+                }
+
+                if (Imagem != null)
+                {
+                    // Definir pasta onde vai ser salvo
+                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\VidrosTemperados");
+
+                    //Nome unico
+                    var NomeArquivo = Guid.NewGuid().ToString() + "_" + Imagem.FileName; // nome da imagem e extensão
+
+                    //Caminho Arquivo
+                    var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                    //Biblioteca - Criar e salvar aqreuivos em HD
+                    using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                    {
+                        await Imagem.CopyToAsync(stream);
+                    }
+                    // Localizaçao e nome imagem
+                    vidrosTemperadosModel.Imagem = "imagensSaves/VidrosTemperados" + NomeArquivo;
+
+                }
+
                 _context.Add(vidrosTemperadosModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -103,6 +139,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome");
             ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome");
             ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura");
@@ -114,7 +151,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosTemperadosModel vidrosTemperadosModel, IFormFile NovaImagem)
         {
             if (id != vidrosTemperadosModel.CodigoVidro)
             {
@@ -125,6 +162,36 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
+                    if (vidrosTemperadosModel.EstoqueMinimo > vidrosTemperadosModel.EstoqueMaximo)
+                    {
+                        return NotFound();
+                    }
+
+                    if (vidrosTemperadosModel.PrecoFabrica > vidrosTemperadosModel.PrecoVenda)
+                    {
+                        return NotFound();
+                    }
+
+                    if (NovaImagem != null)
+                    {
+                        // Definir pasta onde vai ser salvo
+                        string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\VidrosTemperados");
+
+                        //Nome unico
+                        var NomeArquivo = Guid.NewGuid().ToString() + "_" + NovaImagem.FileName; // nome da imagem e extensão
+
+                        //Caminho Arquivo
+                        var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                        //Biblioteca - Criar e salvar aqreuivos em HD
+                        using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                        {
+                            await NovaImagem.CopyToAsync(stream);
+                        }
+                        // Localizaçao e nome imagem
+                        vidrosTemperadosModel.Imagem = "imagensSaves/VidrosTemperados" + NomeArquivo;
+                    }
+
                     _context.Update(vidrosTemperadosModel);
                     await _context.SaveChangesAsync();
                 }
@@ -141,6 +208,7 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["AdesivoId"] = new SelectList(_context.Adesivos, "CodigoAdesivo", "Nome", vidrosTemperadosModel.AdesivoId);
             ViewData["PeliculaId"] = new SelectList(_context.Peliculas, "CodigoPelicula", "Nome", vidrosTemperadosModel.PeliculaId);
             ViewData["ExpessuraId"] = new SelectList(_context.Expessura, "CodigoExpessura", "Expessura", vidrosTemperadosModel.ExpessuraId);

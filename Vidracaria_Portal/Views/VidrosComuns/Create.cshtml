@@ -9,7 +9,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Create">
+                <form asp-action="Create" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div style="display: flex;">
                         <div class="form-group col-md-6">
@@ -65,14 +65,17 @@
                     <div style="display: flex;">
                         <div class="form-group col-md-6">
                             <label asp-for="Imagem" class="control-label"></label>
-                            <input asp-for="Imagem" class="form-control" />
+                            <input type="file" asp-for="Imagem" class="form-control form-control-sm" id="formFile" accept=".jpg,.jpeg,.png" />
                             <span asp-validation-for="Imagem" class="text-danger"></span>
                         </div>
-                        <div class="form-group" style="margin-left: 16px; margin-right: 15px; width: 100%;">
-                            <label asp-for="DataCadastro" class="control-label"></label>
-                            <input asp-for="DataCadastro" class="form-control" />
-                            <span asp-validation-for="DataCadastro" class="text-danger"></span>
+                        <div class="form-group col-md-6">
+                            <img src="" class="img-fluid" id="PreviewImagem" />
                         </div>
+                    </div>
+                    <div class="form-group" style="margin-left: 16px; margin-right: 15px; width: 100%;">
+                        <label asp-for="DataCadastro" class="control-label"></label>
+                        <input asp-for="DataCadastro" class="form-control" />
+                        <span asp-validation-for="DataCadastro" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <button type="submit" value="Create" class="btn btn-dark">Salvar</button>
@@ -91,6 +94,19 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
-        $(".mask").mask('000.000.000.000.000,00', { reverse: true });
+        $(".mask").mask('000.000.000.000.000.00', { reverse: true });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', function () {
+                document.querySelector('input[type="file"]').addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        var img = document.getElementById("PreviewImagem");
+                        img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                    }
+                });
+            });
+        });
     </script>
 }

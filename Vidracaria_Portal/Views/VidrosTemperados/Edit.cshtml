@@ -9,7 +9,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Edit">
+                <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="CodigoVidro" />
                     <div style="display: flex;">
@@ -54,19 +54,22 @@
                     <div style="display: flex;">
                         <div class="form-group col-md-6">
                             <label asp-for="PrecoVenda" class="control-label"></label>
-                            <input asp-for="PrecoVenda" class="form-control" />
+                            <input asp-for="PrecoVenda" class="form-control mask" />
                             <span asp-validation-for="PrecoVenda" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="PrecoFabrica" class="control-label"></label>
-                            <input asp-for="PrecoFabrica" class="form-control" />
+                            <input asp-for="PrecoFabrica" class="form-control mask" />
                             <span asp-validation-for="PrecoFabrica" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label asp-for="Imagem" class="control-label"></label>
-                        <input asp-for="Imagem" class="form-control" />
+                        <input type="hidden" asp-for="Imagem" /> <!-- Esconder -->
+                        <input type="file" id="NovaImagem" name="NovaImagem" class="form-control-file" accept=".jpg,.jpeg,.png" />
                         <span asp-validation-for="Imagem" class="text-danger"></span>
+                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + Model.Imagem) ?
+                    Url.Content(Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" />
                     </div>
                     <div class="form-group">
                         <button type="submit" value="Save" class="btn btn-dark">Salvar</button>
@@ -80,4 +83,16 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            document.querySelector('input[type="file"]').addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById("PreviewImagem");
+                    img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                }
+            });
+        });
+
+        $(".mask").mask('000.000.000.000.000.00', { reverse: true });
+    </script>
 }

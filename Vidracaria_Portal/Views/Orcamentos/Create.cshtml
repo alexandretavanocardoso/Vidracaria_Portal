@@ -9,7 +9,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Create">
+                <form asp-action="Create" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div style="display: flex;">
                         <div class="form-group col-md-4">
@@ -19,12 +19,12 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label asp-for="Telefone" class="control-label"></label>
-                            <input asp-for="Telefone" class="form-control" />
+                            <input asp-for="Telefone" class="form-control phone_with_ddd" />
                             <span asp-validation-for="Telefone" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-4">
                             <label asp-for="Celular" class="control-label"></label>
-                            <input asp-for="Celular" class="form-control" />
+                            <input asp-for="Celular" class="form-control phone_with_ddd" />
                             <span asp-validation-for="Celular" class="text-danger"></span>
                         </div>
                     </div>
@@ -67,11 +67,18 @@
                             <input asp-for="DataCadastro" class="form-control" />
                             <span asp-validation-for="DataCadastro" class="text-danger"></span>
                         </div>
-                    </div>             
-                    <div class="form-group">
-                        <label asp-for="Imagem" class="control-label"></label>
-                        <input asp-for="Imagem" class="form-control" />
-                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group">
+                            <div class="form-group col-md-6">
+                                <label asp-for="Imagem" class="control-label"></label>
+                                <input type="file" asp-for="Imagem" class="form-control form-control-sm" id="formFile" accept=".jpg,.jpeg" />
+                                <span asp-validation-for="Imagem" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <img src="" class="img-fluid" id="PreviewImagem" />
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" value="Create" class="btn btn-dark">Salvar</button>
@@ -85,4 +92,22 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.phone_with_ddd').mask('(00) 00000-0000');
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', function () {
+                document.querySelector('input[type="file"]').addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        var img = document.getElementById("PreviewImagem");
+                        img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                    }
+                });
+            });
+        });
+    </script>
 }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +19,12 @@ namespace Vidracaria_Portal.Controllers
     public class FerragensController : Controller
     {
         private readonly VidracariaContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public FerragensController(VidracariaContext context)
+        public FerragensController(VidracariaContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Ferragens
@@ -74,10 +79,41 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Create([Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel, IFormFile Imagem)
         {
             if (ModelState.IsValid)
             {
+                if (ferragensModel.EstoqueMinimo > ferragensModel.EstoqueMaximo)
+                {
+                    return NotFound();
+                }
+
+                if (ferragensModel.PrecoFabrica > ferragensModel.PrecoVenda)
+                {
+                    return NotFound();
+                }
+
+                if (Imagem != null)
+                {
+                    // Definir pasta onde vai ser salvo
+                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Ferragens");
+
+                    //Nome unico
+                    var NomeArquivo = Guid.NewGuid().ToString() + "_" + Imagem.FileName; // nome da imagem e extensão
+
+                    //Caminho Arquivo
+                    var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                    //Biblioteca - Criar e salvar aqreuivos em HD
+                    using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                    {
+                        await Imagem.CopyToAsync(stream);
+                    }
+                    // Localizaçao e nome imagem
+                    ferragensModel.Imagem = "imagensSaves/Ferragens" + NomeArquivo;
+
+                }
+
                 _context.Add(ferragensModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -99,6 +135,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
             return View(ferragensModel);
         }
@@ -108,7 +145,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel, IFormFile NovaImagem)
         {
             if (id != ferragensModel.CodigoFerragem)
             {
@@ -119,6 +156,36 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
+                    if (ferragensModel.EstoqueMinimo > ferragensModel.EstoqueMaximo)
+                    {
+                        return NotFound();
+                    }
+
+                    if (ferragensModel.PrecoFabrica > ferragensModel.PrecoVenda)
+                    {
+                        return NotFound();
+                    }
+
+                    if (NovaImagem != null)
+                    {
+                        // Definir pasta onde vai ser salvo
+                        string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Ferragens");
+
+                        //Nome unico
+                        var NomeArquivo = Guid.NewGuid().ToString() + "_" + NovaImagem.FileName; // nome da imagem e extensão
+
+                        //Caminho Arquivo
+                        var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                        //Biblioteca - Criar e salvar aqreuivos em HD
+                        using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                        {
+                            await NovaImagem.CopyToAsync(stream);
+                        }
+                        // Localizaçao e nome imagem
+                        ferragensModel.Imagem = "imagensSaves/Ferragens" + NomeArquivo;
+                    }
+
                     _context.Update(ferragensModel);
                     await _context.SaveChangesAsync();
                 }
@@ -133,9 +200,9 @@ namespace Vidracaria_Portal.Controllers
                         throw;
                     }
                 }
-                ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", ferragensModel.CorId);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["CorId"] = new SelectList(_context.Cores, "Id", "Nome", ferragensModel.CorId);
             return View(ferragensModel);
         }

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +19,12 @@ namespace Vidracaria_Portal.Controllers
     public class AluminiosController : Controller
     {
         private readonly VidracariaContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AluminiosController(VidracariaContext context)
+        public AluminiosController(VidracariaContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Aluminios
@@ -73,10 +78,41 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Create([Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel, IFormFile Imagem)
         {
             if (ModelState.IsValid)
             {
+                if (aluminiosModel.EstoqueMinimo > aluminiosModel.EstoqueMaximo)
+                {
+                    return NotFound();
+                }
+
+                if (aluminiosModel.PrecoFabrica > aluminiosModel.PrecoVenda)
+                {
+                    return NotFound();
+                }
+
+                if (Imagem != null)
+                {
+                    // Definir pasta onde vai ser salvo
+                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Aluminios");
+
+                    //Nome unico
+                    var NomeArquivo = Guid.NewGuid().ToString() + "_" + Imagem.FileName; // nome da imagem e extensão
+
+                    //Caminho Arquivo
+                    var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                    //Biblioteca - Criar e salvar aqreuivos em HD
+                    using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                    {
+                        await Imagem.CopyToAsync(stream);
+                    }
+                    // Localizaçao e nome imagem
+                    aluminiosModel.Imagem = "imagensSaves/Aluminios" + NomeArquivo;
+
+                }
+
                 _context.Add(aluminiosModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -98,6 +134,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor");
             return View(aluminiosModel);
         }
@@ -107,7 +144,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel)
+        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel, IFormFile NovaImagem)
         {
             if (id != aluminiosModel.CodigoAluminio)
             {
@@ -118,6 +155,36 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
+                    if (aluminiosModel.EstoqueMinimo > aluminiosModel.EstoqueMaximo)
+                    {
+                        return NotFound();
+                    }
+
+                    if (aluminiosModel.PrecoFabrica > aluminiosModel.PrecoVenda)
+                    {
+                        return NotFound();
+                    }
+
+                    if (NovaImagem != null)
+                    {
+                        // Definir pasta onde vai ser salvo
+                        string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Aluminios");
+
+                        //Nome unico
+                        var NomeArquivo = Guid.NewGuid().ToString() + "_" + NovaImagem.FileName; // nome da imagem e extensão
+
+                        //Caminho Arquivo
+                        var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+
+                        //Biblioteca - Criar e salvar aqreuivos em HD
+                        using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                        {
+                            await NovaImagem.CopyToAsync(stream);
+                        }
+                        // Localizaçao e nome imagem
+                        aluminiosModel.Imagem = "imagensSaves/Aluminios" + NomeArquivo;
+                    }
+
                     _context.Update(aluminiosModel);
                     await _context.SaveChangesAsync();
                 }
@@ -134,6 +201,7 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["CorId"] = new SelectList(_context.Cores, "CodigoCor", "NomeCor", aluminiosModel.CorId);
             return View(aluminiosModel);
         }

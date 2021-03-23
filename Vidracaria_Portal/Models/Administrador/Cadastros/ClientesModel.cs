@@ -48,6 +48,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         public string Documento { get; set; }
 
         [Display(Name = "Data do Cadastro")]
+        [Required(ErrorMessage = "Campo Obrigatório!")]
         public DateTime DataCadastro { get; set; }
     }
 }

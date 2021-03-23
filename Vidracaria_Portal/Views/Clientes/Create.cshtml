@@ -50,12 +50,12 @@
                     <div style="display: flex;">
                         <div class="form-group col-md-6">
                             <label asp-for="Celular" class="control-label"></label>
-                            <input asp-for="Celular" class="form-control" />
+                            <input asp-for="Celular" class="form-control phone_with_ddd" />
                             <span asp-validation-for="Celular" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="Documento" class="control-label"></label>
-                            <input asp-for="Documento" class="form-control" />
+                            <input id="doc" asp-for="Documento" class="form-control cpf cnpj" />
                             <span asp-validation-for="Documento" class="text-danger"></span>
                         </div>
                     </div>
@@ -76,4 +76,19 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('.phone_with_ddd').mask('(00) 0000-0000');
+            cpfCnpf();
+        });
+
+        function cpfCnpf() {
+            if (doc.length == 11) {
+                $('.cpf').mask('000.000.000-00', { reverse: true });
+            } else if (doc.length == 14) {
+                $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+            }
+        }
+    </script>
 }

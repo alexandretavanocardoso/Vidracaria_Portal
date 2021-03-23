@@ -50,7 +50,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Ferragens/Details/5
-        public async Task<IActionResult> Details(decimal? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -123,7 +123,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Ferragens/Edit/5
-        public async Task<IActionResult> Edit(decimal? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -145,7 +145,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoFerragem,NomeFerragem,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] FerragensModel ferragensModel, IFormFile NovaImagem)
         {
             if (id != ferragensModel.CodigoFerragem)
             {
@@ -208,7 +208,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Ferragens/Delete/5
-        public async Task<IActionResult> Delete(decimal? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -228,7 +228,7 @@ namespace Vidracaria_Portal.Controllers
         // POST: Ferragens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(decimal id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var ferragensModel = await _context.Ferragens.FindAsync(id);
             _context.Ferragens.Remove(ferragensModel);
@@ -236,7 +236,7 @@ namespace Vidracaria_Portal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FerragensModelExists(decimal id)
+        private bool FerragensModelExists(int id)
         {
             return _context.Ferragens.Any(e => e.CodigoFerragem == id);
         }

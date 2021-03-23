@@ -50,7 +50,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: VidrosComuns/Details/5
-        public async Task<IActionResult> Details(decimal? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -127,7 +127,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: VidrosComuns/Edit/5
-        public async Task<IActionResult> Edit(decimal? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -151,7 +151,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoVidro,NomeVidro,AdesivoId,PeliculaId,ExpessuraId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] VidrosComunsModel vidrosComunsModel, IFormFile NovaImagem)
         {
             if (id != vidrosComunsModel.CodigoVidro)
             {
@@ -216,7 +216,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: VidrosComuns/Delete/5
-        public async Task<IActionResult> Delete(decimal? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -236,7 +236,7 @@ namespace Vidracaria_Portal.Controllers
         // POST: VidrosComuns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(decimal id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var vidrosComunsModel = await _context.VidrosComuns.FindAsync(id);
             _context.VidrosComuns.Remove(vidrosComunsModel);
@@ -244,7 +244,7 @@ namespace Vidracaria_Portal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VidrosComunsModelExists(decimal id)
+        private bool VidrosComunsModelExists(int id)
         {
             return _context.VidrosComuns.Any(e => e.CodigoVidro == id);
         }

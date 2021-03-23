@@ -10,7 +10,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     {
         [Key]
 
-        public decimal CodigoFerragem { get; set; }
+        public int CodigoFerragem { get; set; }
 
         [Display(Name = "Ferragem ", Prompt = "Nome da Ferragem")]
         [Required(ErrorMessage = "Campo Obrigatório!")]

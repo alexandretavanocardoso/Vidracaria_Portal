@@ -10,7 +10,7 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
     public class OrcamentosModel
     {
         [Key]
-        public decimal CodigoOrcamento { get; set; }
+        public int CodigoOrcamento { get; set; }
 
         [Display(Name = "Nome ", Prompt = "Nome")]
         [Required(ErrorMessage = "Campo Obrigatório!")]

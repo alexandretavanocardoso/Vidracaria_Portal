@@ -68,8 +68,8 @@
                         <input type="hidden" asp-for="Imagem" /> <!-- Esconder -->
                         <input type="file" id="NovaImagem" name="NovaImagem" class="form-control-file" accept=".jpg,.jpeg,.png" />
                         <span asp-validation-for="Imagem" class="text-danger"></span>
-                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + Model.Imagem) ?
-                    Url.Content(Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" />
+                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + Model.Imagem) ?
+                    Url.Content("~/" + Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" />
                     </div>
                     <div class="form-group">
                         <button type="submit" value="Save" class="btn btn-dark">Salvar</button>

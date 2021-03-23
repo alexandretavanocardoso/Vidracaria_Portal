@@ -12,7 +12,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class VidrosComunsModel
     {
         [Key]
-        public decimal CodigoVidro { get; set; }
+        public int CodigoVidro { get; set; }
 
         [Display(Name = "Vidro ", Prompt = "Nome do Vidro")]
         [Required(ErrorMessage = "Campo Obrigatório!")]

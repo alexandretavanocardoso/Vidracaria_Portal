@@ -46,15 +46,15 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e7374925-183c-4db5-b647-d1af81809e86",
-                            ConcurrencyStamp = "fdb32e7d-0dd4-4ab0-82cf-055957c4c621",
+                            Id = "ef9cd124-c705-4d35-b0b7-ef0639c20bd6",
+                            ConcurrencyStamp = "18749c4d-555b-4f48-bbe5-8e6e006563db",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "08042425-4bcd-48b6-8142-32c0e6e314f3",
-                            ConcurrencyStamp = "e5bc7e1f-0eaa-4a28-8211-0103c79e9923",
+                            Id = "dccb7ddf-34e0-45f1-8021-d146e39c7fd3",
+                            ConcurrencyStamp = "918e1623-6822-4473-8d8f-e09fe613c1bc",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         });
@@ -154,13 +154,13 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "8806c5f6-3ccd-4ecb-99f5-f4a4e56363b9",
-                            RoleId = "e7374925-183c-4db5-b647-d1af81809e86"
+                            UserId = "93214493-ff11-4444-8fea-feca64bb0707",
+                            RoleId = "ef9cd124-c705-4d35-b0b7-ef0639c20bd6"
                         },
                         new
                         {
-                            UserId = "de140698-8ba5-4a37-8f97-cff2d5797357",
-                            RoleId = "08042425-4bcd-48b6-8142-32c0e6e314f3"
+                            UserId = "0933b908-3288-4521-beaa-8b41ca0c1365",
+                            RoleId = "dccb7ddf-34e0-45f1-8021-d146e39c7fd3"
                         });
                 });
 
@@ -212,8 +212,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.AluminiosModel", b =>
                 {
-                    b.Property<decimal>("CodigoAluminio")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoAluminio")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("CorId")
                         .HasColumnType("int");
@@ -240,13 +241,11 @@ namespace Vidracaria_Portal.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("PrecoFabrica")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoFabrica")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("PrecoVenda")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoVenda")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("CodigoAluminio");
 
@@ -257,8 +256,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.ClientesModel", b =>
                 {
-                    b.Property<decimal>("CodigoCliente")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoCliente")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -305,8 +305,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.FerragensModel", b =>
                 {
-                    b.Property<decimal>("CodigoFerragem")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoFerragem")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("CorId")
                         .HasColumnType("int");
@@ -333,13 +334,11 @@ namespace Vidracaria_Portal.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("varchar(70)");
 
-                    b.Property<string>("PrecoFabrica")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoFabrica")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("PrecoVenda")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoVenda")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("CodigoFerragem");
 
@@ -395,8 +394,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.VidrosComunsModel", b =>
                 {
-                    b.Property<decimal>("CodigoVidro")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoVidro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("AdesivoId")
                         .HasColumnType("int");
@@ -429,13 +429,11 @@ namespace Vidracaria_Portal.Migrations
                     b.Property<int>("PeliculaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PrecoFabrica")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoFabrica")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("PrecoVenda")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoVenda")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("CodigoVidro");
 
@@ -450,8 +448,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.VidrosTemperadosModel", b =>
                 {
-                    b.Property<decimal>("CodigoVidro")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoVidro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<int>("AdesivoId")
                         .HasColumnType("int");
@@ -484,13 +483,11 @@ namespace Vidracaria_Portal.Migrations
                     b.Property<int>("PeliculaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PrecoFabrica")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoFabrica")
+                        .HasColumnType("decimal(18, 2)");
 
-                    b.Property<string>("PrecoVenda")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("PrecoVenda")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("CodigoVidro");
 
@@ -593,8 +590,9 @@ namespace Vidracaria_Portal.Migrations
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Servicos.OrcamentosModel", b =>
                 {
-                    b.Property<decimal>("CodigoOrcamento")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("CodigoOrcamento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -878,16 +876,16 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8806c5f6-3ccd-4ecb-99f5-f4a4e56363b9",
+                            Id = "93214493-ff11-4444-8fea-feca64bb0707",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "195ff4d6-a495-46d8-809e-34fce47dc8f4",
+                            ConcurrencyStamp = "5368057e-2995-4a4b-bfb1-c0d884d448ed",
                             Email = "admin@vidracariaportal.com.br",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Admin",
                             NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                             NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIArsl4GO9g1JLYUwN+KZAhSyT5YN9HVMB4VxkixdBir1qicfYGngVk09/xKOZjb9g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEORbwODZchP5t/EbyW6l5ZdvapCgcGTtNzPTL9G61meITQuKVtpRs2qagHqLQxX1nw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "32481801",
                             TwoFactorEnabled = false,
@@ -895,16 +893,16 @@ namespace Vidracaria_Portal.Migrations
                         },
                         new
                         {
-                            Id = "de140698-8ba5-4a37-8f97-cff2d5797357",
+                            Id = "0933b908-3288-4521-beaa-8b41ca0c1365",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3bb72190-f62f-4942-bce5-ba1d571819ac",
+                            ConcurrencyStamp = "360a9cbc-b415-41fc-89c7-cad38f6d287b",
                             Email = "tavanoalexandre@outlook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Alexandre",
                             NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                             NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDCAM7tt7GNyZ+tl8KoAM5mYC6+mZuY1H3Pvsg9z9c063cqsHwr2ExpBpVNFypTtoQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL1KY+5+kwrHmy8B5QL6dGhERd+qnHDXdufGIfpooZeUuT6XgxnWGW61stTmg7PfeQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "23900756",
                             TwoFactorEnabled = false,

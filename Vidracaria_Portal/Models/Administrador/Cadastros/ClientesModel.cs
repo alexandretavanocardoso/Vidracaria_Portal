@@ -8,7 +8,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class ClientesModel
     {
         [Key]
-        public decimal CodigoCliente { get; set; }
+        public int CodigoCliente { get; set; }
 
         [Display(Name = "Nome ", Prompt = "Nome do Cliente")]
         [Required(ErrorMessage = "Campo Obrigatório!")]

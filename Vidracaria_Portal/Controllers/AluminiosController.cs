@@ -49,7 +49,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Aluminios/Details/5
-        public async Task<IActionResult> Details(decimal? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -122,7 +122,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Aluminios/Edit/5
-        public async Task<IActionResult> Edit(decimal? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -144,7 +144,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoAluminio,NomeAluminio,CorId,Marca,EstoqueMaximo,EstoqueMinimo,PrecoVenda,PrecoFabrica,Imagem,DataCadastro")] AluminiosModel aluminiosModel, IFormFile NovaImagem)
         {
             if (id != aluminiosModel.CodigoAluminio)
             {
@@ -207,7 +207,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: Aluminios/Delete/5
-        public async Task<IActionResult> Delete(decimal? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -227,7 +227,7 @@ namespace Vidracaria_Portal.Controllers
         // POST: Aluminios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(decimal id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var aluminiosModel = await _context.Aluminios.FindAsync(id);
             _context.Aluminios.Remove(aluminiosModel);
@@ -235,7 +235,7 @@ namespace Vidracaria_Portal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AluminiosModelExists(decimal id)
+        private bool AluminiosModelExists(int id)
         {
             return _context.Aluminios.Any(e => e.CodigoAluminio == id);
         }

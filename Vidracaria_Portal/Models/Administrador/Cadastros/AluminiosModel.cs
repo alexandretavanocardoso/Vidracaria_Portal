@@ -9,7 +9,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
     public class AluminiosModel
     {
         [Key]
-        public decimal CodigoAluminio { get; set; }
+        public int CodigoAluminio { get; set; }
 
         [Display(Name = "Alumínio", Prompt = "Nome do Alumínio")]
         [Required(ErrorMessage = "Campo Obrigatório!")]

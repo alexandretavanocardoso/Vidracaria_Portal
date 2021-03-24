@@ -6,6 +6,50 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
+@section Styles{
+    <style>
+        .agenda {
+            margin-left: 20px;
+            width: 300px;
+            height: 320px;
+            background: #343a40;
+        }
+
+        .cabecalhoAgenda {
+            background: #820808;
+            height: 30px;
+            width: 300px;
+            border-bottom: 2px solid black;
+        }
+
+            .cabecalhoAgenda a {
+                float: right;
+            }
+
+        .body {
+            position: relative;
+            margin-top: 12px;
+        }
+
+        .body1 {
+            position: relative;
+        }
+
+        #agenda::-webkit-scrollbar-track {
+            background-color: black;
+        }
+
+        #agenda::-webkit-scrollbar {
+            width: 5px;
+            background: black;
+        }
+
+        #agenda::-webkit-scrollbar-thumb {
+            background: #c70000;
+        }
+    </style>
+}
+
 <div class="content">
     <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
         <div class="col-md-12">
@@ -23,50 +67,35 @@
             </div>
         </div>
     </div>
-    <div class="table-responsive" style="margin-left: 20px;">
-        <table class="table" style="width: 1500px;">
-            <thead class="table-dark">
-                <tr>
-                    <th>
-                        Texto
-                    </th>
-                    <th>
-                        Assunto
-                    </th>
-                    <th>
-                        Data Cadastro
-                    </th>
-                    <th>
-                        Data Limite
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
+
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        @foreach (var item in Model)
+        {
+
+            <div id="agenda" class="agenda" style="margin-bottom: 12px; margin-right: 12px; overflow-y: auto; overflow-x: hidden;">
+                <div class="cabecalhoAgenda">
+                    <a style="margin-right: 20px;" asp-action="Delete" asp-route-id="@item.CodigoAgenda"><i style="color: white; margin-top: 3px;" class="fas fa-trash"></i></a>
+                    <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoAgenda"><i style="color: white; margin-top: 3px;" class="far fa-edit"></i></a>
+                </div>
+
+                <div style="color: white;">
+                    <div class="body">
+                        <div style="margin-left: 8px;">
+                            <h5>@Html.DisplayFor(modelItem => item.Assunto)</h5>
+                            <p style="font-size: 14px; margin-bottom: 0;">Data Cadastro:  @Html.DisplayFor(modelItem => item.DataCadastro)<i style="margin-left: 8px;" class="fas fa-calendar"></i></p>
+                            <p style="font-size: 14px;">Data Limite: @Html.DisplayFor(modelItem => item.DataLimite)<i style="margin-left: 8px;" class="fas fa-calendar"></i></p>
+                        </div>
+                    </div>
+                    <div style="width: 300px; padding-right: 10px;" class="body1">
+                        <p style="margin-left: 8px; text-align: justify;">
                             @Html.DisplayFor(modelItem => item.Texto)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Assunto)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataCadastro)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataLimite)
-                        </td>
-                        <td>
-                            <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoAgenda"><i class="fas fa-edit"></i></a>
-                            <a asp-action="Delete" asp-route-id="@item.CodigoAgenda"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
+
     <div style="margin-top: 20px;">
         @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
                new X.PagedList.Web.Common.PagedListRenderOptionsBase

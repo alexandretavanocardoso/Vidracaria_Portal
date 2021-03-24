@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_LayoutCliente.cshtml"; }
 
 @section Styles{
+    <link href="~/css/site.css" rel="stylesheet" />
     <style>
         .fa-check-circle {
             color: white;
@@ -36,6 +37,23 @@
                 display: block;
                 height: 200px;
             }
+
+        ul {
+            list-style: none;
+        }
+
+        .titulo {
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            font-size: 20px;
+        }
+
+        .subtitulo {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-size: 18px;
+            margin-top: 8px;
+        }
     </style>
 }
 
@@ -80,7 +98,6 @@
 
     <section id="why-us" class="why-us">
         <div class="container">
-
             <div class="row">
 
                 <div class="col-lg-4">
@@ -120,6 +137,38 @@
 
             </div>
 
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <span>Horário de funcionamento</span>
+                <h2>Horário de funcionamento</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12 flex-funcionamento">
+                    <div class="col-md-4" style="margin-top: 12px; width: 100%;">
+                        <ul>
+                            <li class="titulo"><i style="margin-right: 8px;" class="far fa-calendar"></i>Segunda-Feira a Sexta-Feira</li>
+                            <li class="subtitulo"><i style="margin-right: 8px;" class="far fa-calendar"></i>07:30 às 11:00</li>
+                            <li class="subtitulo"><i style="margin-right: 8px;" class="far fa-calendar"></i>14:00 às 17:30</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 12px; width: 100%;">
+                        <ul>
+                            <li class="titulo"><i style="margin-right: 8px;" class="far fa-calendar"></i>Sábado</li>
+                            <li class="subtitulo"><i style="margin-right: 8px;" class="far fa-calendar"></i>07:30 às 12:00</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4" style="margin-top: 12px; width: 100%;">
+                        <ul>
+                            <li class="titulo"><i style="margin-right: 8px;" class="far fa-calendar-times"></i>Domingo</li>
+                            <li class="subtitulo"><i style="margin-right: 8px;" class="far fa-calendar-times"></i>Fechado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- ======= Final Sobre ======= -->
@@ -248,8 +297,8 @@
                         <h4>Rafael Martini Gigliotti</h4>
                         <span style="font-size: 16px; color: #343a40">Chefe Executivo</span>
                         <div class="social">
-                            <a href=""><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a href=""><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/rafael.gigliotti.1"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/rafaelvidracaria/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -259,8 +308,8 @@
                         <h4>Samantta Cristina Tavano</h4>
                         <span style="font-size: 16px; color: #343a40">Gerente Administrativa</span>
                         <div class="social">
-                            <a href=""><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a href=""><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/samantta.tavano"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/samanttagigliotti/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -270,8 +319,8 @@
                         <h4>Junior Silverio</h4>
                         <span style="font-size: 16px; color: #343a40">Colaborador</span>
                         <div class="social">
-                            <a href=""><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a href=""><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/juniinhuu.silveerio"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/juniorr_silverio/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -282,8 +331,8 @@
                         <h4>Gabriel Pastore</h4>
                         <span style="font-size: 16px; color: #343a40">Colaborador</span>
                         <div class="social">
-                            <a href=""><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a href=""><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100007930717601"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/gabrielpastore1074/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -293,8 +342,7 @@
                         <h4>Antônio</h4>
                         <span style="font-size: 16px; color: #343a40">Colaborador</span>
                         <div class="social">
-                            <a href=""><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a href=""><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+
                         </div>
                     </div>
                 </div>

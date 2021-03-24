@@ -28,7 +28,7 @@ namespace Vidracaria_Portal.Controllers
         }
 
         // GET: VidrosTemperados
-        public async Task<IActionResult> Index(string filtro, string pesquisa, int? pagina)
+        public async Task<IActionResult> Index([Bind("EstoqueMaximo,EstoqueMinimo")] VidrosTemperadosModel vidrosTemperadosModel, string filtro, string pesquisa, int? pagina)
         {
             if (pesquisa != null)
             {

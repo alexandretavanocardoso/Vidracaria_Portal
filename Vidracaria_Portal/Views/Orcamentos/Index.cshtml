@@ -6,6 +6,19 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
+@section Style{
+    <style>
+        .wrap {
+            text-overflow: ellipsis;
+            /* Required for text-overflow to do anything */
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100px;
+            max-width: 100px;
+        }
+    </style>
+}
+
 <div class="content">
     <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
         <div class="col-md-12">
@@ -57,10 +70,7 @@
                     <th>
                         Data Cadastro
                     </th>
-                    <th>
-                        Imagem
-                    </th>
-                    <th></th>
+                    <th>Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,7 +78,9 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
+                            <div class="wrap">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Rua)
@@ -96,9 +108,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataCadastro)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Imagem)
                         </td>
                         <td>
                             <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-edit"></i></a>

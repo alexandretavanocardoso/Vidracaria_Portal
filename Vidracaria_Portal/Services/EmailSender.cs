@@ -11,33 +11,32 @@ namespace Vidracaria_Portal.Services
     {
         public async Task<bool> Mail(string To, string From, string Sub, string Mensagem)
         {
-            var email = new MailMessage()
+            var m = new MailMessage()
             {
                 Subject = Sub,
                 Body = Mensagem,
                 IsBodyHtml = true
             };
-
-            MailAddress eu = new MailAddress(To);
-
-            email.To.Add(eu);
-            email.From = new MailAddress(From);
-            email.Sender = eu;
-
-            var smtp = new SmtpClient()
+            MailAddress to = new MailAddress(To);
+            m.To.Add(to);
+            m.From = new MailAddress(From);
+            m.Sender = to;
+            var smtp = new SmtpClient
             {
-                Host = "smtp.office365.com", // smtp.mail.yahoo.com // smtp.live.com
+                Host = "smtp.gmail.com", // smtp.mail.yahoo.com // smtp.live.com
                 Port = 587,
-                Credentials = new NetworkCredential("AlexandreTavanoDeveloper@outlook.com", ""),
-                EnableSsl = true
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("vidracariaportalbb@gmail.com", "ASD123asd")
             };
-
             try
             {
-                await smtp.SendMailAsync(email);
+                await smtp.SendMailAsync(m);
                 return true;
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 return false;
             }
         }

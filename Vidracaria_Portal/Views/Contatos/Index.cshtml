@@ -6,6 +6,19 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
+@section Style{
+    <style>
+        .wrap {
+            text-overflow: ellipsis;
+            /* Required for text-overflow to do anything */
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100px;
+            max-width: 100px;
+        }
+    </style>
+}
+
 <div class="content">
     <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
         <div class="col-md-12">
@@ -43,7 +56,7 @@
                     <th>
                         Data retorno
                     </th>
-                    <th></th>
+                    <th>Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,10 +73,14 @@
                             @Html.DisplayFor(modelItem => item.Assunto)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Mensagem)
+                            <div class="wrap">
+                                @Html.DisplayFor(modelItem => item.Mensagem)
+                            </div>
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Retorno)
+                            <div class="wrap">
+                                @Html.DisplayFor(modelItem => item.Retorno)
+                            </div>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataContato)

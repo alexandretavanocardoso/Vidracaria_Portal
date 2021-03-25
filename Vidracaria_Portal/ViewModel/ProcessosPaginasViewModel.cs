@@ -6,4 +6,9 @@ namespace Vidracaria_Portal.ViewModel
     {
         public ContatoModel Contato { get; set; }
     }
+
+    public class HomeViewModel
+    {
+        public ContatoModel Contato { get; set; }
+    }
 }

@@ -12,6 +12,7 @@
                 <form asp-action="Edit" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="CodigoFerragem" />
+                    <input type="hidden" asp-for="DataCadastro" />
                     <div style="display: flex;">
                         <div class="form-group col-md-4">
                             <label asp-for="NomeFerragem" class="control-label"></label>

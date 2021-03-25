@@ -19,7 +19,7 @@ namespace Vidracaria_Portal.Controllers
 
         private readonly VidracariaContext _context;
 
-        public HomeController(ILogger<HomeController> logger, 
+        public HomeController(ILogger<HomeController> logger,
                               VidracariaContext context)
         {
             _logger = logger;
@@ -28,7 +28,9 @@ namespace Vidracaria_Portal.Controllers
 
         public IActionResult Home()
         {
-            return View();
+            var model = new HomeViewModel();
+            model.Contato = new ContatoModel();
+            return View(model);
         }
 
         public IActionResult Duvidas()
@@ -37,7 +39,9 @@ namespace Vidracaria_Portal.Controllers
         }
         public IActionResult Contato()
         {
-            return View();
+            var model = new HomeViewModel();
+            model.Contato = new ContatoModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -46,13 +50,6 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                var envioDeEmail = new EmailSender();
-                string mensagem = String.Format("Nome: {0}, Email: {1}, Assunto: {2}, Mesagem: {3}", model.Contato.Nome, model.Contato.Email, model.Contato.Assunto, model.Contato.Mensagem);
-
-                await envioDeEmail.Mail("AlexandreTavanoDeveloper@outlook.com", model.Contato.Email, "Contato Vidraça", mensagem);
-
-                // Obejto que grava o contato no banco
                 var contatoBanco = new ContatoModel()
                 {
                     Nome = model.Contato.Nome,
@@ -61,10 +58,13 @@ namespace Vidracaria_Portal.Controllers
                     Mensagem = model.Contato.Mensagem,
                     DataContato = DateTime.Now,
                 };
+
                 _context.Add(contatoBanco);
                 await _context.SaveChangesAsync();
+
                 return Json(new { success = true, message = "Enviado com Sucesso !" });
-            } else
+            }
+            else
             {
                 return Json(new { success = false, message = "Falha ao enviar!" });
             }

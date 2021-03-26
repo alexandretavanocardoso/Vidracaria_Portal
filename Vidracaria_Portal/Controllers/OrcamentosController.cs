@@ -43,7 +43,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Orcamentos = Orcamentos.Where(p => p.Nome.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await Orcamentos.ToPagedListAsync(pagina, itensPorPagina));
         }
 

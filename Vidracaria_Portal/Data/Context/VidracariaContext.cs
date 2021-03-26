@@ -18,6 +18,7 @@ namespace Vidracaria_Portal.Data.Context
 
         #region [DbSet<>]
         public DbSet<ContatoModel> Contatos { get; set; }
+        public DbSet<GaleriaModel> GaleriaModels { get; set; }
         public DbSet<AluminiosModel> Aluminios { get; set; }
         public DbSet<ClientesModel> Clientes { get; set; }
         public DbSet<FerragensModel> Ferragens { get; set; }
@@ -26,7 +27,6 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<AprovadosModel> Aprovados { get; set; }
         public DbSet<OrcamentosModel> Orcamentos { get; set; }
         public DbSet<TipoDeServicosModel> TipoDeServicos { get; set; }
-        public DbSet<PendentesModel> Pendentes { get; set; }
         public DbSet<ConcluidosModel> Concluidos { get; set; }
         public DbSet<CoresModel> Cores { get; set; }
         public DbSet<ExpessurasModel> Expessura { get; set; }

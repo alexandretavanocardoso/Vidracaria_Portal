@@ -41,7 +41,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Contatos = Contatos.Where(p => p.Nome.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await Contatos.ToPagedListAsync(pagina, itensPorPagina));
         }
 
@@ -135,7 +135,7 @@ namespace Vidracaria_Portal.Controllers
                     "                   <div style='color: rgba(255, 255, 255, .8);'>" +
                     "                       <h2 style='text-align: left; color: #ffffff; font-size: 15px;'>{0}</h2>" +
                     "                       <p style='text-align: left; color: #ffffff;'>Obrigado pelo contato.<br> Atenciosamente, Equipe Vidraçaria Portal.</p>" +
-                    "                       <p style='text-align: left; color: #ffffff;'>Barra Bonita-SP<br> Telefone:(14) 3641-1797<br> Celular: (14) 99773-1577</p>" +
+                    "                       <p style='text-align: left; color: #ffffff;'>Suporte: <b style='border-bottom: 1px solid white;'>vidracariaPortalbb@hotmail.com</b><br> Barra Bonita-SP<br> Telefone:(14) 3641-1797<br> Celular: (14) 99773-1577</p>" +
                     "                   </div>" +
                     "               </td>" +
                     "           </tr>" +

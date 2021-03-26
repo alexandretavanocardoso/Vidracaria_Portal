@@ -1,0 +1,30 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Cadastros.GaleriaModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+@section Styles{
+    <style>
+        h1 {
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: 0.8px;
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="content">
+
+        <h1>Deseja deletar essa Imagem ?</h1>
+
+        <form asp-action="Delete" style="padding-bottom: 50px;">
+            <input type="hidden" asp-for="CodigoGaleria" />
+            <button type="submit" value="Delete" class="btn btn-dark">Deletar</button>
+            <button asp-action="Index" class="btn btn-danger">Voltar</button>
+        </form>
+    </div>
+</div>
+

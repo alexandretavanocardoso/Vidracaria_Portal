@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Vidracaria_Portal.Data.Context;
 using Vidracaria_Portal.Models;
+using Vidracaria_Portal.Models.Administrador.Cadastros;
 using Vidracaria_Portal.Models.Cliente;
 using Vidracaria_Portal.Services;
 using Vidracaria_Portal.ViewModel;
@@ -16,14 +18,17 @@ namespace Vidracaria_Portal.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         private readonly VidracariaContext _context;
 
         public HomeController(ILogger<HomeController> logger,
-                              VidracariaContext context)
+                              VidracariaContext context,
+                              IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Home()
@@ -46,7 +51,7 @@ namespace Vidracaria_Portal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> Contatos(ContatoViewModel model)
+        public async Task<ActionResult> Contatos(ContatoViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -62,17 +67,28 @@ namespace Vidracaria_Portal.Controllers
                 _context.Add(contatoBanco);
                 await _context.SaveChangesAsync();
 
-                return Json(new { success = true, message = "Enviado com Sucesso !" });
+                return Ok();
             }
             else
             {
-                return Json(new { success = false, message = "Falha ao enviar!" });
+                return NotFound();
             }
         }
 
         public IActionResult Galeria()
         {
-            return View();
+            List<GaleriaModel> list = new List<GaleriaModel>();
+            var g = _context.GaleriaModels.ToList();
+
+            foreach (var item in g)
+            {
+                GaleriaModel gal = new GaleriaModel();
+                gal.CodigoGaleria = item.CodigoGaleria;
+                gal.Imagem = item.Imagem;
+                list.Add(gal);
+            }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
+            return View(list);
         }
 
         public IActionResult Servicos()

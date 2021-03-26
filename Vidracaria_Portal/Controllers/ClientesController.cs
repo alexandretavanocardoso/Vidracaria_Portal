@@ -40,7 +40,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Cliente = Cliente.Where(p => p.NomeCliente.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await Cliente.ToPagedListAsync(pagina, itensPorPagina));
         }
 

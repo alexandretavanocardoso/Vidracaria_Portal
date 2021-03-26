@@ -45,7 +45,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Ferragens = Ferragens.Where(p => p.NomeFerragem.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await Ferragens.ToPagedListAsync(pagina, itensPorPagina));
         }
 

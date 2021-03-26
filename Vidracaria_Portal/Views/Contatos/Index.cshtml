@@ -2,11 +2,11 @@
 @using X.PagedList.Mvc.Core;
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Listagem";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-@section Style{
+@section Styles{
     <style>
         .wrap {
             text-overflow: ellipsis;
@@ -15,6 +15,11 @@
             overflow: hidden;
             width: 100px;
             max-width: 100px;
+        }
+
+        .fa-reply-all {
+            font-size: 18px;
+            color: #6b6301;
         }
     </style>
 }
@@ -89,7 +94,7 @@
                             @Html.DisplayFor(modelItem => item.DataRetorno)
                         </td>
                         <td>
-                            <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoContato"><i class="fas fa-edit"></i></a>
+                            <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoContato"><i class="fas fa-reply-all"></i></a>
                             <a asp-action="Delete" asp-route-id="@item.CodigoContato"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

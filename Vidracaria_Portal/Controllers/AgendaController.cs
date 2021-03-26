@@ -41,7 +41,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Agenda = Agenda.Where(p => p.Texto.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 9;
             return View(await Agenda.ToPagedListAsync(pagina, itensPorPagina));
         }
 

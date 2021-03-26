@@ -44,7 +44,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 Aluminio = Aluminio.Where(p => p.NomeAluminio.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await Aluminio.ToPagedListAsync(pagina, itensPorPagina));
         }
 

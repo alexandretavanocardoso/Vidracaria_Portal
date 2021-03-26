@@ -45,7 +45,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 VidrosTemperados = VidrosTemperados.Where(p => p.NomeVidro.Contains(pesquisa)).AsNoTracking();
             }
-            int itensPorPagina = 15;
+            int itensPorPagina = 25;
             return View(await VidrosTemperados.ToPagedListAsync(pagina, itensPorPagina));
         }
 

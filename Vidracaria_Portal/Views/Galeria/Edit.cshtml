@@ -1,0 +1,46 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Cadastros.GaleriaModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CodigoGaleria" />
+                    <div class="form-group">
+                        <label asp-for="Imagem" class="control-label"></label>
+                        <input type="hidden" asp-for="Imagem" /> <!-- Esconder -->
+                        <input type="file" id="NovaImagem" name="NovaImagem" class="form-control-file" accept=".jpg,.jpeg,.png" />
+                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + Model.Imagem) ?
+                    Url.Content("~/" + Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" style="width: 345px; margin-top: 12px; margin-bottom: 12px;" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Save" class="btn btn-dark">Salvar</button>
+                        <a asp-action="Index" class="btn btn-danger">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            document.querySelector('input[type="file"]').addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById("PreviewImagem");
+                    img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                }
+            });
+        });
+    </script>
+}

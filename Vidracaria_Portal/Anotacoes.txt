@@ -18,3 +18,10 @@ public Categoria Categoria { get; set; } // Foreign Key
 
 <label asp-for="CorId" class="control-label"></label>
 <select asp-for="CorId" class="form-control" asp-items="ViewBag.CorId"></select>
+
+
+Ver o porque a imagem nao aparece no orcamento e aprovados
+Ver o porque o servico nao aparece ne grid
+facilitar o modo de diminuir estoque maximo
+fazer aviso que tal produto esta chegando proximo ao estoque minimo
+

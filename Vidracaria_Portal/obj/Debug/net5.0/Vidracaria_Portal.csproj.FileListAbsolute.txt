@@ -2868,3 +2868,5 @@ C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Vi
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\ref\Vidracaria_Portal.dll
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Vidracaria_Portal.pdb
 C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Vidracaria_Portal.genruntimeconfig.cache
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Concluidos\Delete.cshtml.g.cs
+C:\Users\usuario\Desktop\Vidracaria-Portal\Vidracaria_Portal\obj\Debug\net5.0\Razor\Views\Concluidos\Index.cshtml.g.cs

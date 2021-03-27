@@ -1,0 +1,29 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Servicos.ConcluidosModel
+
+@{
+    ViewData["Title"] = "Deletar";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+@section Styles{
+<style>
+    h1 {
+        font-weight: bold;
+        font-size: 22px;
+        letter-spacing: 0.8px;
+    }
+</style>
+}
+
+<div class="container">
+    <div class="content">
+
+        <h1>Deseja deletar esse orçamento concluido ?</h1>
+
+        <form asp-action="Delete" style="padding-bottom: 50px;">
+            <input type="hidden" asp-for="CodigoConcluido" />
+            <button type="submit" value="Delete" class="btn btn-dark">Deletar</button>
+            <button asp-action="Index" class="btn btn-danger">Voltar</button>
+        </form>
+    </div>
+</div>

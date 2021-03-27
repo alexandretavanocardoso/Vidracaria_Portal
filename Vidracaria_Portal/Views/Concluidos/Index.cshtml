@@ -1,4 +1,4 @@
-﻿@model X.PagedList.IPagedList<Vidracaria_Portal.Models.Administrador.Servicos.OrcamentosModel>
+﻿@model X.PagedList.IPagedList<Vidracaria_Portal.Models.Administrador.Servicos.ConcluidosModel>
 @using X.PagedList.Mvc.Core;
 
 @{
@@ -6,28 +6,12 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-@section Styles{
-    <style>
-        .wrap {
-            text-overflow: ellipsis;
-            /* Required for text-overflow to do anything */
-            white-space: nowrap;
-            overflow: hidden;
-            width: 100px;
-            max-width: 100px;
-        }
-    </style>
-}
-
 <div class="content">
     <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
         <div class="col-md-12">
-            <h4>Listagem dos orçamentos</h4>
             <div class="col-md-6">
-                <a asp-action="Create" class="btn btn-outline-danger">Criar Novo</a>
-            </div>
-            <div class="col-md-6">
-                <form asp-controller="Orcamentos" asp-action="Index" method="get" style="margin-top: 12px;">
+                <h4>Listagem dos orçamentos concluídos</h4>
+                <form asp-controller="Concluidos" asp-action="Index" method="get" style="margin-top: 12px;">
                     <input style=" border: 1px solid #00008B;" type="text" class="form-control" value="@ViewData["Filtro"]"
                            placeholder="Pesquisar" name="pesquisa" aria-label="" aria-describedby="basic-addon1" />
                     <div class="input-group-append" style="margin-top: 12px;">
@@ -111,9 +95,7 @@
                             @Html.DisplayFor(modelItem => item.DataCadastro)
                         </td>
                         <td>
-                            <a style="margin-right: 8px;" asp-action="AprovarOrcamento" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-check-square"></i></a>
-                            <a style="margin-right: 8px;" asp-action="Edit" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-edit"></i></a>
-                            <a asp-action="Delete" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-trash-alt"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoConcluido"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 }

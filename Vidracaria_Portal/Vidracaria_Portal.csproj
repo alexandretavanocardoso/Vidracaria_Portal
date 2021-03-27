@@ -47,7 +47,6 @@
     <Folder Include="wwwroot\imagensSaves\Ferragens\" />
     <Folder Include="wwwroot\imagensSaves\Aluminios\" />
     <Folder Include="wwwroot\imagensSaves\Galeria\" />
-    <Folder Include="wwwroot\imagensSaves\Aprovados\" />
     <Folder Include="wwwroot\imagensSaves\Orcamentos\" />
     <Folder Include="wwwroot\imagensSaves\VidrosComuns\" />
     <Folder Include="wwwroot\imagensSaves\VidrosTemperados\" />

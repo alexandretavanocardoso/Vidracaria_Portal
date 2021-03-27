@@ -72,8 +72,6 @@ namespace Vidracaria_Portal.Controllers
                 aprovados = aprovados.Where(p => p.Nome.Contains(pesquisa)).AsNoTracking();
             }
             int itensPorPagina = 25;
-
-            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
 
             return View(await aprovados.ToPagedListAsync(pagina, itensPorPagina));
@@ -93,6 +91,7 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
             return View(aprovadosModel);
         }
 
@@ -112,7 +111,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 if (NovaImagem != null)
                 {
-                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Aprovados");
+                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
 
                     var nomeArquivo = Guid.NewGuid() + "_" + NovaImagem.FileName;
 
@@ -123,7 +122,7 @@ namespace Vidracaria_Portal.Controllers
                         await NovaImagem.CopyToAsync(stream);
                     }
 
-                    aprovadosModel.Imagem = "imagensSaves/Aprovados" + nomeArquivo;
+                    aprovadosModel.Imagem = "imagensSaves/Orcamentos" + nomeArquivo;
                 }
 
                 try

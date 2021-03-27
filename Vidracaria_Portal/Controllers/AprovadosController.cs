@@ -100,7 +100,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoAprovado,CodigoOrcamento,Nome,DataCadastro,Cidade,Bairro,NumeroCasa,Estado,Celular,Imagem")] AprovadosModel aprovadosModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoAprovado,CodigoOrcamento,Nome,DataCadastro,Cidade,Bairro,NumeroCasa,Estado,Celular,Imagem,Valor")] AprovadosModel aprovadosModel, IFormFile NovaImagem)
         {
             if (id != aprovadosModel.CodigoAprovado)
             {

@@ -62,5 +62,8 @@ namespace Vidracaria_Portal.Models.Administrador.Servicos
         [Display(Name = "Imagem", Prompt = "Imagem")]
         [StringLength(300, ErrorMessage = "Imagem com erro")]
         public string Imagem { get; set; }
+
+        [Display(Name = "Valor ", Prompt = "Valor")]
+        public string Valor { get; set; }
     }
 }

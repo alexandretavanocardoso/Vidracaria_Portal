@@ -81,7 +81,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem")] OrcamentosModel orcamentosModel, IFormFile Imagem)
+        public async Task<IActionResult> Create([Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem,Valor")] OrcamentosModel orcamentosModel, IFormFile Imagem)
         {
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem")] OrcamentosModel orcamentosModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem,Valor")] OrcamentosModel orcamentosModel, IFormFile NovaImagem)
         {
             if (id != orcamentosModel.CodigoOrcamento)
             {

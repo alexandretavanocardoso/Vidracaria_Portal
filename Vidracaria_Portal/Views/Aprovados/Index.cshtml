@@ -66,6 +66,9 @@
                         Serviço
                     </th>
                     <th>
+                        Valor
+                    </th>
+                    <th>
                         Data Cadastro
                     </th>
                     <th>Operações</th>
@@ -74,45 +77,48 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            <div class="wrap">
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </div>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Rua)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NumeroCasa)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cidade)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Bairro)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Celular)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Telefone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Estado)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TipoServico.Tipo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataCadastro)
-                        </td>
-                        <td>
-                            <a style="margin-right: 8px;" asp-action="ConcluirOrcamento" asp-route-id="@item.CodigoAprovado"><i class="fas fa-check"></i></a>
-                            <a style="margin-right: 8px;" asp-action="Edit" asp-route-id="@item.CodigoAprovado"><i class="fas fa-edit"></i></a>
-                            <a asp-action="Delete" asp-route-id="@item.CodigoAprovado"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <div class="wrap">
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rua)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroCasa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bairro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Celular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoServico.Tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataCadastro)
+                    </td>
+                    <td>
+                        <a style="margin-right: 8px;" asp-action="ConcluirOrcamento" asp-route-id="@item.CodigoAprovado"><i class="fas fa-check"></i></a>
+                        <a style="margin-right: 8px;" asp-action="Edit" asp-route-id="@item.CodigoAprovado"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.CodigoAprovado"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

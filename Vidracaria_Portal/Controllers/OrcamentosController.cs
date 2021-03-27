@@ -39,10 +39,11 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
-            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
-            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
 
-            //await Delete(id);
+            
+
+            _context.Orcamentos.Remove(orcamentosModel);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Aprovados", orcamentosModel);
         }
 
@@ -66,24 +67,6 @@ namespace Vidracaria_Portal.Controllers
             }
             int itensPorPagina = 25;
             return View(await Orcamentos.ToPagedListAsync(pagina, itensPorPagina));
-        }
-
-        // GET: Orcamentos/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var orcamentosModel = await _context.Orcamentos
-                .FirstOrDefaultAsync(m => m.CodigoOrcamento == id);
-            if (orcamentosModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(orcamentosModel);
         }
 
         // GET: Orcamentos/Create

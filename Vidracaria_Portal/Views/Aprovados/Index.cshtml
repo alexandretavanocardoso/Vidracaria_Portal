@@ -36,68 +36,89 @@
             </div>
         </div>
     </div>
-    <table class="table-responsive" style="margin-left: 20px;">
-        <thead class="table" style="width: 1500px;">
-            <tr class="table-dark">
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Cidade
-                </th>
-                <th>
-                    Bairro
-                </th>
-                <th>
-                    Numero Casa
-                </th>
-                <th>
-                    Estado
-                </th>
-                <th>
-                    Celular
-                </th>
-                <th>
-                    Data Cadastro
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="table-responsive" style="margin-left: 20px;">
+        <table class="table" style="width: 1500px;">
+            <thead class="table-dark">
                 <tr>
-                    <td>
-                        <div class="wrap">
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </div>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Bairro)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumeroCasa)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Celular)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataCadastro)
-                    </td>
-                    <td>
-                        <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoAprovado"><i class="fas fa-edit"></i></a>
-                        <a asp-action="Delete" asp-route-id="@item.CodigoAprovado"><i class="fas fa-trash-alt"></i></a>
-                    </td>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Rua
+                    </th>
+                    <th>
+                        N° Casa
+                    </th>
+                    <th>
+                        Cidade
+                    </th>
+                    <th>
+                        Bairro
+                    </th>
+                    <th>
+                        Celular
+                    </th>
+                    <th>
+                        Telefone
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Serviço
+                    </th>
+                    <th>
+                        Data Cadastro
+                    </th>
+                    <th>Operações</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="wrap">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rua)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroCasa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bairro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoServico.Tipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCadastro)
+                        </td>
+                        <td>
+                            <a style="margin-right: 8px;" asp-action="ConcluirOrcamento" asp-route-id="@item.CodigoAprovado"><i class="fas fa-check"></i></a>
+                            <a style="margin-right: 8px;" asp-action="Edit" asp-route-id="@item.CodigoAprovado"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoAprovado"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
     <div style="margin-top: 20px;">
         @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
                new X.PagedList.Web.Common.PagedListRenderOptionsBase
@@ -113,3 +134,4 @@
                })
     </div>
 </div>
+

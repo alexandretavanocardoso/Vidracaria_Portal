@@ -61,6 +61,7 @@
                         <div class="form-group col-md-6">
                             <label asp-for="TipoId" class="control-label"></label>
                             <select asp-for="TipoId" class="form-control" asp-items="ViewBag.TipoId"></select>
+                            <span asp-validation-for="TipoId" class="text-danger"></span>
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="DataCadastro" class="control-label"></label>

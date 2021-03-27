@@ -110,6 +110,7 @@
                             @Html.DisplayFor(modelItem => item.DataCadastro)
                         </td>
                         <td>
+                            <a style="margin-right: 10px;" asp-action="AprovarOrcamento" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-check-square"></i></a>
                             <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-edit"></i></a>
                             <a asp-action="Delete" asp-route-id="@item.CodigoOrcamento"><i class="fas fa-trash-alt"></i></a>
                         </td>

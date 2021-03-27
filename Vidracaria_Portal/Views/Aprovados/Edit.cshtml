@@ -1,0 +1,81 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Servicos.AprovadosModel
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CodigoAprovado" />
+                    <input type="hidden" asp-for="DataCadastro" />
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Nome" class="control-label"></label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Cidade" class="control-label"></label>
+                            <input asp-for="Cidade" class="form-control" />
+                            <span asp-validation-for="Cidade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Bairro" class="control-label"></label>
+                            <input asp-for="Bairro" class="form-control" />
+                            <span asp-validation-for="Bairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="NumeroCasa" class="control-label"></label>
+                            <input asp-for="NumeroCasa" class="form-control" />
+                            <span asp-validation-for="NumeroCasa" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Estado" class="control-label"></label>
+                            <input asp-for="Estado" class="form-control" />
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Celular" class="control-label"></label>
+                            <input asp-for="Celular" class="form-control" />
+                            <span asp-validation-for="Celular" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Imagem" class="control-label"></label>
+                        <input type="hidden" asp-for="Imagem" /> <!-- Esconder -->
+                        <input type="file" id="NovaImagem" name="NovaImagem" class="form-control-file" accept=".jpg,.jpeg,.png" />
+                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                        <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + Model.Imagem) ?
+                    Url.Content("~/" + Model.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="img-fluid" id="PreviewImagem" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            document.querySelector('input[type="file"]').addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    var img = document.getElementById("PreviewImagem");
+                    img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                }
+            });
+        });
+    </script>
+}

@@ -106,5 +106,18 @@
             </tbody>
         </table>
     </div>
-
+    <div style="margin-top: 20px;">
+        @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
+               new X.PagedList.Web.Common.PagedListRenderOptionsBase
+               {
+                   DisplayLinkToFirstPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                   DisplayLinkToLastPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                   DisplayLinkToNextPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                   DisplayLinkToPreviousPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                   ContainerDivClasses = new[] { "pagination-container" },
+                   UlElementClasses = new string[] { "pagination justify-content-center" },
+                   LiElementClasses = new string[] { "page-item" },
+                   PageClasses = new string[] { "page-link" }
+               })
+    </div>
 </div>

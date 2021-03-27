@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using X.PagedList;
 
 namespace Vidracaria_Portal.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class OrcamentosController : Controller
     {
         private readonly VidracariaContext _context;
@@ -23,6 +25,25 @@ namespace Vidracaria_Portal.Controllers
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+        }
+
+        public async Task<ActionResult> AprovarOrcamento(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var orcamentosModel = await _context.Orcamentos.FindAsync(id);
+            if (orcamentosModel == null)
+            {
+                return NotFound();
+            }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
+
+            //await Delete(id);
+            return RedirectToAction("Index", "Aprovados", orcamentosModel);
         }
 
         // GET: Orcamentos
@@ -68,7 +89,7 @@ namespace Vidracaria_Portal.Controllers
         // GET: Orcamentos/Create
         public IActionResult Create()
         {
-            ViewData["TipoId"] = new SelectList(_context.Orcamentos, "CodigoTipo", "Tipo");
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
             return View();
         }
 
@@ -106,7 +127,7 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TipoId"] = new SelectList(_context.Orcamentos, "CodigoTipo", "Tipo", orcamentosModel.TipoId);
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo", orcamentosModel.TipoId);
             return View(orcamentosModel);
         }
 
@@ -124,7 +145,7 @@ namespace Vidracaria_Portal.Controllers
                 return NotFound();
             }
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
-            ViewData["TipoId"] = new SelectList(_context.Orcamentos, "CodigoTipo", "Tipo");
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
             return View(orcamentosModel);
         }
 
@@ -181,7 +202,7 @@ namespace Vidracaria_Portal.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
-            ViewData["TipoId"] = new SelectList(_context.Orcamentos, "CodigoTipo", "Tipo", orcamentosModel.TipoId);
+            ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo", orcamentosModel.TipoId);
             return View(orcamentosModel);
         }
 

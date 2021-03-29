@@ -1,0 +1,73 @@
+﻿@model Vidracaria_Portal.Models.Administrador.Cadastros.TimeModel
+
+@{
+    ViewData["Title"] = "Criar";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="NomeTime" class="control-label">Nome</label>
+                            <input asp-for="NomeTime" class="form-control" />
+                            <span asp-validation-for="NomeTime" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Cargo" class="control-label">Cargo</label>
+                            <input asp-for="Cargo" class="form-control" />
+                            <span asp-validation-for="Cargo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="form-group col-md-6">
+                            <label asp-for="LinkFacebook" class="control-label">Link Facebook</label>
+                            <input asp-for="LinkFacebook" class="form-control" />
+                            <span asp-validation-for="LinkFacebook" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="LinkImagem" class="control-label">LinkInstagram</label>
+                            <input asp-for="LinkImagem" class="form-control" />
+                            <span asp-validation-for="LinkImagem" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Imagem" class="control-label"></label>
+                        <input type="file" asp-for="Imagem" class="form-control form-control-sm" id="formFile" accept=".jpg,.jpeg,.png" />
+                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 col-12" style="margin-top: 12px; margin-bottom: 12px;">
+                        <img src="" class="img-fluid" id="PreviewImagem" style="width: 345px;" /> <!-- incluir - mostra imagem pelo JS-->
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="Create" class="btn btn-dark">Salvar</button>
+                        <a asp-action="Index" class="btn btn-danger">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            window.addEventListener('load', function () {
+                document.querySelector('input[type="file"]').addEventListener('change', function () {
+                    if (this.files && this.files[0]) {
+                        var img = document.getElementById("PreviewImagem");
+                        img.src = URL.createObjectURL(this.files[0]); // Cria a imagem na memoria do navegador
+                    }
+                });
+            });
+        });
+    </script>
+}

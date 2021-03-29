@@ -1,4 +1,6 @@
-﻿@{ ViewData["title"] = "Serviços";
+﻿@model IEnumerable<Vidracaria_Portal.Models.Administrador.Cadastros.ServicosModel>
+
+@{ ViewData["title"] = "Serviços";
     Layout = "~/Views/Shared/_LayoutCliente.cshtml"; }
 
 @section Styles{
@@ -16,7 +18,7 @@
             height: 300px;
         }
 
-        h5{
+        h5 {
             letter-spacing: 0.5px;
             color: #343a40;
         }
@@ -32,246 +34,21 @@
         <h2>Serviços</h2>
     </div>
     <div class="row" style="display: flex; justify-content: center;">
+        @foreach (var ser in Model)
+        {
         <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
             <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/Aquario.png" alt="">
+                <a style="object-fit: cover;" href="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + ser.Imagem) ?
+                                                Url.Content("~/" + ser.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" data-lightbox="conjuntoPrincipal" data-title="Serviços">
+                    <img style="object-fit: cover; width: 100%;" src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + ser.Imagem) ?
+                                                Url.Content("~/" + ser.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" />
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">Aquários</h5>
+                    <h5 style="font-weight: bold; letter-spacing: 1px; font-size: 21px; margin-top: -7px;" class="card-title">@(ser.NomeServico)</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/Basculante.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Basculante</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/BoxAcrilico.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Box de Acrílico</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/BoxVidro.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Box de Vidro</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/CorrimaAluminio.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Corrimão de Almunínio</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/DivisoriaEucatex.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Divisória Eucatex</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/Espelho.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Espelhos</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/EsquadriaAluminio.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Esquadria de Alumínio</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/ForroPVC.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Forro de PVC</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/GaveteiroAluminio.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Gaveteiro de Alumínio</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/GuardaCorpo.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Guarda Corpo</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/JanelaVidro.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Janela de Vidro</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/KitPia.jpeg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Kit de Pia</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PersianaHorizontal.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Persiana Horizontal</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PersianaVertical.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Persiana Vertical</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaAcrilicoPia.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta Acrílico de Pia</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaAdesivo.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta com Adesivo</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaAluminio.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta de Alumínio</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaAutomatizada.jpeg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta Automatizada</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortalPelicula.jpeg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta com Pelicula</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaoAluminio.jpeg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Portão de Alumínio</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaPivotante.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta Pivotante</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaSanfonada.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta Sanfonada</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PortaVidro.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Porta de Vidro</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/PrateleiraVideo.jpg" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Prateleira de Vidro</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/QuadroMoldura.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Quadro com Moldura</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/TelaMosqueteira.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Tela Mosqueteira</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/Toldo.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Toldo</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/VidroComum.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Vidro Comum</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top:25px; display:flex; justify-content: center;">
-            <div class="card" style="width: 22rem;">
-                <img class="card-img-top" src="~/img/services/VidroMesa.png" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Vidro de Mesa</h5>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
 

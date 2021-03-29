@@ -15,6 +15,10 @@ function onClick_ManipularSidebarWeb() {
     $("#servicos").click(function () {
         $("#divServicos").slideToggle();
     });
+
+    $("#paginas").click(function () {
+        $("#divPages").slideToggle();
+    });
 }
 
 function onClick_ManipularSidebarMobile() {
@@ -24,5 +28,9 @@ function onClick_ManipularSidebarMobile() {
 
     $("#servicosMobile").click(function () {
         $("#divServicosMobile").slideToggle();
+    });
+
+    $("#paginasMobile").click(function () {
+        $("#divPagesMobile").slideToggle();
     });
 }

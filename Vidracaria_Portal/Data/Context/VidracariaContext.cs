@@ -33,6 +33,8 @@ namespace Vidracaria_Portal.Data.Context
         public DbSet<PeliculasModel> Peliculas { get; set; }
         public DbSet<AdesivoModel> Adesivos { get; set; }
         public DbSet<AgendaModel> AgendaModels { get; set; }
+        public DbSet<ServicosModel> ServicosModels { get; set; }
+        public DbSet<TimeModel> TimesModels { get; set; }
         #endregion [DbSet<>]
 
         protected override void OnModelCreating(ModelBuilder builder)

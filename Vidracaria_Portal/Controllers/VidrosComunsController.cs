@@ -85,16 +85,6 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (vidrosComunsModel.EstoqueMinimo > vidrosComunsModel.EstoqueMaximo)
-                {
-                    return NotFound();
-                }
-
-                if (vidrosComunsModel.PrecoFabrica > vidrosComunsModel.PrecoVenda)
-                {
-                    return NotFound();
-                }
-
                 if (Imagem != null)
                 {
                     // Definir pasta onde vai ser salvo
@@ -162,16 +152,6 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
-                    if (vidrosComunsModel.EstoqueMinimo > vidrosComunsModel.EstoqueMaximo)
-                    {
-                        return NotFound();
-                    }
-
-                    if (vidrosComunsModel.PrecoFabrica > vidrosComunsModel.PrecoVenda)
-                    {
-                        return NotFound();
-                    }
-
                     if (NovaImagem != null)
                     {
                         // Definir pasta onde vai ser salvo

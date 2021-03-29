@@ -83,16 +83,6 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ferragensModel.EstoqueMinimo > ferragensModel.EstoqueMaximo)
-                {
-                    return NotFound();
-                }
-
-                if (ferragensModel.PrecoFabrica > ferragensModel.PrecoVenda)
-                {
-                    return NotFound();
-                }
-
                 if (Imagem != null)
                 {
                     // Definir pasta onde vai ser salvo
@@ -156,16 +146,6 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
-                    if (ferragensModel.EstoqueMinimo > ferragensModel.EstoqueMaximo)
-                    {
-                        return NotFound();
-                    }
-
-                    if (ferragensModel.PrecoFabrica > ferragensModel.PrecoVenda)
-                    {
-                        return NotFound();
-                    }
-
                     if (NovaImagem != null)
                     {
                         // Definir pasta onde vai ser salvo

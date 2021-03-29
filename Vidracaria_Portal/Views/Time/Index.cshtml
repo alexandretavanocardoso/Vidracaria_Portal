@@ -1,0 +1,54 @@
+﻿@model X.PagedList.IPagedList<Vidracaria_Portal.Models.Administrador.Cadastros.TimeModel>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Listagem";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <a asp-action="Create" class="btn btn-outline-danger">Criar Novo</a>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="box-shadow: 5px 5px 8px black">
+                    <div class="member">
+                        <img style="width: 100%; height: 200px; border-radius: 50%; margin-top: 10px;" src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + item.Imagem) ?
+                    Url.Content("~/" + item.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" alt="">
+                        <h4 style="margin-top: 10px;"> @Html.DisplayFor(modelItem => item.NomeTime)</h4>
+                        <span style="font-size: 16px; color: #343a40">@Html.DisplayFor(modelItem => item.Cargo)</span>
+                        <div class="social">
+                            <p style="margin-bottom: 0"> <b>Link facebook: </b> @Html.DisplayFor(modelItem => item.LinkFacebook) </p>
+                            <p style="margin-bottom: 0"> <b>Link Instagram:</b>  @Html.DisplayFor(modelItem => item.LinkImagem) </p>
+                        </div>
+                        <div class="social" style="margin-top: 15px;">
+                            <a asp-action="Edit" asp-route-id="@item.CodigoTIme"><i class="fa fa-edit td-icones" style="color:black;" data-toggle="tooltip" data-placement="right" title="Editar"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.CodigoTIme"><i class="fa fa-trash-alt td-icones" style="color:darkred;" data-toggle="tooltip" data-placement="left" title="Deletar"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div style="margin-top: 20px;">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
+                   new X.PagedList.Web.Common.PagedListRenderOptionsBase
+                   {
+                       DisplayLinkToFirstPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToLastPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToNextPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToPreviousPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       ContainerDivClasses = new[] { "pagination-container" },
+                       UlElementClasses = new string[] { "pagination justify-content-center" },
+                       LiElementClasses = new string[] { "page-item" },
+                       PageClasses = new string[] { "page-link" }
+                   })
+        </div>
+    </div>
+</div>

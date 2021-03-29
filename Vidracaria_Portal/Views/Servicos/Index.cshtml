@@ -1,0 +1,49 @@
+﻿@model X.PagedList.IPagedList<Vidracaria_Portal.Models.Administrador.Cadastros.ServicosModel>
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Listagem";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="container">
+    <div class="content">
+        <div class="row" style="margin-bottom: 15px; padding-left: 5px;">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <a asp-action="Create" class="btn btn-outline-danger">Criar Novo</a>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+            @foreach (var item in Model)
+            {
+            <div class="card" style="width: 15rem; margin-bottom: 12px;">
+                <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + item.Imagem) ?
+                    Url.Content("~/" + item.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" class="card-img-top" alt="">
+                <div class="card-body">
+                    @Html.DisplayFor(modelItem => item.NomeServico)
+                </div>
+                <div class="card-body">
+                    <a asp-action="Edit" asp-route-id="@item.CodigoServico"><i class="fa fa-edit td-icones" style="color:black;" data-toggle="tooltip" data-placement="right" title="Editar"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.CodigoServico"><i class="fa fa-trash-alt td-icones" style="color:darkred;" data-toggle="tooltip" data-placement="left" title="Deletar"></i></a>
+                </div>
+            </div>
+            }
+        </div>
+        <div style="margin-top: 20px;">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { filtro = ViewData["Filtro"], pagina }),
+                   new X.PagedList.Web.Common.PagedListRenderOptionsBase
+                   {
+                       DisplayLinkToFirstPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToLastPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToNextPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       DisplayLinkToPreviousPage = X.PagedList.Web.Common.PagedListDisplayMode.Always,
+                       ContainerDivClasses = new[] { "pagination-container" },
+                       UlElementClasses = new string[] { "pagination justify-content-center" },
+                       LiElementClasses = new string[] { "page-item" },
+                       PageClasses = new string[] { "page-link" }
+                   })
+        </div>
+    </div>
+</div>

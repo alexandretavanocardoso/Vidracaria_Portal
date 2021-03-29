@@ -40,6 +40,12 @@
         </div>
         <div class="mobile_nav_items">
             <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
+            <a href="javascript:{}" id="paginasMobile"><i style="margin-right: 8px;" class="fas fa-pager"></i><span class="titles-sidebar">Páginas</span></a>
+            <div id="divPagesMobile" style="display: none; background-color: #cc1616;">
+                <a asp-controller="Galeria" asp-action="Index"><i style="margin-right: 8px;" class="far fa-images"></i><span class="titles-sidebar">Galeria</span></a>
+                <a style="margin-bottom: 12px;" asp-controller="Servicos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-industry"></i><span class="titles-sidebar">Serviços</span></a>
+                <a style="margin-bottom: 12px;" asp-controller="Time" asp-action="Index"><i style="margin-right: 8px;" class="far fa-user"></i><span class="titles-sidebar">Nosso Time</span></a>
+            </div>
             <a href="javascript:{}" id="cadastrosMobile"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
             <div id="divCadastrosMobile" style="display: none; background-color: #cc1616;">
                 <a asp-controller="Clientes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
@@ -56,7 +62,6 @@
             </div>
             <a asp-controller="Contatos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
             <a asp-controller="Agenda" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-book"></i><span class="titles-sidebar">Agenda</span></a>
-            <a asp-controller="Galeria" asp-action="Index"><i style="margin-right: 8px;" class="far fa-images"></i><span class="titles-sidebar">Galeria</span></a>
         </div>
     </div>
     <!--mobile navigation bar end-->
@@ -67,6 +72,12 @@
             <h4>Vidraçaria Portal</h4>
         </div>
         <a asp-controller="Administrador" asp-action="Home"><i style="margin-right: 8px;" class="fas fa-desktop"></i><span class="titles-sidebar">Home</span></a>
+        <a href="javascript:{}" id="paginas"><i style="margin-right: 8px;" class="fas fa-pager"></i><span class="titles-sidebar">Páginas</span></a>
+        <div id="divPages" style="display: none; background-color: #cc1616;">
+            <a asp-controller="Galeria" asp-action="Index"><i style="margin-right: 8px;" class="far fa-images"></i><span class="titles-sidebar">Galeria</span></a>
+            <a style="margin-bottom: 12px;" asp-controller="Servicos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-industry"></i><span class="titles-sidebar">Serviços</span></a>
+            <a style="margin-bottom: 12px;" asp-controller="Time" asp-action="Index"><i style="margin-right: 8px;" class="far fa-user"></i><span class="titles-sidebar">Nosso Time</span></a>
+        </div>
         <a href="javascript:{}" id="cadastros"><i style="margin-right: 8px;" class="fas fa-grip-horizontal"></i><span class="titles-sidebar">Cadastros</span></a>
         <div id="divCadastros" style="display: none; background-color: #cc1616;">
             <a asp-controller="Clientes" asp-action="Index"><i style="margin-right: 8px; font-size: 18px;" class="fas fa-users"></i><span class="titles-sidebar">Clientes</span></a>
@@ -83,7 +94,6 @@
         </div>
         <a asp-controller="Contatos" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-mail-bulk"></i><span class="titles-sidebar">E-mail</span></a>
         <a asp-controller="Agenda" asp-action="Index"><i style="margin-right: 8px;" class="fas fa-book"></i><span class="titles-sidebar">Agenda</span></a>
-        <a asp-controller="Galeria" asp-action="Index"><i style="margin-right: 8px;" class="far fa-images"></i><span class="titles-sidebar">Galeria</span></a>
     </div>
     <!--sidebar end-->
     <div>

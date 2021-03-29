@@ -93,12 +93,39 @@ namespace Vidracaria_Portal.Controllers
 
         public IActionResult Servicos()
         {
-            return View();
+            List<ServicosModel> listaServicos = new List<ServicosModel>();
+            var s = _context.ServicosModels.ToList();
+
+            foreach(var item in s)
+            {
+                ServicosModel ser = new ServicosModel();
+                ser.CodigoServico = item.CodigoServico;
+                ser.NomeServico = item.NomeServico;
+                ser.Imagem = item.Imagem;
+                listaServicos.Add(ser);
+            }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
+            return View(listaServicos);
         }
 
         public IActionResult Sobre()
         {
-            return View();
+            List<TimeModel> list = new List<TimeModel>();
+            var t = _context.TimesModels.ToList();
+
+            foreach (var item in t)
+            {
+                TimeModel time = new TimeModel();
+                time.CodigoTIme = item.CodigoTIme;
+                time.Imagem = item.Imagem;
+                time.NomeTime = item.NomeTime;
+                time.Cargo = item.Cargo;
+                time.LinkFacebook = item.LinkFacebook;
+                time.LinkImagem = item.LinkImagem;
+                list.Add(time);
+            }
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
+            return View(list);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

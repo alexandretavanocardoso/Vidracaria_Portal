@@ -82,15 +82,6 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (aluminiosModel.EstoqueMinimo > aluminiosModel.EstoqueMaximo)
-                {
-                    return NotFound();
-                }
-
-                if (aluminiosModel.PrecoFabrica > aluminiosModel.PrecoVenda)
-                {
-                    return NotFound();
-                }
 
                 if (Imagem != null)
                 {
@@ -155,16 +146,6 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
-                    if (aluminiosModel.EstoqueMinimo > aluminiosModel.EstoqueMaximo)
-                    {
-                        return NotFound();
-                    }
-
-                    if (aluminiosModel.PrecoFabrica > aluminiosModel.PrecoVenda)
-                    {
-                        return NotFound();
-                    }
-
                     if (NovaImagem != null)
                     {
                         // Definir pasta onde vai ser salvo

@@ -36,7 +36,7 @@ namespace Vidracaria_Portal.Controllers
         {
             List<TimeModel> listaTime = new List<TimeModel>();
             var t = _context.TimesModels.ToList();
-            foreach(var item in t)
+            foreach (var item in t)
             {
                 TimeModel tim = new TimeModel();
                 tim.CodigoTIme = item.CodigoTIme;
@@ -57,8 +57,8 @@ namespace Vidracaria_Portal.Controllers
             return View(model);
         }
 
-        public IActionResult Duvidas() 
-        { 
+        public IActionResult Duvidas()
+        {
             return View();
         }
         public IActionResult Contato()
@@ -115,7 +115,7 @@ namespace Vidracaria_Portal.Controllers
             List<ServicosModel> listaServicos = new List<ServicosModel>();
             var s = _context.ServicosModels.ToList();
 
-            foreach(var item in s)
+            foreach (var item in s)
             {
                 ServicosModel ser = new ServicosModel();
                 ser.CodigoServico = item.CodigoServico;

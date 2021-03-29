@@ -13,10 +13,7 @@ namespace Vidracaria_Portal.Models.Administrador.Cadastros
         [Key]
         public int CodigoTIme { get; set; }
         public string NomeTime { get; set; }
-
-        public int CargoId { get; set; }
-        public TimeModel Cargo { get; set; }
-
+        public string Cargo { get; set; }
         public string Imagem { get; set; }
         public string LinkFacebook { get; set; }
         public string LinkImagem { get; set; }

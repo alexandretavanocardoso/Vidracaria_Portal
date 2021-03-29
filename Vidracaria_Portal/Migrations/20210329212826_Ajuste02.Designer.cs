@@ -9,8 +9,8 @@ using Vidracaria_Portal.Data.Context;
 namespace Vidracaria_Portal.Migrations
 {
     [DbContext(typeof(VidracariaContext))]
-    [Migration("20210329015849_Time")]
-    partial class Time
+    [Migration("20210329212826_Ajuste02")]
+    partial class Ajuste02
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,15 +48,15 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c7bcdab2-5e1e-4725-b1f2-04eb06b25767",
-                            ConcurrencyStamp = "6c16aab0-2979-4848-8c3c-8d5aa1d6dd2f",
+                            Id = "bb483eb9-4e61-4adf-93db-819f132e7604",
+                            ConcurrencyStamp = "6e274051-06f1-462b-bc67-0e651b5ff1ab",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "41e7ced3-dbbd-426e-9d89-ab105655365d",
-                            ConcurrencyStamp = "c8f6117e-3446-48a7-a0f5-508da617069e",
+                            Id = "3f1ba507-91fa-4101-aaea-7976d1eeb2e7",
+                            ConcurrencyStamp = "5d6ae7c2-1b70-434b-a6ff-71b92985d563",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         });
@@ -156,13 +156,13 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1d39d4bf-4cd4-4761-9e3a-9eccda18df2f",
-                            RoleId = "c7bcdab2-5e1e-4725-b1f2-04eb06b25767"
+                            UserId = "866c5391-29c3-42fd-8850-d98b0d5465db",
+                            RoleId = "bb483eb9-4e61-4adf-93db-819f132e7604"
                         },
                         new
                         {
-                            UserId = "d8143ca6-55d3-4779-9f9b-d4403451a9f8",
-                            RoleId = "41e7ced3-dbbd-426e-9d89-ab105655365d"
+                            UserId = "98a55741-73cc-4ce7-92b8-4c2c1c0578d5",
+                            RoleId = "3f1ba507-91fa-4101-aaea-7976d1eeb2e7"
                         });
                 });
 
@@ -898,16 +898,16 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1d39d4bf-4cd4-4761-9e3a-9eccda18df2f",
+                            Id = "866c5391-29c3-42fd-8850-d98b0d5465db",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a0df24cf-07a1-4b93-97ef-e382fca98264",
+                            ConcurrencyStamp = "4c8d11d1-cb4d-4a3d-8b4d-869a4ba7d07b",
                             Email = "admin@vidracariaportal.com.br",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Admin",
                             NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                             NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                            PasswordHash = "AQAAAAEAACcQAAAAECD3LZvgWvTySycgjFH2xTwGXFZuILKjJJI+bOrvLUixzriWF3jt1V+0smTt0ovaYQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDz1AOiCd83NhjbX33Ia7Oc6oyBjWY9PakGQu5prUryC95hJN2nWFj/XiiPj2xbofg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "37966223",
                             TwoFactorEnabled = false,
@@ -915,16 +915,16 @@ namespace Vidracaria_Portal.Migrations
                         },
                         new
                         {
-                            Id = "d8143ca6-55d3-4779-9f9b-d4403451a9f8",
+                            Id = "98a55741-73cc-4ce7-92b8-4c2c1c0578d5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7656e0da-29f8-4fa4-b5c5-caac29632dd5",
+                            ConcurrencyStamp = "1a01d314-dc47-4d06-940f-e8994bbabdf5",
                             Email = "tavanoalexandre@outlook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Alexandre",
                             NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                             NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAq1JyfRZDwi4LYWA5fQUriQ64ry7FmCpwKUHJaWMyHqQ57bDycA48KjpTNIfRJkPg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOqC6F0OTeUFqzK/LaKyHSChjsehGQCZsmh61109oiy5sLWHcn25bPNoHzJUf+pszg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "6151694",
                             TwoFactorEnabled = false,

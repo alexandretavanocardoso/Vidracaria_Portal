@@ -1,6 +1,3 @@
--------------------------------
--- Insert em Cores de Aluminios
---------------------------------
 INSERT INTO CORES VALUES(1, ' ');
 INSERT INTO CORES VALUES(2, 'Vermelho');
 INSERT INTO CORES VALUES(3, 'Preto');
@@ -13,9 +10,6 @@ INSERT INTO CORES VALUES(9, 'Verde');
 INSERT INTO CORES VALUES(10, 'Alumínio');
 INSERT INTO CORES VALUES(11, 'Azul');
 
--------------------------------
--- Insert em Expessuras de vidro
---------------------------------
 INSERT INTO EXPESSURA VALUES(1, 1);
 INSERT INTO EXPESSURA VALUES(2, 2);
 INSERT INTO EXPESSURA VALUES(3, 3);
@@ -37,9 +31,6 @@ INSERT INTO EXPESSURA VALUES(18, 18);
 INSERT INTO EXPESSURA VALUES(19, 19);
 INSERT INTO EXPESSURA VALUES(20, 20);
 
--------------------------------
--- Insert em Adesivos de vidro
---------------------------------
 INSERT INTO ADESIVOS VALUES(1, ' ');
 INSERT INTO ADESIVOS VALUES(2, 'Vermelho');
 INSERT INTO ADESIVOS VALUES(3, 'Preto');
@@ -52,9 +43,6 @@ INSERT INTO ADESIVOS VALUES(9, 'Verde');
 INSERT INTO ADESIVOS VALUES(10, 'Alumínio');
 INSERT INTO ADESIVOS VALUES(11, 'Azul');
 
--------------------------------
--- Insert em Peliculas de vidro
---------------------------------
 INSERT INTO PELICULAS VALUES(1, ' ');
 INSERT INTO PELICULAS VALUES(2, 'Jateada');
 INSERT INTO PELICULAS VALUES(3, 'preto');
@@ -67,9 +55,6 @@ INSERT INTO PELICULAS VALUES(9, 'Verde');
 INSERT INTO PELICULAS VALUES(10, 'Alumínio');
 INSERT INTO PELICULAS VALUES(11,'Azul');
 
--------------------------------
--- Insert em Tipos de serviços
---------------------------------
 INSERT INTO TIPOS_DE_SERVICOS VALUES(1, 'Espelho');
 INSERT INTO TIPOS_DE_SERVICOS VALUES(2, 'Aquário');
 INSERT INTO TIPOS_DE_SERVICOS VALUES(3, 'Bascultante');
@@ -101,3 +86,7 @@ INSERT INTO TIPOS_DE_SERVICOS VALUES(28, 'Vidro Comum');
 INSERT INTO TIPOS_DE_SERVICOS VALUES(29, 'Portas Automatizadas');
 INSERT INTO TIPOS_DE_SERVICOS VALUES(30, 'Porta Sanfonadas');
 INSERT INTO TIPOS_DE_SERVICOS VALUES(31, 'Espelho Bisotê');
+
+INSERT INTO CARGOS VALUES(1, 'Chege Executivo');
+INSERT INTO CARGOS VALUES(2, 'Gerente Administrativa');
+INSERT INTO CARGOS VALUES(3, 'Colaborador');

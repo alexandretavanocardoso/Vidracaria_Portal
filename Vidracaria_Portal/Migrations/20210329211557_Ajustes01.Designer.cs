@@ -9,8 +9,8 @@ using Vidracaria_Portal.Data.Context;
 namespace Vidracaria_Portal.Migrations
 {
     [DbContext(typeof(VidracariaContext))]
-    [Migration("20210327200627_NovoCampoServicos")]
-    partial class NovoCampoServicos
+    [Migration("20210329211557_Ajustes01")]
+    partial class Ajustes01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,15 +48,15 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c9c42ad2-f1bc-42af-81db-b54979e2d94a",
-                            ConcurrencyStamp = "60060245-a0b4-40d7-b483-64773e41864b",
+                            Id = "5404041b-2459-406c-b7ee-f5e03896f4a6",
+                            ConcurrencyStamp = "bbc853c8-a10d-49cd-b7c6-14d65a055e29",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "238ffeba-daff-4697-9ece-c40a38e5a9a4",
-                            ConcurrencyStamp = "f7e7584e-deff-4c55-8f9d-26a5bd091f7b",
+                            Id = "051c1a4a-8873-4acc-a88d-11a448866702",
+                            ConcurrencyStamp = "36fce250-c8a8-47f5-9a32-b3963ac2a1a1",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         });
@@ -156,13 +156,13 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "5422b264-c428-4307-9fc0-dd314e44c607",
-                            RoleId = "c9c42ad2-f1bc-42af-81db-b54979e2d94a"
+                            UserId = "2103567b-0a6f-45f4-9d4d-e0f219b74e21",
+                            RoleId = "5404041b-2459-406c-b7ee-f5e03896f4a6"
                         },
                         new
                         {
-                            UserId = "1dffcb94-583b-4ff5-a24e-67d92f0129d3",
-                            RoleId = "238ffeba-daff-4697-9ece-c40a38e5a9a4"
+                            UserId = "2e39b85b-41cc-410f-a228-6153820d2446",
+                            RoleId = "051c1a4a-8873-4acc-a88d-11a448866702"
                         });
                 });
 
@@ -361,6 +361,51 @@ namespace Vidracaria_Portal.Migrations
                     b.HasKey("CodigoGaleria");
 
                     b.ToTable("GALERIA");
+                });
+
+            modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.ServicosModel", b =>
+                {
+                    b.Property<int>("CodigoServico")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NomeServico")
+                        .HasColumnType("text");
+
+                    b.HasKey("CodigoServico");
+
+                    b.ToTable("SERVICOS");
+                });
+
+            modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.TimeModel", b =>
+                {
+                    b.Property<int>("CodigoTIme")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CargoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LinkFacebook")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LinkImagem")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NomeTime")
+                        .HasColumnType("text");
+
+                    b.HasKey("CodigoTIme");
+
+                    b.HasIndex("CargoId");
+
+                    b.ToTable("NOSSO_TIME");
                 });
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.VidrosComunsModel", b =>
@@ -727,6 +772,20 @@ namespace Vidracaria_Portal.Migrations
                     b.ToTable("ADESIVOS");
                 });
 
+            modelBuilder.Entity("Vidracaria_Portal.Models.Selects.CargosModel", b =>
+                {
+                    b.Property<int>("CodigoCargo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("NomeCargo")
+                        .HasColumnType("text");
+
+                    b.HasKey("CodigoCargo");
+
+                    b.ToTable("CARGOS");
+                });
+
             modelBuilder.Entity("Vidracaria_Portal.Models.Selects.CoresModel", b =>
                 {
                     b.Property<int>("CodigoCor")
@@ -855,35 +914,35 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5422b264-c428-4307-9fc0-dd314e44c607",
+                            Id = "2103567b-0a6f-45f4-9d4d-e0f219b74e21",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4fa953f1-8551-4a7f-9295-06a390fe2318",
+                            ConcurrencyStamp = "e410bc5c-0253-40a8-9646-6323ddbafc76",
                             Email = "admin@vidracariaportal.com.br",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Admin",
                             NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                             NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMlCC2cqQVr/SbQYPSXFqJB1O8MpelN3qwzGNZWUJrTlMXbtVtD2U6s/2tehi7bYtA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGfos648xoxfhjUowRYdvT4IRbsNt6Z78Nz79twHkaGzPNtfr5SoKXCZybjzmO/9gg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2750866",
+                            SecurityStamp = "21418771",
                             TwoFactorEnabled = false,
                             UserName = "admin@vidracariaportal.com.br"
                         },
                         new
                         {
-                            Id = "1dffcb94-583b-4ff5-a24e-67d92f0129d3",
+                            Id = "2e39b85b-41cc-410f-a228-6153820d2446",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4da08388-94af-4a31-8f8a-7c3e5d515119",
+                            ConcurrencyStamp = "a73afaef-60db-4b45-b43f-b42ec06b3048",
                             Email = "tavanoalexandre@outlook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Alexandre",
                             NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                             NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJrkfkkI0jao5vT+f2n6r5yC9lPziEUUgxT37/Thvf1xvbvPZyFe5pKOj1hbYD4RKg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF7C3jTYWLW42L3nY/GGjbTVz8q1fraRMv1IpnXmTEXmp9eSlk57T6Po0nderyj+kg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "24757801",
+                            SecurityStamp = "58551215",
                             TwoFactorEnabled = false,
                             UserName = "tavanoalexandre@outlook.com"
                         });
@@ -960,6 +1019,17 @@ namespace Vidracaria_Portal.Migrations
                         .IsRequired();
 
                     b.Navigation("Cor");
+                });
+
+            modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.TimeModel", b =>
+                {
+                    b.HasOne("Vidracaria_Portal.Models.Administrador.Cadastros.TimeModel", "Cargo")
+                        .WithMany()
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cargo");
                 });
 
             modelBuilder.Entity("Vidracaria_Portal.Models.Administrador.Cadastros.VidrosComunsModel", b =>

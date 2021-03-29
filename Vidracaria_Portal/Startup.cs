@@ -1,142 +1,82 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
+using Vidracaria_Portal.Data.Context;
 using Vidracaria_Portal.Models;
-using Vidracaria_Portal.Models.Administrador.Cadastros;
-using Vidracaria_Portal.Models.Administrador.Servicos;
-using Vidracaria_Portal.Models.Cliente;
-using Vidracaria_Portal.Models.Selects;
 
-namespace Vidracaria_Portal.Data.Context
+namespace Vidracaria_Portal
 {
-    public class VidracariaContext : IdentityDbContext<UsuarioModel> {
-        public VidracariaContext(DbContextOptions<VidracariaContext> options)
-            : base(options)
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
         {
+            Configuration = configuration;
         }
 
-        #region [DbSet<>]
-        public DbSet<ContatoModel> Contatos { get; set; }
-        public DbSet<CargosModel> CargosModels { get; set; }
-        public DbSet<GaleriaModel> GaleriaModels { get; set; }
-        public DbSet<AluminiosModel> Aluminios { get; set; }
-        public DbSet<ClientesModel> Clientes { get; set; }
-        public DbSet<FerragensModel> Ferragens { get; set; }
-        public DbSet<VidrosComunsModel> VidrosComuns { get; set; }
-        public DbSet<VidrosTemperadosModel> VidrosTemperados { get; set; }
-        public DbSet<AprovadosModel> Aprovados { get; set; }
-        public DbSet<OrcamentosModel> Orcamentos { get; set; }
-        public DbSet<TipoDeServicosModel> TipoDeServicos { get; set; }
-        public DbSet<ConcluidosModel> Concluidos { get; set; }
-        public DbSet<CoresModel> Cores { get; set; }
-        public DbSet<ExpessurasModel> Expessura { get; set; }
-        public DbSet<PeliculasModel> Peliculas { get; set; }
-        public DbSet<AdesivoModel> Adesivos { get; set; }
-        public DbSet<AgendaModel> AgendaModels { get; set; }
-        public DbSet<ServicosModel> ServicosModels { get; set; }
-        public DbSet<TimeModel> TimesModels { get; set; }
-        #endregion [DbSet<>]
+        public IConfiguration Configuration { get; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
         {
-            base.OnModelCreating(builder);
+            services.AddControllersWithViews();
+            services.AddDbContext<VidracariaContext>(options =>
+                   options.UseMySQL(Configuration.GetConnectionString("VidracariaContext")));
 
-            builder.Entity<UsuarioModel>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            builder.Entity<UsuarioModel>(entity => entity.Property(m => m.NormalizedEmail).HasMaxLength(85));
-            builder.Entity<UsuarioModel>(entity => entity.Property(m => m.NormalizedUserName).HasMaxLength(85));
-
-            builder.Entity<IdentityRole>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            builder.Entity<IdentityRole>(entity => entity.Property(m => m.NormalizedName).HasMaxLength(85));
-
-            builder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(85));
-            builder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.ProviderKey).HasMaxLength(85));
-            builder.Entity<IdentityUserLogin<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-
-            builder.Entity<IdentityUserRole<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-            builder.Entity<IdentityUserRole<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));
-
-            builder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-            builder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.LoginProvider).HasMaxLength(85));
-            builder.Entity<IdentityUserToken<string>>(entity => entity.Property(m => m.Name).HasMaxLength(85));
-
-            builder.Entity<IdentityUserClaim<string>>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            builder.Entity<IdentityUserClaim<string>>(entity => entity.Property(m => m.UserId).HasMaxLength(85));
-
-            builder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.Id).HasMaxLength(85));
-            builder.Entity<IdentityRoleClaim<string>>(entity => entity.Property(m => m.RoleId).HasMaxLength(85));
-
-            // IDS dos perfis
-            string ROLE_ADMIN_ID = Guid.NewGuid().ToString();
-            string ROLE_CLIENTE_ID = Guid.NewGuid().ToString();
-
-            // IDS dos usuarios
-            string ADMIN_ID = Guid.NewGuid().ToString();
-            string CLIENTE_ID = Guid.NewGuid().ToString();
-
-            // Permiti cadastrar um perfil
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole
-                {
-                    Id = ROLE_ADMIN_ID, // Chave primaria
-                    Name = "Administrador",
-                    NormalizedName = "ADMINISTRADOR"// Regra - fica tudo em maiusculo
-                },
-                new IdentityRole
-                {
-                    Id = ROLE_CLIENTE_ID, // Chave primaria
-                    Name = "Cliente",
-                    NormalizedName = "CLIENTE"// Regra - fica tudo em maiusculo
-                }
-                );
-
-            // Criptografia da senha
-            var hash1 = new PasswordHasher<UsuarioModel>();
-            var hash2 = new PasswordHasher<UsuarioModel>();
-
-            builder.Entity<UsuarioModel>().HasData(
-                new UsuarioModel
-                {
-                    Id = ADMIN_ID,
-                    Nome = "Admin",
-                    UserName = "admin@vidracariaportal.com.br",
-                    NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                    Email = "admin@vidracariaportal.com.br",
-                    NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                    EmailConfirmed = true,
-                    PasswordHash = hash1.HashPassword(null, "vidracaria"), // Nulo e senha que vai ser criptografada
-                    SecurityStamp = hash1.GetHashCode().ToString() // Necessario para discriptografa
-                },
-                 new UsuarioModel
-                 {
-                     Id = CLIENTE_ID,
-                     Nome = "Alexandre",
-                     UserName = "tavanoalexandre@outlook.com",
-                     NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                     Email = "tavanoalexandre@outlook.com",
-                     NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
-                     EmailConfirmed = true,
-                     PasswordHash = hash2.HashPassword(null, "UserProgramador123"), // Nulo e senha que vai ser criptografada
-                     SecurityStamp = hash2.GetHashCode().ToString() // Necessario para discriptografa
-                 }
-                );
+            // Serviço de Identity
+            services.AddIdentity<UsuarioModel, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 6; // numero minimo
+                options.Password.RequireDigit = false; //
+                options.Password.RequireUppercase = false; // letra maiusculo
+                options.Password.RequiredUniqueChars = 0; //Caracter espacial
+                options.Password.RequireLowercase = false; // letra minuscula
+                options.Password.RequireNonAlphanumeric = false; // numero açfanumerico
+                options.User.RequireUniqueEmail = true; //requer email unico
+                options.Lockout.AllowedForNewUsers = true; // bloqueio de usuario
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2); //Tempo bloqueado
+                options.Lockout.MaxFailedAccessAttempts = 5;//numero maximo de tentativas
+            })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<VidracariaContext>()
+            .AddDefaultTokenProviders()
+            .AddClaimsPrincipalFactory<CustomClaimsFactory>();
 
 
-            // Determina qual user é de qual categoria
-            builder.Entity<IdentityUserRole<string>>().HasData(
-
-                new IdentityUserRole<string>
-                {
-                    RoleId = ROLE_ADMIN_ID,
-                    UserId = ADMIN_ID
-                },
-                new IdentityUserRole<string>
-                {
-                    RoleId = ROLE_CLIENTE_ID,
-                    UserId = CLIENTE_ID
-                }
-                );
         }
-        public DbSet<Vidracaria_Portal.Models.Administrador.Cadastros.AgendaModel> AgendaModel { get; set; }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthentication(); // Necessario para saber quem esta logando
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Home}/{id?}");
+            });
+        }
     }
 }

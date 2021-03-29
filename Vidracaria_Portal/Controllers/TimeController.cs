@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,6 +37,7 @@ namespace Vidracaria_Portal.Controllers
         // GET: Time/Create
         public IActionResult Create()
         {
+            ViewData["CargoId"] = new SelectList(_context.CargosModels, "CodigoCargo", "NomeCargo");
             return View();
         }
 
@@ -45,7 +46,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CodigoTIme,NomeTime,Cargo,Imagem,LinkFacebook,LinkImagem")] TimeModel timeModel, IFormFile imagem)
+        public async Task<IActionResult> Create([Bind("CodigoTIme,NomeTime,CargoId,Imagem,LinkFacebook,LinkImagem")] TimeModel timeModel, IFormFile imagem)
         {
             if (ModelState.IsValid)
             {
@@ -69,6 +70,7 @@ namespace Vidracaria_Portal.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CargoId"] = new SelectList(_context.CargosModels, "CodigoCargo", "NomeCargo", timeModel.CargoId);
             return View(timeModel);
         }
 
@@ -85,6 +87,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+            ViewData["CargoId"] = new SelectList(_context.CargosModels, "CodigoCargo", "NomeCargo");
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             return View(timeModel);
         }
@@ -94,7 +97,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoTIme,NomeTime,Cargo,Imagem,LinkFacebook,LinkImagem")] TimeModel timeModel, IFormFile novaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoTIme,NomeTime,CargoId,Imagem,LinkFacebook,LinkImagem")] TimeModel timeModel, IFormFile novaImagem)
         {
             if (id != timeModel.CodigoTIme)
             {
@@ -137,6 +140,7 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CargoId"] = new SelectList(_context.CargosModels, "CodigoCargo", "NomeCargo", timeModel.CargoId);
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             return View(timeModel);
         }

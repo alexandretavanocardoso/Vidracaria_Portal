@@ -1,4 +1,6 @@
-﻿using Vidracaria_Portal.Models.Cliente;
+using System.Collections.Generic;
+using Vidracaria_Portal.Models.Administrador.Cadastros;
+using Vidracaria_Portal.Models.Cliente;
 
 namespace Vidracaria_Portal.ViewModel
 {
@@ -19,5 +21,7 @@ namespace Vidracaria_Portal.ViewModel
     public class HomeViewModel
     {
         public ContatoModel Contato { get; set; }
+
+        public List<TimeModel> ListaTime { get; set; }
     }
 }

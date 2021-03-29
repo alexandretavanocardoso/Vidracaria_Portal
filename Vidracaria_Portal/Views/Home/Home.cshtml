@@ -1,4 +1,4 @@
-﻿@model Vidracaria_Portal.ViewModel.HomeViewModel;
+@model Vidracaria_Portal.ViewModel.HomeViewModel;
 
 @{ ViewData["title"] = "Index";
     Layout = "~/Views/Shared/_LayoutCliente.cshtml"; }
@@ -313,62 +313,21 @@
                 <h2>Nosso Time</h2>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="member">
-                        <img src="~/img/Time/Rafael.jpg" alt="">
-                        <h4>Rafael Martini Gigliotti</h4>
-                        <span style="font-size: 16px; color: #343a40">Chefe Executivo</span>
-                        <div class="social">
-                            <a target="_blank" href="https://www.facebook.com/rafael.gigliotti.1"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/rafaelvidracaria/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                @foreach (var tim in Model.ListaTime)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="member">
+                            <img src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + tim.Imagem) ?
+                                                Url.Content("~/" + tim.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" alt="">
+                            <h4>@(tim.NomeTime)</h4>
+                            <span style="font-size: 16px; color: #343a40">@(tim.Cargo)</span>
+                            <div class="social">
+                                <a target="_blank" href="@Url.Content(tim.LinkFacebook)"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
+                                <a target="_blank" href="@Url.Content(tim.LinkImagem)"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="member">
-                        <img src="~/img/Time/Samantta.jpg" alt="">
-                        <h4>Samantta Cristina Tavano</h4>
-                        <span style="font-size: 16px; color: #343a40">Gerente Administrativa</span>
-                        <div class="social">
-                            <a target="_blank" href="https://www.facebook.com/samantta.tavano"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/samanttagigliotti/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="member">
-                        <img src="~/img/Time/junior.jpg" alt="">
-                        <h4>Junior Silverio</h4>
-                        <span style="font-size: 16px; color: #343a40">Colaborador</span>
-                        <div class="social">
-                            <a target="_blank" href="https://www.facebook.com/juniinhuu.silveerio"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/juniorr_silverio/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="margin: 0 auto; display: flex; justify-content: space-evenly;">
-                    <div class="member">
-                        <img src="~/img/Time/Gabriel.jpg" alt="">
-                        <h4>Gabriel Pastore</h4>
-                        <span style="font-size: 16px; color: #343a40">Colaborador</span>
-                        <div class="social">
-                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100007930717601"><i style="font-size: 25px;" class="fab fa-facebook"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/gabrielpastore1074/"><i style="font-size: 25px;" class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="margin: 0 auto; display: flex; justify-content: space-evenly;">
-                    <div class="member">
-                        <img src="~/img/Time/antonio.jpeg" alt="">
-                        <h4>Antônio</h4>
-                        <span style="font-size: 16px; color: #343a40">Colaborador</span>
-                        <div class="social">
-
-                        </div>
-                    </div>
-                </div>
-
+                }
             </div>
 
         </div>

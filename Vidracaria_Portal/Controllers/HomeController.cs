@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -33,13 +34,31 @@ namespace Vidracaria_Portal.Controllers
 
         public IActionResult Home()
         {
+            List<TimeModel> listaTime = new List<TimeModel>();
+            var t = _context.TimesModels.ToList();
+            foreach(var item in t)
+            {
+                TimeModel tim = new TimeModel();
+                tim.CodigoTIme = item.CodigoTIme;
+                tim.NomeTime = item.NomeTime;
+                tim.Cargo = item.Cargo;
+                tim.Imagem = item.Imagem;
+                tim.LinkFacebook = item.LinkFacebook;
+                tim.LinkImagem = item.LinkImagem;
+
+                listaTime.Add(tim);
+            }
+
+
             var model = new HomeViewModel();
+            model.ListaTime = listaTime;
             model.Contato = new ContatoModel();
+            ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             return View(model);
         }
 
-        public IActionResult Duvidas()
-        {
+        public IActionResult Duvidas() 
+        { 
             return View();
         }
         public IActionResult Contato()

@@ -103,7 +103,7 @@ namespace Vidracaria_Portal.Data.Context
                     Email = "admin@vidracariaportal.com.br",
                     NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                     EmailConfirmed = true,
-                    PasswordHash = hash1.HashPassword(null, "vidracaria"), // Nulo e senha que vai ser criptografada
+                    PasswordHash = hash1.HashPassword(null, "Q]HU7;],$("), // Nulo e senha que vai ser criptografada
                     SecurityStamp = hash1.GetHashCode().ToString() // Necessario para discriptografa
                 },
                  new UsuarioModel
@@ -115,7 +115,7 @@ namespace Vidracaria_Portal.Data.Context
                      Email = "tavanoalexandre@outlook.com",
                      NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                      EmailConfirmed = true,
-                     PasswordHash = hash2.HashPassword(null, "UserProgramador123"), // Nulo e senha que vai ser criptografada
+                     PasswordHash = hash2.HashPassword(null, "Q]HU7;],$(Q]HU7;],$(Q]HU7;],$(Q]HU7;],$(Q]HU7;],$(Q]HU7;],$(Q]HU7;],$("), // Nulo e senha que vai ser criptografada
                      SecurityStamp = hash2.GetHashCode().ToString() // Necessario para discriptografa
                  }
                 );

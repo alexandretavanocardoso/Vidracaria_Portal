@@ -86,11 +86,11 @@ namespace Vidracaria_Portal.Controllers
                 _context.Add(contatoBanco);
                 await _context.SaveChangesAsync();
 
-                return Ok();
+               return RedirectToAction("Index", "Home");
             }
             else
             {
-                return NotFound();
+                return RedirectToAction("Index", "Home");
             }
         }
 

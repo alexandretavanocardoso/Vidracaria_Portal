@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using X.PagedList;
 
 namespace Vidracaria_Portal.Controllers
 {
+    [Authorize(Roles = "Administrador")] // Obrigatorio para nao entrar no admin pela URL
     public class ConcluidosController : Controller
     {
         private readonly VidracariaContext _context;
@@ -29,11 +31,14 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var codigoConcluido = (from p in _context.Concluidos select p).ToList();
-                concluidosModel.CodigoConcluido = codigoConcluido.Count() + 1;
+                if (concluidosModel.CodigoAprovados != 0)
+                {
+                    var codigoConcluido = (from p in _context.Concluidos select p).ToList();
+                    concluidosModel.CodigoConcluido = codigoConcluido.Count() + 1;
 
-                _context.Add(concluidosModel);
-                await _context.SaveChangesAsync();
+                    _context.Add(concluidosModel);
+                    await _context.SaveChangesAsync();
+                }
             }
 
             if (pesquisa != null)

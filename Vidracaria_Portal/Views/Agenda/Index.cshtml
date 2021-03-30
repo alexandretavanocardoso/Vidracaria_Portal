@@ -47,6 +47,15 @@
         #agenda::-webkit-scrollbar-thumb {
             background: #c70000;
         }
+
+        .wrap {
+            text-overflow: ellipsis;
+            /* Required for text-overflow to do anything */
+            white-space: nowrap;
+            overflow: hidden;
+            width: 290px;
+            max-width: 290px;
+        }
     </style>
 }
 
@@ -72,22 +81,23 @@
         @foreach (var item in Model)
         {
 
-            <div id="agenda" class="agenda" style="margin-bottom: 12px; margin-right: 12px; overflow-y: auto; overflow-x: hidden;">
+            <div id="agenda" class="agenda" style="margin-bottom: 12px; margin-right: 12px; overflow-y: auto; overflow-x: hidden; height: auto;">
                 <div class="cabecalhoAgenda">
                     <a style="margin-right: 20px;" asp-action="Delete" asp-route-id="@item.CodigoAgenda"><i style="color: white; margin-top: 3px;" class="fas fa-trash"></i></a>
                     <a style="margin-right: 10px;" asp-action="Edit" asp-route-id="@item.CodigoAgenda"><i style="color: white; margin-top: 3px;" class="far fa-edit"></i></a>
                 </div>
 
-                <div style="color: white;">
-                    <div class="body">
+                <div style="color: white; height: 100%;">
+                    <div class="body" style="width:100%;">
                         <div style="margin-left: 8px;">
-                            <h5>@Html.DisplayFor(modelItem => item.Assunto)</h5>
+
+                            <h5 class="wrap">@Html.DisplayFor(modelItem => item.Assunto)</h5>
                             <p style="font-size: 14px; margin-bottom: 0;">Data Cadastro:  @Html.DisplayFor(modelItem => item.DataCadastro)<i style="margin-left: 8px;" class="fas fa-calendar"></i></p>
                             <p style="font-size: 14px;">Data Limite: @Html.DisplayFor(modelItem => item.DataLimite)<i style="margin-left: 8px;" class="fas fa-calendar"></i></p>
                         </div>
                     </div>
-                    <div style="width: 300px; padding-right: 10px;" class="body1">
-                        <p style="margin-left: 8px; text-align: justify;">
+                    <div class="body row" style="width:100%;margin-left: 8px;">
+                        <p class="wrap">
                             @Html.DisplayFor(modelItem => item.Texto)
                         </p>
                     </div>

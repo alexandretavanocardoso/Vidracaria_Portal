@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using X.PagedList;
 
 namespace Vidracaria_Portal.Controllers
 {
+    [Authorize(Roles = "Administrador")] // Obrigatorio para nao entrar no admin pela URL
     public class AprovadosController : Controller
     {
         private readonly VidracariaContext _context;
@@ -49,11 +51,14 @@ namespace Vidracaria_Portal.Controllers
         {
             if (ModelState.IsValid)
             {
-                var codigoAprovado = (from p in _context.Aprovados select p).ToList();
-                aprovadosModel.CodigoAprovado = codigoAprovado.Count() + 1;
+                if (aprovadosModel.CodigoOrcamento != 0 )
+                {
+                    var codigoAprovado = (from p in _context.Aprovados select p).ToList();
+                    aprovadosModel.CodigoAprovado = codigoAprovado.Count() + 1;
 
-                _context.Add(aprovadosModel);
-                await _context.SaveChangesAsync();
+                    _context.Add(aprovadosModel);
+                    await _context.SaveChangesAsync();
+                }
             }
 
             if (pesquisa != null)
@@ -100,7 +105,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoAprovado,CodigoOrcamento,Nome,DataCadastro,Cidade,Bairro,NumeroCasa,Estado,Celular,Imagem,Valor")] AprovadosModel aprovadosModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoAprovado,CodigoOrcamento,Nome,DataCadastro,Cidade,Bairro,NumeroCasa,Estado,Celular,Imagem,Valor")] AprovadosModel aprovadosModel, IFormFile novaImagem)
         {
             if (id != aprovadosModel.CodigoAprovado)
             {
@@ -109,20 +114,20 @@ namespace Vidracaria_Portal.Controllers
 
             if (ModelState.IsValid)
             {
-                if (NovaImagem != null)
+                if (novaImagem != null)
                 {
-                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
+                    var pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
 
-                    var nomeArquivo = Guid.NewGuid() + "_" + NovaImagem.FileName;
+                    var nome = Guid.NewGuid() + "_" + novaImagem.FileName;
 
-                    var CaminhoArquivo = Path.Combine(pasta, nomeArquivo);
+                    var caminho = Path.Combine(pasta, nome);
 
-                    using (var stream = new FileStream(CaminhoArquivo, FileMode.Create))
+                    using (var stream = new FileStream(caminho, FileMode.Create))
                     {
-                        await NovaImagem.CopyToAsync(stream);
+                        await novaImagem.CopyToAsync(stream);
                     }
 
-                    aprovadosModel.Imagem = "imagensSaves/Orcamentos" + nomeArquivo;
+                    aprovadosModel.Imagem = "imagensSaves/Orcamentos/" + nome;
                 }
 
                 try

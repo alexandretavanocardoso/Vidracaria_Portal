@@ -22,10 +22,10 @@
                     <div class="member">
                         <img style="width: 100%; height: 200px; border-radius: 50%; margin-top: 10px;" src="@( System.IO.File.Exists(ViewData["CaminhoImagem"] + "/" + item.Imagem) ?
                     Url.Content("~/" + item.Imagem) : Url.Content("/imagensSaves/sem_foto.png") )" alt="">
-                        <h4 style="margin-top: 10px;"> @Html.DisplayFor(modelItem => item.NomeTime)</h4>
-                        <h4 style="margin-top: 10px;"> @Html.DisplayFor(modelItem => item.Cargo)</h4>
-                        <h4 style="margin-top: 10px;"> <b>Link Face: </b>@Html.DisplayFor(modelItem => item.LinkFacebook)</h4>
-                        <h4 style="margin-top: 10px;"> <b>Link Insta: </b>@Html.DisplayFor(modelItem => item.LinkImagem)</h4>
+                        <h5 style="margin-top: 10px;"> @Html.DisplayFor(modelItem => item.NomeTime)</h5>
+                        <h5 style="margin-top: 10px;"> @Html.DisplayFor(modelItem => item.Cargo)</h5>
+                        <h6 style="margin-top: 10px;"> <b>Link Face: </b>@Html.DisplayFor(modelItem => item.LinkFacebook)</h6>
+                        <h6 style="margin-top: 10px;"> <b>Link Insta: </b>@Html.DisplayFor(modelItem => item.LinkImagem)</h6>
                         <div class="social" style="margin-top: 15px;">
                             <a asp-action="Edit" asp-route-id="@item.CodigoTIme"><i class="fa fa-edit td-icones" style="color:black;" data-toggle="tooltip" data-placement="right" title="Editar"></i></a>
                             <a asp-action="Delete" asp-route-id="@item.CodigoTIme"><i class="fa fa-trash-alt td-icones" style="color:darkred;" data-toggle="tooltip" data-placement="left" title="Deletar"></i></a>

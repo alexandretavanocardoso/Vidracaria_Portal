@@ -87,22 +87,18 @@ namespace Vidracaria_Portal.Controllers
             {
                 if (Imagem != null)
                 {
-                    // Definir pasta onde vai ser salvo
-                    string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
+                    var pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
 
-                    //Nome unico
-                    var NomeArquivo = Guid.NewGuid().ToString() + "_" + Imagem.FileName; // nome da imagem e extensão
+                    var nome = Guid.NewGuid() + "_" + Imagem.FileName;
 
-                    //Caminho Arquivo
-                    var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+                    var caminho = Path.Combine(pasta, nome);
 
-                    //Biblioteca - Criar e salvar aqreuivos em HD
-                    using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                    using (var stream = new FileStream(caminho, FileMode.Create))
                     {
                         await Imagem.CopyToAsync(stream);
                     }
-                    // Localizaçao e nome imagem
-                    orcamentosModel.Imagem = "imagensSaves/Orcamentos" + NomeArquivo;
+
+                    orcamentosModel.Imagem = "imagensSaves/Orcamentos/" + nome;
 
                 }
 
@@ -127,6 +123,7 @@ namespace Vidracaria_Portal.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo");
             return View(orcamentosModel);
@@ -137,7 +134,7 @@ namespace Vidracaria_Portal.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem,Valor")] OrcamentosModel orcamentosModel, IFormFile NovaImagem)
+        public async Task<IActionResult> Edit(int id, [Bind("CodigoOrcamento,Nome,Rua,NumeroCasa,Cidade,Bairro,Celular,Telefone,Estado,TipoId,DataCadastro,Imagem,Valor")] OrcamentosModel orcamentosModel, IFormFile novaImagem)
         {
             if (id != orcamentosModel.CodigoOrcamento)
             {
@@ -148,24 +145,20 @@ namespace Vidracaria_Portal.Controllers
             {
                 try
                 {
-                    if (NovaImagem != null)
+                    if (novaImagem != null)
                     {
-                        // Definir pasta onde vai ser salvo
-                        string pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
+                        var pasta = Path.Combine(_webHostEnvironment.WebRootPath, "imagensSaves\\Orcamentos");
 
-                        //Nome unico
-                        var NomeArquivo = Guid.NewGuid().ToString() + "_" + NovaImagem.FileName; // nome da imagem e extensão
+                        var nome = Guid.NewGuid() + "_" + novaImagem.FileName;
 
-                        //Caminho Arquivo
-                        var CaminhoArquivo = Path.Combine(pasta, NomeArquivo);
+                        var caminho = Path.Combine(pasta, nome);
 
-                        //Biblioteca - Criar e salvar aqreuivos em HD
-                        using (var stream = new FileStream(CaminhoArquivo, FileMode.Create)) // Cria o Arquivo e copia a imagem que chegou do form
+                        using (var stream = new FileStream(caminho, FileMode.Create))
                         {
-                            await NovaImagem.CopyToAsync(stream);
+                            await novaImagem.CopyToAsync(stream);
                         }
-                        // Localizaçao e nome imagem
-                        orcamentosModel.Imagem = "imagensSaves/Orcamentos" + NomeArquivo;
+
+                        orcamentosModel.Imagem = "imagensSaves/Orcamentos/" + nome;
                     }
 
                     _context.Update(orcamentosModel);
@@ -184,6 +177,7 @@ namespace Vidracaria_Portal.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CaminhoImagem"] = _webHostEnvironment.WebRootPath;
             ViewData["TipoId"] = new SelectList(_context.TipoDeServicos, "CodigoTipo", "Tipo", orcamentosModel.TipoId);
             return View(orcamentosModel);

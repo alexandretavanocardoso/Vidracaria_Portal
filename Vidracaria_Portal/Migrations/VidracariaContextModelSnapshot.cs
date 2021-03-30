@@ -46,15 +46,15 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bb483eb9-4e61-4adf-93db-819f132e7604",
-                            ConcurrencyStamp = "6e274051-06f1-462b-bc67-0e651b5ff1ab",
+                            Id = "9941e63f-5232-4c39-8948-bfc427ededaf",
+                            ConcurrencyStamp = "8baddff7-a11b-49da-a6ae-6a7db6239490",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "3f1ba507-91fa-4101-aaea-7976d1eeb2e7",
-                            ConcurrencyStamp = "5d6ae7c2-1b70-434b-a6ff-71b92985d563",
+                            Id = "e1843365-3298-400b-997a-903affd186b3",
+                            ConcurrencyStamp = "ed6f2e82-f6e8-4396-a998-01a143c941c8",
                             Name = "Cliente",
                             NormalizedName = "CLIENTE"
                         });
@@ -154,13 +154,13 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "866c5391-29c3-42fd-8850-d98b0d5465db",
-                            RoleId = "bb483eb9-4e61-4adf-93db-819f132e7604"
+                            UserId = "d01db3aa-64eb-4260-8d25-8cb505b9d444",
+                            RoleId = "9941e63f-5232-4c39-8948-bfc427ededaf"
                         },
                         new
                         {
-                            UserId = "98a55741-73cc-4ce7-92b8-4c2c1c0578d5",
-                            RoleId = "3f1ba507-91fa-4101-aaea-7976d1eeb2e7"
+                            UserId = "83ceea67-d002-4804-98f5-742a37e5c332",
+                            RoleId = "e1843365-3298-400b-997a-903affd186b3"
                         });
                 });
 
@@ -519,7 +519,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Bairro")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -528,7 +527,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -543,11 +541,9 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(80)");
 
                     b.Property<string>("Imagem")
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("varchar(70)");
 
@@ -555,7 +551,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Rua")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -586,7 +581,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Bairro")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -595,7 +589,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -613,11 +606,9 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(80)");
 
                     b.Property<string>("Imagem")
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("varchar(70)");
 
@@ -625,7 +616,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Rua")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -656,7 +646,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Bairro")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -665,7 +654,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -677,11 +665,9 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("varchar(80)");
 
                     b.Property<string>("Imagem")
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(70)
                         .HasColumnType("varchar(70)");
 
@@ -689,7 +675,6 @@ namespace Vidracaria_Portal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Rua")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
@@ -896,35 +881,35 @@ namespace Vidracaria_Portal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "866c5391-29c3-42fd-8850-d98b0d5465db",
+                            Id = "d01db3aa-64eb-4260-8d25-8cb505b9d444",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4c8d11d1-cb4d-4a3d-8b4d-869a4ba7d07b",
+                            ConcurrencyStamp = "f26f467d-cbc6-47d8-b8c2-ae3c90450e16",
                             Email = "admin@vidracariaportal.com.br",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Admin",
                             NormalizedEmail = "ADMIN@VIDRACARIAPORTAL.COM.BR",
                             NormalizedUserName = "ADMIN@VIDRACARIAPORTAL.COM.BR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDz1AOiCd83NhjbX33Ia7Oc6oyBjWY9PakGQu5prUryC95hJN2nWFj/XiiPj2xbofg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKOmu0twm788QVAMLfpIFZv85qcVY8xlYU1UDrAsxduuWnPt1208UbjTXJwcFco+aw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "37966223",
+                            SecurityStamp = "48957711",
                             TwoFactorEnabled = false,
                             UserName = "admin@vidracariaportal.com.br"
                         },
                         new
                         {
-                            Id = "98a55741-73cc-4ce7-92b8-4c2c1c0578d5",
+                            Id = "83ceea67-d002-4804-98f5-742a37e5c332",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1a01d314-dc47-4d06-940f-e8994bbabdf5",
+                            ConcurrencyStamp = "5934fc21-0f95-4591-b546-71aa42c9248e",
                             Email = "tavanoalexandre@outlook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             Nome = "Alexandre",
                             NormalizedEmail = "TAVANOALEXANDRE@OUTLOOK.COM",
                             NormalizedUserName = "TAVANOALEXANDRE@OUTLOOK.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOqC6F0OTeUFqzK/LaKyHSChjsehGQCZsmh61109oiy5sLWHcn25bPNoHzJUf+pszg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBwZF5WRd0L6kHfaKHaObysm3ltIGenEtKfGNfKv7feQQiUz3C7/ro/uaMpwkwQxLQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6151694",
+                            SecurityStamp = "37966223",
                             TwoFactorEnabled = false,
                             UserName = "tavanoalexandre@outlook.com"
                         });

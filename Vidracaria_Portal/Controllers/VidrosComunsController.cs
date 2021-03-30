@@ -102,7 +102,7 @@ namespace Vidracaria_Portal.Controllers
                         await Imagem.CopyToAsync(stream);
                     }
                     // Localizaçao e nome imagem
-                    vidrosComunsModel.Imagem = "imagensSaves/VidrosComuns" + NomeArquivo;
+                    vidrosComunsModel.Imagem = "imagensSaves/VidrosComuns/" + NomeArquivo;
 
                 }
 
@@ -169,7 +169,7 @@ namespace Vidracaria_Portal.Controllers
                             await NovaImagem.CopyToAsync(stream);
                         }
                         // Localizaçao e nome imagem
-                        vidrosComunsModel.Imagem = "imagensSaves/VidrosComuns" + NomeArquivo;
+                        vidrosComunsModel.Imagem = "imagensSaves/VidrosComuns/" + NomeArquivo;
                     }
 
                     _context.Update(vidrosComunsModel);

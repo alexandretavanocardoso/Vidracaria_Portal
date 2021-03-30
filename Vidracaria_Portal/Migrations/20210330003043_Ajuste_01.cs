@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace Vidracaria_Portal.Migrations
 {
-    public partial class Ajustes01 : Migration
+    public partial class Ajuste_01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,19 +75,6 @@ namespace Vidracaria_Portal.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CARGOS",
-                columns: table => new
-                {
-                    CodigoCargo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    NomeCargo = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CARGOS", x => x.CodigoCargo);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,7 +163,7 @@ namespace Vidracaria_Portal.Migrations
                     CodigoTIme = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     NomeTime = table.Column<string>(type: "text", nullable: true),
-                    CargoId = table.Column<int>(type: "int", nullable: false),
+                    Cargo = table.Column<string>(type: "text", nullable: true),
                     Imagem = table.Column<string>(type: "text", nullable: true),
                     LinkFacebook = table.Column<string>(type: "text", nullable: true),
                     LinkImagem = table.Column<string>(type: "text", nullable: true)
@@ -184,12 +171,6 @@ namespace Vidracaria_Portal.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NOSSO_TIME", x => x.CodigoTIme);
-                    table.ForeignKey(
-                        name: "FK_NOSSO_TIME_NOSSO_TIME_CargoId",
-                        column: x => x.CargoId,
-                        principalTable: "NOSSO_TIME",
-                        principalColumn: "CodigoTIme",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -481,18 +462,18 @@ namespace Vidracaria_Portal.Migrations
                     CodigoAprovado = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     CodigoOrcamento = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
-                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: true),
+                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     NumeroCasa = table.Column<int>(type: "int", nullable: false),
-                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
-                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
+                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     Celular = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Telefone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Estado = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     TipoId = table.Column<int>(type: "int", nullable: false),
                     TipoServicoCodigoTipo = table.Column<int>(type: "int", nullable: true),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    Imagem = table.Column<string>(type: "text", nullable: true),
                     Valor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -514,18 +495,18 @@ namespace Vidracaria_Portal.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     CodigoAprovados = table.Column<int>(type: "int", nullable: false),
                     CodigoOrcamento = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
-                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: true),
+                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     NumeroCasa = table.Column<int>(type: "int", nullable: false),
-                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
-                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
+                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     Celular = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Telefone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Estado = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     TipoId = table.Column<int>(type: "int", nullable: false),
                     TipoServicoCodigoTipo = table.Column<int>(type: "int", nullable: true),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    Imagem = table.Column<string>(type: "text", nullable: true),
                     Valor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -545,18 +526,18 @@ namespace Vidracaria_Portal.Migrations
                 {
                     CodigoOrcamento = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: false),
-                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Nome = table.Column<string>(type: "varchar(70)", maxLength: 70, nullable: true),
+                    Rua = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     NumeroCasa = table.Column<int>(type: "int", nullable: false),
-                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
-                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false),
+                    Cidade = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
+                    Bairro = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     Celular = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Telefone = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     Estado = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true),
                     TipoId = table.Column<int>(type: "int", nullable: false),
                     TipoServicoCodigoTipo = table.Column<int>(type: "int", nullable: true),
                     DataCadastro = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Imagem = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    Imagem = table.Column<string>(type: "text", nullable: true),
                     Valor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -575,8 +556,8 @@ namespace Vidracaria_Portal.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "5404041b-2459-406c-b7ee-f5e03896f4a6", "bbc853c8-a10d-49cd-b7c6-14d65a055e29", "Administrador", "ADMINISTRADOR" },
-                    { "051c1a4a-8873-4acc-a88d-11a448866702", "36fce250-c8a8-47f5-9a32-b3963ac2a1a1", "Cliente", "CLIENTE" }
+                    { "9941e63f-5232-4c39-8948-bfc427ededaf", "8baddff7-a11b-49da-a6ae-6a7db6239490", "Administrador", "ADMINISTRADOR" },
+                    { "e1843365-3298-400b-997a-903affd186b3", "ed6f2e82-f6e8-4396-a998-01a143c941c8", "Cliente", "CLIENTE" }
                 });
 
             migrationBuilder.InsertData(
@@ -584,19 +565,19 @@ namespace Vidracaria_Portal.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nome", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2103567b-0a6f-45f4-9d4d-e0f219b74e21", 0, "e410bc5c-0253-40a8-9646-6323ddbafc76", "admin@vidracariaportal.com.br", true, false, null, "Admin", "ADMIN@VIDRACARIAPORTAL.COM.BR", "ADMIN@VIDRACARIAPORTAL.COM.BR", "AQAAAAEAACcQAAAAEGfos648xoxfhjUowRYdvT4IRbsNt6Z78Nz79twHkaGzPNtfr5SoKXCZybjzmO/9gg==", null, false, "21418771", false, "admin@vidracariaportal.com.br" },
-                    { "2e39b85b-41cc-410f-a228-6153820d2446", 0, "a73afaef-60db-4b45-b43f-b42ec06b3048", "tavanoalexandre@outlook.com", true, false, null, "Alexandre", "TAVANOALEXANDRE@OUTLOOK.COM", "TAVANOALEXANDRE@OUTLOOK.COM", "AQAAAAEAACcQAAAAEF7C3jTYWLW42L3nY/GGjbTVz8q1fraRMv1IpnXmTEXmp9eSlk57T6Po0nderyj+kg==", null, false, "58551215", false, "tavanoalexandre@outlook.com" }
+                    { "d01db3aa-64eb-4260-8d25-8cb505b9d444", 0, "f26f467d-cbc6-47d8-b8c2-ae3c90450e16", "admin@vidracariaportal.com.br", true, false, null, "Admin", "ADMIN@VIDRACARIAPORTAL.COM.BR", "ADMIN@VIDRACARIAPORTAL.COM.BR", "AQAAAAEAACcQAAAAEKOmu0twm788QVAMLfpIFZv85qcVY8xlYU1UDrAsxduuWnPt1208UbjTXJwcFco+aw==", null, false, "48957711", false, "admin@vidracariaportal.com.br" },
+                    { "83ceea67-d002-4804-98f5-742a37e5c332", 0, "5934fc21-0f95-4591-b546-71aa42c9248e", "tavanoalexandre@outlook.com", true, false, null, "Alexandre", "TAVANOALEXANDRE@OUTLOOK.COM", "TAVANOALEXANDRE@OUTLOOK.COM", "AQAAAAEAACcQAAAAEBwZF5WRd0L6kHfaKHaObysm3ltIGenEtKfGNfKv7feQQiUz3C7/ro/uaMpwkwQxLQ==", null, false, "37966223", false, "tavanoalexandre@outlook.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "5404041b-2459-406c-b7ee-f5e03896f4a6", "2103567b-0a6f-45f4-9d4d-e0f219b74e21" });
+                values: new object[] { "9941e63f-5232-4c39-8948-bfc427ededaf", "d01db3aa-64eb-4260-8d25-8cb505b9d444" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "051c1a4a-8873-4acc-a88d-11a448866702", "2e39b85b-41cc-410f-a228-6153820d2446" });
+                values: new object[] { "e1843365-3298-400b-997a-903affd186b3", "83ceea67-d002-4804-98f5-742a37e5c332" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ALUMINIOS_CorId",
@@ -654,11 +635,6 @@ namespace Vidracaria_Portal.Migrations
                 name: "IX_FERRAGENS_CorId",
                 table: "FERRAGENS",
                 column: "CorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NOSSO_TIME_CargoId",
-                table: "NOSSO_TIME",
-                column: "CargoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ORCAMENTOS_TipoServicoCodigoTipo",
@@ -721,9 +697,6 @@ namespace Vidracaria_Portal.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "CARGOS");
 
             migrationBuilder.DropTable(
                 name: "CLIENTES");
